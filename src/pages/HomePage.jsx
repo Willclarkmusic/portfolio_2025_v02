@@ -14,10 +14,11 @@ import {
   BackEndIcons,
   OtherTechIcons,
   OtherOtherIcons,
+  MobileSkillIcons,
 } from "../components/Content";
 import { Card1, IconBox1 } from "../components/ElementTemps";
 
-const { isTablet, isMobile, responsiveRatio } = MobileParams();
+const { isTablet, isMobile } = MobileParams();
 
 function HomePage() {
   const [modalContent, setModalContent] = useState(ArtTechData[0]);
@@ -33,7 +34,7 @@ function HomePage() {
           gl={{ antialias: false }}
           camera={
             isMobile
-              ? { position: [0, -40, 80], fov: 30, near: 10, far: 100 }
+              ? { position: [0, -40, 60], fov: 28, near: 5, far: 200 }
               : { position: [0, 0, 45], fov: 17.5, near: 10, far: 100 }
           }
         >
@@ -241,39 +242,46 @@ const AboutSection = () => {
             </MotionP>
             <MotionP>
               <b>NOT like the other candidates...</b> I am unmatched in my
-              discipline in troubleshooting complex technological issues. I am
-              an expert executing seemingly impossible technology visions. Now
-              that I am upgrading my career path to developer, I am an extremely
-              valuable person to have on your team.
+              abilities to troubleshoot complex technological issues and bring
+              together nearly impossible visions. My unique background as a
+              <b> Classical Musician</b> gives me extreme discipline, my
+              background as a <b> Digital Artist</b> allows me to problem solve
+              creativly, my experiences as an <b>Event technician</b> gives me a
+              cool head under pressure. Now that I am upgrading my career path
+              to developer, I am an extremely valuable person to have on your
+              team.
             </MotionP>
           </div>
           <div className={`${isMobile ? "h-screen" : "col-span-1"}  p-2`}>
             {!isMobile ? (
               <>
                 <MotionH1>Skill Stacks</MotionH1>
-
                 <IconBox1
-                  className={""}
+                  className={"hover:bg-black"}
                   title={"FRONT-END"}
                   data={FrontEndIcons}
                 />
                 <IconBox1
-                  className={""}
+                  className={"hover:bg-black"}
                   title={"BACK-END"}
                   data={BackEndIcons}
                 />
                 <IconBox1
-                  className={""}
+                  className={"hover:bg-black"}
                   title={"OTHER TECH"}
                   data={OtherTechIcons}
                 />
-                <IconBox1 className={""} data={OtherOtherIcons} title={""} />
+                <IconBox1
+                  className={"hover:bg-black"}
+                  data={OtherOtherIcons}
+                  title={""}
+                />
               </>
             ) : (
               <IconBox1
-                className={"h-[80vh]"}
+                className={"h-[80vh] "}
                 title={"Skills"}
-                data={OtherTechIcons}
+                data={MobileSkillIcons}
               />
             )}
           </div>
@@ -352,23 +360,38 @@ const ProjectsSection = () => {
                       >
                         {projModalContent.description}
                       </p>
-                      <h1>Role: {projModalContent.role}</h1>
+                      <h1 className="p-5 text-xl">
+                        Role: {projModalContent.role}
+                      </h1>
                     </div>
+                    <IconBox1
+                      data={projModalContent.icons}
+                      title="Tech Stack"
+                      className="row-span-1 h-[20%]"
+                      classIcons="mt-[6rem]"
+                    />
                   </div>
                 </div>
               )
             ) : (
-              <div className="col-span-2 row-span-2 grid grid-rows-6 border-2 rounded-xl size-[95%] backdrop-blur-3xl">
-                <div className="row-span-4">{projModalContent.element}</div>
+              <div className="col-span-2 row-span-2 grid grid-rows-6 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
+                <div className="row-span-4 max-w-4xl">
+                  {projModalContent.element}
+                  <IconBox1
+                    data={projModalContent.icons}
+                    title="Stack"
+                    className="row-span-1 h-[15%]"
+                  />
+                </div>
                 <div>
+                  <h1 className="text-xl font-semibold px-5 py-2">
+                    <b>Role:</b> {projModalContent.role}
+                  </h1>
                   <p
-                    className={`backdrop-blur-3xl text-white hover:bg-black transition rounded-xl duration-500 border p-5 `}
+                    className={`backdrop-blur-3xl text-white hover:bg-black transition rounded-xl duration-500 border p-5 m-3 mt-0`}
                   >
                     {projModalContent.description}
                   </p>
-                  <h1 className="text-xl font-semibold p-5">
-                    Role: {projModalContent.role}
-                  </h1>
                 </div>
               </div>
             )}
@@ -451,23 +474,38 @@ const ArtSection = () => {
                       >
                         {artModalContent.description}
                       </p>
-                      <h1>Role: {artModalContent.role}</h1>
+                      <h1 className="p-5 text-xl">
+                        <b>Role: </b> {artModalContent.role}
+                      </h1>
                     </div>
+                    <IconBox1
+                      data={artModalContent.icons}
+                      title="Skills"
+                      className="row-span-1 h-[20%]"
+                      classIcons="mt-[6rem]"
+                    />
                   </div>
                 </div>
               )
             ) : (
-              <div className="col-span-2 row-span-2 grid grid-rows-6 border-2 rounded-xl size-[95%] backdrop-blur-3xl">
-                <div className="row-span-4">{artModalContent.element}</div>
+              <div className="col-span-2 row-span-2 grid grid-rows-6 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
+                <div className="row-span-4 max-w-4xl">
+                  {artModalContent.element}
+                  <IconBox1
+                    data={artModalContent.icons}
+                    title="Skills"
+                    className="row-span-1 h-[15%] "
+                  />
+                </div>
                 <div>
+                  <h1 className="text-xl font-semibold px-5 py-2">
+                    <b>Role:</b> {artModalContent.role}
+                  </h1>
                   <p
-                    className={`backdrop-blur-3xl text-white hover:bg-black transition rounded-xl duration-500 border p-5 `}
+                    className={`backdrop-blur-3xl text-white hover:bg-black transition rounded-xl duration-500 border p-5 m-3 mt-0`}
                   >
                     {artModalContent.description}
                   </p>
-                  <h1 className="text-xl font-semibold p-5">
-                    Role: {artModalContent.role}
-                  </h1>
                 </div>
               </div>
             )}

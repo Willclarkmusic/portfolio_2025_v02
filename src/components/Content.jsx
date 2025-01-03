@@ -40,7 +40,7 @@ export const ProjectsData = [
     img: "images/This1.png",
     role: "Front-end Develeoper",
     description:
-      "This Website was built with a lot of tools. React Fiber, Three.js, tailwind and more! I am excited to explore the amazing world of React. Code that writes other code... Amazing! ",
+      "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
     element: (
       <div className="justify-center w-full">
         <div className="">
@@ -63,6 +63,13 @@ export const ProjectsData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
   },
   {
     title: "REST API",
@@ -87,6 +94,14 @@ export const ProjectsData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "REST Api", icon: <FaCloud /> },
+      { name: "HTML/CSS", icon: <FaHtml5 /> },
+      { name: "JavaScript", icon: <IoLogoJavascript /> },
+      { name: "Node.js", icon: <FaNode /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
   },
   {
     title: "AI Assistant",
@@ -99,6 +114,13 @@ export const ProjectsData = [
         <img src="images/RoboBot2.png" className="rounded-3xl object-contain" />
       </div>
     ),
+    icons: [
+      { name: "Unity 3D", icon: <FaUnity /> },
+      { name: "C#", icon: <PiFileCSharp /> },
+      { name: "Meta XR", icon: <FaMeta /> },
+      { name: "Tensor Flow", icon: <SiTensorflow /> },
+      { name: "Hugging Face", icon: <SiHuggingface /> },
+    ],
   },
   {
     title: "Synthesizer Plugin",
@@ -134,6 +156,11 @@ export const ProjectsData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "C++", icon: <SiCplusplus /> },
+      { name: "Juce Audio DSP", icon: <SiJuce /> },
+      { name: "Pro Tools", icon: <SiProtools /> },
+    ],
   },
 ];
 
@@ -170,6 +197,13 @@ export const ArtTechData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
   },
   {
     title: "Marpi Studio: Paleo Alto",
@@ -201,6 +235,13 @@ export const ArtTechData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
   },
   {
     title: "Artechouse",
@@ -237,6 +278,13 @@ export const ArtTechData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
   },
   {
     title: "Audio Reactive Visuals",
@@ -269,6 +317,13 @@ export const ArtTechData = [
         </button>
       </div>
     ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
   },
 ];
 
@@ -276,7 +331,6 @@ export const FrontEndIcons = [
   { name: "React", icon: <FaReact /> },
   { name: "Three.js", icon: <SiThreedotjs /> },
   { name: "Node.js", icon: <FaNode /> },
-  { name: "AWS", icon: <FaAws /> },
   { name: "HTML/CSS", icon: <FaHtml5 /> },
   { name: "JavaScript", icon: <IoLogoJavascript /> },
   { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
@@ -284,36 +338,63 @@ export const FrontEndIcons = [
 ];
 
 export const BackEndIcons = [
-  { name: "React", icon: <FaReact /> },
-  { name: "Three.js", icon: <SiThreedotjs /> },
-  { name: "Node.js", icon: <FaNode /> },
+  { name: "Python", icon: <FaPython /> },
+  { name: "C++", icon: <SiCplusplus /> },
+  { name: "C#", icon: <PiFileCSharp /> },
+  { name: "REST Api", icon: <FaCloud /> },
   { name: "AWS", icon: <FaAws /> },
-  { name: "HTML/CSS", icon: <FaHtml5 /> },
-  { name: "Visual Studio", icon: <DiVisualstudio /> },
-  { name: "JavaScript", icon: <IoLogoJavascript /> },
-  { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-  { name: "Tailwind", icon: <RiTailwindCssFill /> },
+  { name: "Meta XR", icon: <FaMeta /> },
+  { name: "Tensor Flow", icon: <SiTensorflow /> },
+  { name: "Hugging Face", icon: <SiHuggingface /> },
+  { name: "OpenGl", icon: <SiOpengl /> },
+  { name: "Mongo DB", icon: <DiMongodb /> },
+  { name: "Juce Audio DSP", icon: <SiJuce /> },
 ];
 export const OtherTechIcons = [
-  { name: "React", icon: <FaReact /> },
-  { name: "Three.js", icon: <SiThreedotjs /> },
-  { name: "Node.js", icon: <FaNode /> },
-  { name: "AWS", icon: <FaAws /> },
-  { name: "HTML/CSS", icon: <FaHtml5 /> },
   { name: "Visual Studio", icon: <DiVisualstudio /> },
-  { name: "JavaScript", icon: <IoLogoJavascript /> },
-  { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-  { name: "Tailwind", icon: <RiTailwindCssFill /> },
+  { name: "Unity 3D", icon: <FaUnity /> },
+  { name: "Unreal Engine", icon: <SiUnrealengine /> },
+  { name: "Wwise", icon: <SiWwise /> },
+  { name: "Adobe CC", icon: <SiAdobe /> },
+  { name: "Touch Designer", icon: <MdTouchApp /> },
+  { name: "Resolume VJ", icon: <HiAdjustmentsVertical /> },
+  { name: "Pro Tools", icon: <SiProtools /> },
 ];
 
 export const OtherOtherIcons = [
+  { name: "Bass Guitar", icon: <GiGuitar /> },
+  { name: "Rock Climbing", icon: <GiMountainClimbing /> },
+  { name: "Mario Kart", icon: <BsNintendoSwitch /> },
+];
+
+export const MobileSkillIcons = [
+  { name: "Python", icon: <FaPython /> },
+  { name: "C++", icon: <SiCplusplus /> },
+  { name: "C#", icon: <PiFileCSharp /> },
   { name: "React", icon: <FaReact /> },
+  { name: "REST Api", icon: <FaCloud /> },
+  { name: "HTML/CSS", icon: <FaHtml5 /> },
+  { name: "JavaScript", icon: <IoLogoJavascript /> },
   { name: "Three.js", icon: <SiThreedotjs /> },
   { name: "Node.js", icon: <FaNode /> },
-  { name: "AWS", icon: <FaAws /> },
-  { name: "HTML/CSS", icon: <FaHtml5 /> },
-  { name: "Visual Studio", icon: <DiVisualstudio /> },
-  { name: "JavaScript", icon: <IoLogoJavascript /> },
   { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
   { name: "Tailwind", icon: <RiTailwindCssFill /> },
+  { name: "AWS", icon: <FaAws /> },
+  { name: "Meta XR", icon: <FaMeta /> },
+  { name: "Tensor Flow", icon: <SiTensorflow /> },
+  { name: "Hugging Face", icon: <SiHuggingface /> },
+  { name: "OpenGl", icon: <SiOpengl /> },
+  { name: "Mongo DB", icon: <DiMongodb /> },
+  { name: "Juce Audio DSP", icon: <SiJuce /> },
+  { name: "Visual Studio", icon: <DiVisualstudio /> },
+  { name: "Unity 3D", icon: <FaUnity /> },
+  { name: "Unreal Engine", icon: <SiUnrealengine /> },
+  { name: "Wwise", icon: <SiWwise /> },
+  { name: "Adobe CC", icon: <SiAdobe /> },
+  { name: "Touch Designer", icon: <MdTouchApp /> },
+  { name: "Resolume VJ", icon: <HiAdjustmentsVertical /> },
+  { name: "Pro Tools", icon: <SiProtools /> },
+  { name: "Bass Guitar", icon: <GiGuitar /> },
+  { name: "Rock Climbing", icon: <GiMountainClimbing /> },
+  { name: "Mario Kart", icon: <BsNintendoSwitch /> },
 ];

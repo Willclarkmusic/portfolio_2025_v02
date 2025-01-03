@@ -8,8 +8,8 @@ function App() {
   const [section, setSection] = useState(0);
   const [menuOpened, setMenuOpened] = useState(false);
   return (
-    <div className="max-md w-screen">
-      <div className="fixed backdrop-blur-3xl z-10 bg-transparent w-full h-[5%]">
+    <div className="h-screen w-screen">
+      <div className="fixed top-0 left-0 h-screen w-screen">
         <Menu
           section={section}
           onSectionChange={setSection}

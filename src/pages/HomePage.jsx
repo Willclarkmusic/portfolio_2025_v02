@@ -374,15 +374,15 @@ const ProjectsSection = () => {
                 </div>
               )
             ) : (
-              <div className="col-span-2 row-span-2 grid grid-rows-6 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
-                <div className="row-span-4 max-w-4xl">
+              <div className="col-span-2 row-span-2 grid grid-rows-7 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
+                <div className="row-span-4 max-w-xl">
                   {projModalContent.element}
-                  <IconBox1
-                    data={projModalContent.icons}
-                    title="Stack"
-                    className="row-span-1 h-[15%]"
-                  />
                 </div>
+                <IconBox1
+                  data={projModalContent.icons}
+                  title="Stack"
+                  className="row-span-1 h-[80%]"
+                />
                 <div>
                   <h1 className="text-xl font-semibold px-5 py-2">
                     <b>Role:</b> {projModalContent.role}
@@ -488,15 +488,15 @@ const ArtSection = () => {
                 </div>
               )
             ) : (
-              <div className="col-span-2 row-span-2 grid grid-rows-6 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
-                <div className="row-span-4 max-w-4xl">
+              <div className="col-span-2 row-span-2 grid grid-rows-7 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
+                <div className="row-span-4 max-w-xl">
                   {artModalContent.element}
-                  <IconBox1
-                    data={artModalContent.icons}
-                    title="Skills"
-                    className="row-span-1 h-[15%] "
-                  />
                 </div>
+                <IconBox1
+                  data={artModalContent.icons}
+                  title="Stack"
+                  className="row-span-1 h-[80%]"
+                />
                 <div>
                   <h1 className="text-xl font-semibold px-5 py-2">
                     <b>Role:</b> {artModalContent.role}
@@ -515,3 +515,13 @@ const ArtSection = () => {
     </>
   );
 };
+
+// <div className="col-span-2 row-span-2 grid grid-rows-7 border-2 rounded-xl w-[90%] h-[95%] backdrop-blur-3xl">
+// <div className="row-span-4 max-w-xl">
+//   {projModalContent.element}
+// </div>
+// <IconBox1
+//   data={projModalContent.icons}
+//   title="Stack"
+//   className="row-span-1 h-[80%]"
+// />

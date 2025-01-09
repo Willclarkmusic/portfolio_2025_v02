@@ -1,23 +1,52 @@
 import * as THREE from "three";
 import { useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+
 import { useFrame } from "@react-three/fiber";
+import { useInView } from "react-intersection-observer";
+
 import { BallCollider, Physics, RigidBody } from "@react-three/rapier";
 import { MeshTransmissionMaterial } from "@react-three/drei";
+import { ParticleLighting, RenderFX } from "../components/RenderManager";
+import { MobileParams } from "../components/ScrollManager";
+
+const { isTablet, isMobile } = MobileParams();
+
+const DisableRender = () => useFrame(() => null, 1000);
 
 // const connectors = useMemo(() => shuffle(accent), [accent]);
 function ParticleSystem(props) {
+  const { viewRef, inView } = useInView();
   return (
-    <Physics /*debug*/ timeStep="vary" gravity={[0, 0, 0]}>
-      <Pointer />
+    <div ref={viewRef} className="size-full">
+      <Canvas
+        className="overflow-hidden"
+        flat
+        shadows
+        dpr={[1, 1.5]}
+        gl={{ antialias: false }}
+        camera={
+          isMobile
+            ? { position: [0, -40, 60], fov: 28, near: 5, far: 200 }
+            : { position: [0, -20, 50], fov: 20, near: 10, far: 100 }
+        }
+      >
+        {!inView && <DisableRender />}
+        <Physics /*debug*/ timeStep="vary" gravity={[0, 0, 0]}>
+          <Pointer />
 
-      {baubles.map((props, i) => (
-        <BallLights key={i} {...props} mat={baubleMaterial} />
-      ))}
+          {baubles.map((props, i) => (
+            <BallLights key={i} {...props} mat={baubleMaterial} />
+          ))}
 
-      {baubles2.map((props, i) => (
-        <BallLights key={i} {...props} mat={baubleMaterial2} />
-      ))}
-    </Physics>
+          {baubles2.map((props, i) => (
+            <BallLights key={i} {...props} mat={baubleMaterial2} />
+          ))}
+        </Physics>
+        <ParticleLighting />
+        <RenderFX />
+      </Canvas>
+    </div>
   );
 }
 export default ParticleSystem;
@@ -44,7 +73,7 @@ function Pointer({ vec = new THREE.Vector3() }) {
       ref={ref}
     >
       <BallCollider args={[2]} />
-      <mesh castShadow receiveShadow scale={4} geometry={sphereGeometry}>
+      <mesh castShadow receiveShadow scale={2} geometry={sphereGeometry}>
         <MeshTransmissionMaterial
           meshPhysicalMaterial={true}
           transmissionSampler={false}

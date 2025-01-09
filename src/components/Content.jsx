@@ -23,6 +23,8 @@ import {
   SiJuce,
   SiWwise,
   SiCplusplus,
+  SiVectorworks,
+  SiNvidia,
 } from "react-icons/si";
 import { DiVisualstudio, DiMongodb } from "react-icons/di";
 import { BsNintendoSwitch } from "react-icons/bs";
@@ -33,6 +35,8 @@ import { MdTouchApp } from "react-icons/md";
 import { MdOutlineFestival } from "react-icons/md";
 import { HiAdjustmentsVertical } from "react-icons/hi2";
 import { FaSquareYoutube, FaInstagram } from "react-icons/fa6";
+import { GrUserManager } from "react-icons/gr";
+import { FaComputer } from "react-icons/fa6";
 
 export const ProjectsData = [
   {
@@ -48,9 +52,10 @@ export const ProjectsData = [
         </div>
 
         <button
+          id="standbutton"
           onClick={() =>
             window.open(
-              "https://github.com/Willclarkmusic/portfolio_2025_full",
+              "https://github.com/Willclarkmusic/portfolio_2025_v02",
               "_blank"
             )
           }
@@ -84,6 +89,7 @@ export const ProjectsData = [
           className="rounded-3xl w-[93%] object-cover"
         />
         <button
+          id="standbutton"
           onClick={() => window.open("http://18.144.55.121:3000/", "_blank")}
           className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
         >
@@ -127,7 +133,7 @@ export const ProjectsData = [
     img: "./images/BassBotLogo1.png",
     role: "Audio DSP Programmer",
     description:
-      "This Website was built with a lot of tools. React Fiber, Three.js, tailwind and more!",
+      "I have an expert level knowledge of audio DSP and Synthesized music.  One of my first experiences as a Software Developer was to create audio tools for my own music production.  Visit the github to download the code and the Vst plugins for your favorite daw.",
     element: (
       <div className="p-2">
         <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center">
@@ -141,11 +147,9 @@ export const ProjectsData = [
         </div>
 
         <button
+          id="standbutton"
           onClick={() =>
-            window.open(
-              "https://github.com/Willclarkmusic/portfolio_2025_full",
-              "_blank"
-            )
+            window.open("https://github.com/Willclarkmusic/BassBot", "_blank")
           }
           className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
         >
@@ -170,7 +174,7 @@ export const ArtTechData = [
     img: "./images/Menag2022.jpg",
     role: "Stage Designer | Visual Artist",
     description:
-      "This stage design was for the festival 'Menagerie 2023' with headlining artist Kaskade. I created the design for the stage, lighting, video and rigging, then it was passed off to a civil-engineering firm.  I supervised and staffed the build and operation of the stage, while operating video for the headlining performances.",
+      "This stage I designed was for the festival 'Menagerie 2023' with headlining artist Kaskade.  I also was the project manager for this stage. The visual content on the screens is my own custom, audio-reactive, real-time simulations that I am manipulating during the performance. I many more examples of this content in the youtube playlist linked below!.",
     element: (
       <div className="p-2">
         <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center">
@@ -182,6 +186,7 @@ export const ArtTechData = [
           />
         </div>
         <button
+          id="standbutton"
           onClick={() =>
             window.open(
               "https://youtube.com/playlist?list=PLDQiSM9VNZvGwR1fpKYjFClOSRJz-bmm4&si=-jOXLFFlG2QFD3we",
@@ -198,11 +203,12 @@ export const ArtTechData = [
       </div>
     ),
     icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Three.js", icon: <SiThreedotjs /> },
-      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-      { name: "Tailwind", icon: <RiTailwindCssFill /> },
-      { name: "AWS", icon: <FaAws /> },
+      { name: "VectorWorks", icon: <SiVectorworks /> },
+      { name: "Project Management", icon: <GrUserManager /> },
+      { name: "Resolume VJ", icon: <HiAdjustmentsVertical /> },
+      { name: "Touch Designer", icon: <MdTouchApp /> },
+      { name: "Unity 3D", icon: <FaUnity /> },
+      { name: "Adobe CC", icon: <SiAdobe /> },
     ],
   },
   {
@@ -220,12 +226,8 @@ export const ArtTechData = [
           />
         </div>
         <button
-          onClick={() =>
-            window.open(
-              "https://github.com/Willclarkmusic/portfolio_2025_full",
-              "_blank"
-            )
-          }
+          id="standbutton"
+          onClick={() => window.open("https://www.marpi.studio/", "_blank")}
           className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
         >
           <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
@@ -236,11 +238,9 @@ export const ArtTechData = [
       </div>
     ),
     icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Three.js", icon: <SiThreedotjs /> },
-      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-      { name: "Tailwind", icon: <RiTailwindCssFill /> },
-      { name: "AWS", icon: <FaAws /> },
+      { name: "VectorWorks", icon: <SiVectorworks /> },
+      { name: "Project Management", icon: <GrUserManager /> },
+      { name: "Unity 3D", icon: <FaUnity /> },
     ],
   },
   {
@@ -263,6 +263,7 @@ export const ArtTechData = [
         </div>
 
         <button
+          id="standbutton"
           onClick={() =>
             window.open(
               "https://www.instagram.com/artechouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
@@ -279,50 +280,41 @@ export const ArtTechData = [
       </div>
     ),
     icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Three.js", icon: <SiThreedotjs /> },
-      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-      { name: "Tailwind", icon: <RiTailwindCssFill /> },
-      { name: "AWS", icon: <FaAws /> },
+      { name: "Touch Designer", icon: <MdTouchApp /> },
+      { name: "Server Tech", icon: <FaComputer /> },
+      { name: "Nvidia G-Sync", icon: <SiNvidia /> },
     ],
   },
   {
-    title: "Audio Reactive Visuals",
-    img: "./images/Blob.png",
-    role: "Interactive Audio/Visual Artist",
+    title: "The Marble Game",
+    img: "./images/MarblesMagnets.png",
+    role: "Game Developer",
     description:
       "This Website was built with a lot of tools. React Fiber, Three.js, tailwind and more!",
     element: (
       <div className="overflow-hidden justify-center p-2">
         <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center">
           <iframe
-            src="https://www.youtube.com/embed/BDI37ZLwD9U?si=rdontQhEELwsAPef"
+            src="https://itch.io/embed-upload/11630976?color=333333"
             allowFullScreen
           />
         </div>
-
         <button
-          onClick={() =>
-            window.open(
-              "https://github.com/Willclarkmusic/portfolio_2025_full",
-              "_blank"
-            )
-          }
+          id="standbutton"
+          onClick={() => window.open("https://www.marpi.studio/", "_blank")}
           className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
         >
           <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-            View on GitHub
+            View on Github
           </span>
           <FaGithub className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
         </button>
       </div>
     ),
     icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Three.js", icon: <SiThreedotjs /> },
-      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-      { name: "Tailwind", icon: <RiTailwindCssFill /> },
-      { name: "AWS", icon: <FaAws /> },
+      { name: "Unity", icon: <FaUnity /> },
+      { name: "Wwise", icon: <SiWwise /> },
+      { name: "C#", icon: <PiFileCSharp /> },
     ],
   },
 ];
@@ -359,6 +351,9 @@ export const OtherTechIcons = [
   { name: "Touch Designer", icon: <MdTouchApp /> },
   { name: "Resolume VJ", icon: <HiAdjustmentsVertical /> },
   { name: "Pro Tools", icon: <SiProtools /> },
+  { name: "VectorWorks", icon: <SiVectorworks /> },
+  { name: "Computer Build", icon: <FaComputer /> },
+  { name: "Nvidia", icon: <SiNvidia /> },
 ];
 
 export const OtherOtherIcons = [

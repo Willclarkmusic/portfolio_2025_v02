@@ -8,11 +8,10 @@ import { PiPlanetFill } from "react-icons/pi";
 import { GrTechnology } from "react-icons/gr";
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaPaperPlane } from "react-icons/fa6";
-import { IoSettingsSharp } from "react-icons/io5";
-import { MobileParams } from "../components/ScrollManager";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaWindowClose } from "react-icons/fa";
 import ContactForm from "./ContactForm";
-import { FaWindowClose } from "react-icons/fa";
+
+import { MobileParams } from "../components/ScrollManager";
 
 const { isTablet, isMobile } = MobileParams();
 
@@ -174,12 +173,12 @@ const MainMenu = ({
         </div>
       </div>
 
-      <div>
+      <div className="">
         {/* Contact Button */}
-        <div className="absolute left-[40%] h-[100%]">
+        <div className="flex justify-center items-center pt-2 h-full">
           <button
             onClick={() => setContactOpened(!contactOpened)}
-            className="inline top-0 w-40 items-center h-[100%] hover:bg-zinc-900  transition-all duration-500 ease-in-out border-x-2"
+            className="inline w-40 items-center h-[100%] hover:bg-zinc-900  transition-all duration-500 ease-in-out border-x-2"
           >
             <span className="text-white text-xl hover:text-blue-500">
               Contact{"   "}
@@ -419,4 +418,8 @@ const MobileMenu = ({
       </div>
     </div>
   );
+};
+
+const Socials = () => {
+  return <></>;
 };

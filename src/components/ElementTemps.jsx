@@ -7,16 +7,26 @@ import { MobileParams } from "../components/ScrollManager";
 
 const { isTablet, isMobile } = MobileParams();
 
+export const TitleBar = ({ title }) => {
+  return (
+    <div
+      className={`flex backdrop-blur-3xl items-center justify-center w-screen border-y overflow-x-hidden`}
+    >
+      <h1 className="flex items-center text-4xl p-5">{title}</h1>
+    </div>
+  );
+};
+
 export const MotionP = (props) => {
-  const { children, container } = props;
+  const { children, container, drag = false } = props;
   return (
     <motion.div
-      drag={!isMobile}
+      drag={drag}
       dragConstraints={container}
       className="max-w-xl m-[2%] "
     >
       <motion.p
-        className={`justify-start p-2 text-sm md:p-[1.5em] lg:p-5 md:text-md text-white-200 hover:bg-black bg-slate-950 transition duration-500 rounded-xl`}
+        className={`justify-start p-2 text-sm md:p-[1.5em] lg:p-5 md:text-md text-[90%] text-white-200 hover:bg-black bg-slate-950 transition duration-500 rounded-xl`}
         initial={{
           opacity: 0,
         }}
@@ -59,6 +69,75 @@ export const MotionH1 = (props) => {
   );
 };
 
+export const Accordian1 = ({ children, title, open = false }) => {
+  const [accordionOpen, setAccordionOpen] = useState(open);
+  const containerRef = useRef();
+  return (
+    <motion.div
+      ref={containerRef}
+      className={
+        "p-2 bg-slate-950 hover:bg-zinc-900 transition-all duration-300 rounded-lg m-3"
+      }
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1.5,
+      }}
+    >
+      <button
+        onClick={() => setAccordionOpen(!accordionOpen)}
+        className="flex justify-between w-[90%] p-2"
+      >
+        <span>
+          <h1 className="text-md md:text-lg font-semibold">{title}</h1>
+        </span>
+        {/* {accordianOpen ? <span>-</span> : <span>+</span>} */}
+        <svg
+          className="fill-white shrink-0 ml-8"
+          width="16"
+          height="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            y="7"
+            width="16"
+            height="2"
+            rx="1"
+            className={`transform origin-center transition duration-200 ease-out ${
+              accordionOpen && "!rotate-180"
+            }`}
+          />
+          <rect
+            y="7"
+            width="16"
+            height="2"
+            rx="1"
+            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
+              accordionOpen && "!rotate-180"
+            }`}
+          />
+        </svg>
+      </button>
+      <div
+        className={`grid overflow-hidden transition-all duration-300 ease-in-out 
+          ${
+            accordionOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+      >
+        <div className="overflow-hidden">
+          <MotionP container={containerRef}>{children}</MotionP>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export const Card1 = ({
   data,
   containerRef,
@@ -81,7 +160,7 @@ export const Card1 = ({
         duration: 1.5,
       }}
     >
-      <div className="w-[95%] h-full rounded-2xl backdrop-blur-lg bg-slate-950 hover:bg-black transition duration-500">
+      <div className="w-full h-full rounded-2xl backdrop-blur-lg bg-slate-950 hover:bg-black transition duration-500">
         <div className={`rounded-t-xl h-[60%]`}>
           <img
             src={data.img}
@@ -235,7 +314,7 @@ export const ProjectDisplay = ({ contentData }) => {
                 containerRef={containerRef}
                 setModalContent={setProjModalContent}
                 setModalVisible={setProjModalVisible}
-                className={`col-span-1 row-span-1 w-[100%] h-[100%]`}
+                className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%]`}
               />
             ))}
           </div>
@@ -296,15 +375,5 @@ export const ProjectDisplay = ({ contentData }) => {
         </div>
       </div>
     </motion.div>
-  );
-};
-
-export const TitleBar = ({ title }) => {
-  return (
-    <div
-      className={`flex backdrop-blur-3xl items-center justify-center w-screen border-y overflow-x-hidden`}
-    >
-      <h1 className="flex items-center text-4xl p-5">{title}</h1>
-    </div>
   );
 };

@@ -17,6 +17,7 @@ import {
   MotionP,
   MotionH1,
   TitleBar,
+  Accordian1,
 } from "../components/ElementTemps";
 import Menu from "../components/Menu.jsx";
 import { MobileParams } from "../components/ScrollManager";
@@ -75,9 +76,9 @@ const Section = (props) => {
 
 const HomeSection = () => {
   return (
-    <div className={""}>
-      <Section className="relative top-40">
-        <div className="">
+    <div>
+      <Section className="">
+        <div className="absolute top-40 left-10 md:top-[35%] md:left-[20%]">
           <h1 className="backdrop-blur-xl text-6xl font-extrabold leading-snug ">
             Hi, I'm
             <br />
@@ -122,70 +123,76 @@ const AboutSection = () => {
         <div
           className={`w-[100%] min-h-[80%] max-w-[1200px] bg-black z-10 lg:grid lg:grid-cols-2`}
         >
-          <div ref={containerRef} className="w-full col-span-1  p-2">
+          <div ref={containerRef} className="w-full lg:col-span-1  p-4">
             <MotionH1 container={containerRef}>I am...</MotionH1>
-            <MotionP container={containerRef}>
-              ...a <b>Full-Stack Software Developer</b> from San Francisco, CA,
-              I love to create satisfying, interactive experiences and using the
-              most cutting edge technology available.
-            </MotionP>
-            <MotionP container={containerRef}>
-              ...a <b>Digital Media Artist</b>. I spent the past 15 years as an
-              accomplished Video and Lighting designer for Live-Music
-              performances and as a technician in the Digital-Art-Gallery space.
-              Having done over 1000 shows, I have probably performed along-side
-              your favorite artist!
-            </MotionP>
-            <MotionP container={containerRef}>
-              ...a <b>Student</b>. I am currently earning an additional
-              Bachelor's of Engineering degree in Computer Science from Oregon
-              State University ((Go Beavers!)) This is in addition to my
-              Bachelor in Music from the San Francisco Conservatory of Music,
-              and my Master in Music Technology from Berklee College of Music. I
-              love to learn new things!
-            </MotionP>
-            <MotionP container={containerRef}>
-              <b>NOT like the other candidates...</b> I am unmatched in my
-              abilities to troubleshoot complex technological issues and bring
-              together nearly impossible visions. My unique background as a
-              <b> Classical Musician</b> gives me extreme discipline, my
-              background as a <b> Digital Artist</b> allows me to problem solve
-              creativly, my experiences as an <b>Event technician</b> gives me a
-              cool head under pressure. Now that I am upgrading my career path
-              to developer, I am an extremely valuable person to have on your
-              team.
-            </MotionP>
+
+            <Accordian1
+              title={"...a Full-Stack Software Developer"}
+              open={true}
+            >
+              from San Francisco, CA, I love to create satisfying, interactive
+              experiences and using the most cutting edge technology available.
+            </Accordian1>
+
+            <Accordian1 title={"...a Digital Media Artist"}>
+              I spent the past 15 years as an accomplished Video and Lighting
+              designer for Live-Music performances and as a technician in the
+              Digital-Art-Gallery space. Having done over 1000 shows, I have
+              probably performed along-side your favorite artist!
+            </Accordian1>
+
+            <Accordian1 title={"...a Student"}>
+              Currently earning an additional Bachelor's of Engineering degree
+              in Computer Science from Oregon State University ((Go Beavers!))
+              This is in addition to my Bachelor in Music from the San Francisco
+              Conservatory of Music, and my Master in Music Technology from
+              Berklee College of Music. I love to learn new things!
+            </Accordian1>
+
+            {/* <Accordian1 title={"NOT like the other candidates..."}>
+              I am unmatched in my abilities to troubleshoot complex
+              technological issues and bring together nearly impossible visions.
+              My unique background as a<b> Classical Musician</b> gives me
+              extreme discipline, my background as a <b> Digital Artist</b>{" "}
+              allows me to problem solve creativly, my experiences as an{" "}
+              <b>Event technician</b> gives me a cool head under pressure. Now
+              that I am upgrading my career path to developer, I am an extremely
+              valuable person to have on your team.
+            </Accordian1> */}
           </div>
-          <div className={`hidden md:block col-span-1 p-2`}>
-            <>
-              <MotionH1>Skill Stacks</MotionH1>
+          <div className={`hidden lg:block col-span-1 p-2 w-[100%]`}>
+            <MotionH1>Skill Stacks</MotionH1>
+            <div className="grid grid-rows-4 grid-flow-col">
               <IconBox1
-                className={"hover:bg-black lg:h-[20%]"}
+                className={"row-span-1 hover:bg-black lg:h-[90%]"}
                 classIcons={""}
                 title={"FRONT-END"}
                 data={FrontEndIcons}
+                drag={false}
               />
               <IconBox1
-                className={"hover:bg-black lg:h-[20%]"}
+                className={"row-span-1 hover:bg-black lg:h-[90%]"}
                 title={"BACK-END"}
                 data={BackEndIcons}
+                drag={false}
               />
               <IconBox1
-                className={"hover:bg-black lg:h-[20%] h-[40%]"}
+                className={" row-span-1 hover:bg-black lg:h-[90%]"}
                 title={"OTHER TECH"}
                 data={OtherTechIcons}
+                drag={false}
               />
               <IconBox1
-                className={"hover:bg-black lg:h-[20%]"}
+                className={"row-span-1 hover:bg-black h-full"}
                 title={""}
                 data={OtherOtherIcons}
                 drag={false}
               />
-            </>
+            </div>
           </div>
-          <div className="block md:hidden">
+          <div className="block lg:hidden mb-20">
             <IconBox1
-              className={"h-[40vh] w-full "}
+              className={"h-[40vh] w-full gap-y-10 "}
               classIcons="pt-24"
               title={"Skills"}
               data={MobileSkillIcons}

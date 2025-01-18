@@ -17,7 +17,7 @@ export const RenderFX = () => {
       <Bloom
         mipmapBlur
         levels={7}
-        intensity={0.1}
+        intensity={0.05}
         luminanceThreshold={0}
         luminanceSmoothing={0.9}
         height={300}

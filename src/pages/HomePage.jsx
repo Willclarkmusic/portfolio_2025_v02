@@ -18,7 +18,11 @@ import {
   MotionH1,
   TitleBar,
   Accordian1,
+  SocialIcons,
 } from "../components/ElementTemps";
+import { AiOutlineCopyright } from "react-icons/ai";
+import { FaLocationDot, FaCircleDot } from "react-icons/fa6";
+
 import Menu from "../components/Menu.jsx";
 import { MobileParams } from "../components/ScrollManager";
 
@@ -36,9 +40,10 @@ function HomePage() {
   return (
     <div
       id="scrollSnapContainer"
-      className="flex flex-col items-center overflow-hidden"
+      className="flex flex-col items-center overflow-hidden bg-zinc-900 bg-opacity-90 "
     >
       <Menu refArray={refArray} />
+
       <div ref={homeRef}>
         <HomeSection />
       </div>
@@ -79,12 +84,12 @@ const HomeSection = () => {
     <div>
       <Section className="">
         <div className="absolute top-40 left-10 md:top-[35%] md:left-[20%]">
-          <h1 className="backdrop-blur-xl text-6xl font-extrabold leading-snug ">
+          <h1 className="backdrop-blur-xl text-6xl font-extrabold leading-snug">
             Hi, I'm
             <br />
-            <span className="bg-white text-6xl md:text-6xl lg:text-7xl text-black accent-black italic">
-              Will Clark
-            </span>
+          </h1>
+          <h1 className="bg-white text-6xl md:text-6xl font-extrabold py-5 lg:text-7xl text-black accent-black italic">
+            Will Clark
           </h1>
           <motion.div drag>
             <motion.p
@@ -116,12 +121,16 @@ const AboutSection = () => {
   const containerRef = useRef();
 
   return (
-    <div className=" z-10">
+    <div className="z-10">
       <Section className="">
-        <TitleBar title="About Me" />
-
+        <TitleBar title="About Me">
+          <span className="flex justify-center items-center p-2">
+            <FaLocationDot /> <h2>San Francisco, CA</h2>
+          </span>
+        </TitleBar>
         <div
-          className={`w-[100%] min-h-[80%] max-w-[1200px] bg-black z-10 lg:grid lg:grid-cols-2`}
+          ref={containerRef}
+          className={`w-[100%] min-h-[80%] bg-gray-600 bg-opacity-25 rounded-b-xl max-w-[1200px] bg-stone- z-10 lg:grid lg:grid-cols-2`}
         >
           <div ref={containerRef} className="w-full lg:col-span-1  p-4">
             <MotionH1 container={containerRef}>I am...</MotionH1>
@@ -130,8 +139,9 @@ const AboutSection = () => {
               title={"...a Full-Stack Software Developer"}
               open={true}
             >
-              from San Francisco, CA, I love to create satisfying, interactive
-              experiences and using the most cutting edge technology available.
+              with a specialty in signal processing and data science. I am
+              rapidly advancing my skills with multi-tiered web applications and
+              am hungry for more oportunities to flex these skills.
             </Accordian1>
 
             <Accordian1 title={"...a Digital Media Artist"}>
@@ -141,13 +151,18 @@ const AboutSection = () => {
               probably performed along-side your favorite artist!
             </Accordian1>
 
-            <Accordian1 title={"...a Student"}>
+            {/* <Accordian1 title={"...interested in"}>
+              dev ops, machine learning and networking infrastructure. I am
+              always excited about new technologies and learning constantly.
+            </Accordian1> */}
+
+            {/* <Accordian1 title={"...a Student"}>
               Currently earning an additional Bachelor's of Engineering degree
               in Computer Science from Oregon State University ((Go Beavers!))
               This is in addition to my Bachelor in Music from the San Francisco
               Conservatory of Music, and my Master in Music Technology from
               Berklee College of Music. I love to learn new things!
-            </Accordian1>
+            </Accordian1> */}
 
             {/* <Accordian1 title={"NOT like the other candidates..."}>
               I am unmatched in my abilities to troubleshoot complex
@@ -161,8 +176,8 @@ const AboutSection = () => {
             </Accordian1> */}
           </div>
           <div className={`hidden lg:block col-span-1 p-2 w-[100%]`}>
-            <MotionH1>Skill Stacks</MotionH1>
-            <div className="grid grid-rows-4 grid-flow-col">
+            <MotionH1 container={containerRef}>Skills</MotionH1>
+            <div className="grid grid-rows-4 grid-flow-col mb-5">
               <IconBox1
                 className={"row-span-1 hover:bg-black lg:h-[90%]"}
                 classIcons={""}
@@ -209,7 +224,12 @@ const ProjectsSection = () => {
   return (
     <>
       <Section className="justify-start">
-        <TitleBar title="Programming Projects" />
+        <TitleBar title="Programming Projects">
+          <span className="flex justify-center items-center p-2 ">
+            <FaCircleDot className="text-green-500 text-xl" />{" "}
+            <h2>Open to work</h2>
+          </span>
+        </TitleBar>
         <ProjectDisplay contentData={ProjectsData} />
       </Section>
     </>
@@ -229,6 +249,14 @@ const ArtSection = () => {
 
 const Footer = () => {
   return (
-    <div className="flex bg-zinc-900 border-t-2 w-screen h-[10em] z-10"></div>
+    <div className="flex flex-row px-5 md:justify-center items-end bg-zinc-900 border-t-2 w-screen h-[11em] z-10">
+      <SocialIcons className="" />
+      <span className="absolute justify-center items-end mb-8 ">
+        <h2 className="inline font-extralight">
+          WIll Clark Web Design | 2025{" "}
+        </h2>
+        <AiOutlineCopyright className="inline justify-center items-center text-xl" />
+      </span>
+    </div>
   );
 };

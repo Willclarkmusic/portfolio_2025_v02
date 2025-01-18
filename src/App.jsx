@@ -7,7 +7,7 @@ const { isTablet, isMobile } = MobileParams();
 function App() {
   return (
     <div className="h-screen max-w-screen]">
-      <div className="absolute w-full h-[110%]">
+      <div className="absolute w-full h-[110%] ">
         <ParticleSystem />
       </div>
       <HomePage />

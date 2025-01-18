@@ -42,6 +42,10 @@ function ParticleSystem(props) {
           {baubles2.map((props, i) => (
             <BallLights key={i} {...props} mat={baubleMaterial2} />
           ))}
+
+          {baubles3.map((props, i) => (
+            <BallLights key={i} {...props} mat={baubleMaterial3} />
+          ))}
         </Physics>
         <ParticleLighting />
         <RenderFX />
@@ -80,11 +84,11 @@ function Pointer({ vec = new THREE.Vector3() }) {
           backside={false}
           samples={32}
           transmission={0.99}
-          clearcoat={1}
+          clearcoat={5}
           thickness={4}
-          anisotropicBlur={0.1}
+          anisotropicBlur={1}
           distortion={0.3}
-          distortionScale={0.1}
+          distortionScale={0.2}
           temporalDistortion={1}
         />
       </mesh>
@@ -92,36 +96,12 @@ function Pointer({ vec = new THREE.Vector3() }) {
   );
 }
 
-THREE.ColorManagement.legacyMode = false;
-const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
-
-const baubles = [...Array(50)].map(() => ({
-  scale: [0.75, 0.85, 1, 1.15, 1.5][Math.floor(Math.random() * 5)],
-}));
-
-const baubles2 = [...Array(50)].map(() => ({
-  scale: [0.75, 0.85, 1, 1.15, 1.7][Math.floor(Math.random() * 5)],
-}));
-
-const baubleMaterial = new THREE.MeshStandardMaterial({
-  color: "#219B9D",
-  emissive: "#219B9D",
-  emissiveIntensity: 2,
-  metalness: 0.8,
-  roughness: 0.5,
-});
-const baubleMaterial2 = new THREE.MeshStandardMaterial({
-  color: "#1B1833",
-  emissive: "#1B1833",
-  metalness: 0.8,
-  roughness: 0.5,
-});
-
 function BallLights({
   vec = new THREE.Vector3(),
   scale,
   r = THREE.MathUtils.randFloatSpread,
   mat = baubleMaterial,
+  geo = sphereGeometry,
   offset = -25,
 }) {
   const api = useRef();
@@ -159,3 +139,38 @@ function BallLights({
     </RigidBody>
   );
 }
+
+// Assets //
+THREE.ColorManagement.legacyMode = false;
+const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+
+const baubles = [...Array(80)].map(() => ({
+  scale: [0.75, 0.85, 1, 1.15, 1.5][Math.floor(Math.random() * 5)],
+}));
+const baubles2 = [...Array(80)].map(() => ({
+  scale: [0.75, 0.85, 1, 1.15, 1.7][Math.floor(Math.random() * 5)],
+}));
+const baubles3 = [...Array(10)].map(() => ({
+  scale: [0.75, 0.85, 1, 1.15, 1.7][Math.floor(Math.random() * 5)],
+}));
+
+const baubleMaterial = new THREE.MeshStandardMaterial({
+  color: "#889C9B",
+  emissive: "#889C9B",
+  emissiveIntensity: 2,
+  metalness: 0.8,
+  roughness: 0.5,
+});
+const baubleMaterial2 = new THREE.MeshStandardMaterial({
+  color: "#1B1833",
+  emissive: "#1B1833",
+  metalness: 0.8,
+  roughness: 0.5,
+});
+const baubleMaterial3 = new THREE.MeshStandardMaterial({
+  color: "#4D5D8C",
+  emissive: "#4D5D8C",
+  emissiveIntensity: 50,
+  metalness: 0.5,
+  roughness: 0.5,
+});

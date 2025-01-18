@@ -25,6 +25,7 @@ import {
   SiCplusplus,
   SiVectorworks,
   SiNvidia,
+  SiExpress,
 } from "react-icons/si";
 import { DiVisualstudio, DiMongodb } from "react-icons/di";
 import { BsNintendoSwitch } from "react-icons/bs";
@@ -102,6 +103,7 @@ export const ProjectsData = [
     ),
     icons: [
       { name: "React", icon: <FaReact /> },
+      { name: "Express JS", icon: <SiExpress /> },
       { name: "REST Api", icon: <FaCloud /> },
       { name: "HTML/CSS", icon: <FaHtml5 /> },
       { name: "JavaScript", icon: <IoLogoJavascript /> },
@@ -170,7 +172,7 @@ export const ProjectsData = [
 
 export const ArtTechData = [
   {
-    title: "Kaskade: Menagerie 2022",
+    title: "Kaskade: Menagerie",
     img: "./images/Menag2022.jpg",
     role: "Stage Designer | Visual Artist",
     description:
@@ -333,6 +335,7 @@ export const BackEndIcons = [
   { name: "Python", icon: <FaPython /> },
   { name: "C++", icon: <SiCplusplus /> },
   { name: "C#", icon: <PiFileCSharp /> },
+  { name: "Express JS", icon: <SiExpress /> },
   { name: "REST Api", icon: <FaCloud /> },
   { name: "AWS", icon: <FaAws /> },
   { name: "Meta XR", icon: <FaMeta /> },
@@ -392,4 +395,10 @@ export const MobileSkillIcons = [
   { name: "Bass Guitar", icon: <GiGuitar /> },
   { name: "Rock Climbing", icon: <GiMountainClimbing /> },
   { name: "Mario Kart", icon: <BsNintendoSwitch /> },
+];
+
+export const SocialIconsData = [
+  // Github
+  // Linkedin
+  // Sound Cloud
 ];

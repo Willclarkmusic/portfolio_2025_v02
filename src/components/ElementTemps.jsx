@@ -2,17 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-
 import { MobileParams } from "../components/ScrollManager";
+import { FaGithub, FaSoundcloud, FaLinkedin } from "react-icons/fa";
 
 const { isTablet, isMobile } = MobileParams();
 
-export const TitleBar = ({ title }) => {
+export const TitleBar = ({
+  title,
+  children = null,
+  leftWidgets = null,
+  rightWidgets = null,
+}) => {
   return (
     <div
-      className={`flex backdrop-blur-3xl items-center justify-center w-screen border-y overflow-x-hidden`}
+      className={`flex flex-row backdrop-blur-3xl items-center justify-center w-screen border-y overflow-x-hidden`}
     >
-      <h1 className="flex items-center text-4xl p-5">{title}</h1>
+      <h1 className="flex justify-center items-center text-4xl p-4">{title}</h1>
+      <div className="relative ">{children}</div>
     </div>
   );
 };
@@ -26,7 +32,7 @@ export const MotionP = (props) => {
       className="max-w-xl m-[2%] "
     >
       <motion.p
-        className={`justify-start p-2 text-sm md:p-[1.5em] lg:p-5 md:text-md text-[90%] text-white-200 hover:bg-black bg-slate-950 transition duration-500 rounded-xl`}
+        className={`justify-start p-2 text-sm md:p-[1.5em] lg:p-5 md:text-md text-[90%] text-white-200 hover:bg-black border-[1px] border-transparent hover:border-slate-400  bg-slate-950 transition duration-500 rounded-xl`}
         initial={{
           opacity: 0,
         }}
@@ -49,7 +55,7 @@ export const MotionH1 = (props) => {
     <motion.div
       drag={!isMobile}
       dragConstraints={container}
-      className="max-w-60 m-[2%] backdrop-blur-2xl"
+      className="flex justify-center items-center max-w-60 m-[2%] backdrop-blur-2xl"
     >
       <motion.h1
         className={`p-[1em] md:p-[1.5em] lg:p-[0.5em] md:text-3xl backdrop-blur-3xl text-white-200 hover:bg-black transition duration-500 border-b `}
@@ -66,6 +72,67 @@ export const MotionH1 = (props) => {
         {children}
       </motion.h1>
     </motion.div>
+  );
+};
+
+export const SocialIcons = ({ className, iconClass = "", hover = true }) => {
+  const IconLink = ({
+    children,
+    href,
+    color,
+    hcolor,
+    iconClasses = "",
+    hovering: hover2 = true,
+  }) => {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={twMerge(
+          `${
+            hover2 ? hcolor : color
+          } text-2xl lg:text-3xl transition-all duration-500 ease-in-out border-1 px-2`,
+          iconClasses
+        )}
+      >
+        {children}
+      </a>
+    );
+  };
+
+  return (
+    <div className={twMerge("items-center justify-center h-full ", className)}>
+      <div className="flex items-center justify-center h-full ">
+        <IconLink
+          href="https://www.linkedin.com/in/will-clark-bab69b48/"
+          color="text-blue-500"
+          hcolor="hover:text-blue-500"
+          iconClasses={iconClass}
+          hover2={hover}
+        >
+          <FaLinkedin />
+        </IconLink>
+        <IconLink
+          href="https://github.com/Willclarkmusic"
+          color="text-purple-500"
+          hcolor="hover:text-purple-500"
+          iconClasses={iconClass}
+          hover2={hover}
+        >
+          <FaGithub />
+        </IconLink>
+        <IconLink
+          href="https://soundcloud.com/cinfulmusic"
+          color="text-orange-500"
+          hcolor="hover:text-orange-500"
+          iconClasses={iconClass}
+          hover2={hover}
+        >
+          <FaSoundcloud />
+        </IconLink>
+      </div>
+    </div>
   );
 };
 
@@ -160,11 +227,11 @@ export const Card1 = ({
         duration: 1.5,
       }}
     >
-      <div className="w-full h-full rounded-2xl backdrop-blur-lg bg-slate-950 hover:bg-black transition duration-500">
-        <div className={`rounded-t-xl h-[60%]`}>
+      <div className="w-full h-full rounded-2xl backdrop-blur-lg bg-slate-950 hover:bg-black transition duration-500 ">
+        <div className={`rounded-xl h-[60%]`}>
           <img
             src={data.img}
-            className={`rounded-3xl h-full w-full object-cover`}
+            className={`rounded-xl h-full w-full object-cover`}
           />
         </div>
         <div className="p-2 flex flex-col ">
@@ -182,7 +249,7 @@ export const Card1 = ({
               className="text-white w-full p-2 text-xl cursor-pointer group-hover:text-blue-400"
               onClick={() => {
                 setModalContent(data);
-                isMobile ? setModalVisible(true) : "";
+                isMobile ? setModalVisible(true) : <></>;
               }}
             >
               Details...
@@ -208,7 +275,7 @@ export const IconBox1 = ({
     <motion.div
       ref={containerRef}
       className={twMerge(
-        `flex md:block backdrop-blur-3xl hover:bg-black bg-slate-950 transition duration-500 rounded-xl p-2 m-2 max-w-[95%] md:max-w-[90%]`,
+        `flex md:block backdrop-blur-3xl hover:bg-black border-[1px] border-transparent hover:border-slate-400 bg-slate-950 transition duration-500 rounded-xl p-2 m-2 max-w-[95%] md:max-w-[95%]`,
         className
       )}
       initial={{
@@ -297,9 +364,9 @@ export const ProjectDisplay = ({ contentData }) => {
 
   return (
     <motion.div>
-      <div className="flex w-[100%] max-w-[1200px] bg-black z-10 mb-[10%] rounded-xl">
+      <div className="flex w-[100%] max-w-[1200px] bg-gray-600 bg-opacity-25 rounded-b-xl z-10 mb-[10%]">
         <div
-          className={`w-[100%] h-[90%] m-[1%] flex  lg:grid lg:grid-cols-2 lg:grid-rows-2 sm:grid-rows-1 sm:grid-cols-1
+          className={`w-[100%] h-[90%] m-[1%] flex lg:grid lg:grid-cols-2 lg:grid-rows-2 sm:grid-rows-1 sm:grid-cols-1
           `}
         >
           <div
@@ -321,20 +388,20 @@ export const ProjectDisplay = ({ contentData }) => {
 
           {/* DESKTOP MODAL */}
           <div className="hidden col-span-1 row-span-2 lg:grid grid-rows-4 rounded-xl w-full ">
-            <div className="row-span-2 items-center">
+            <div className="row-span-2 items-center p-2   max-w-90%">
               {projModalContent.element}
             </div>
             <IconBox1
               data={projModalContent.icons}
               title="Stack"
-              className="row-span-1 h-[60%]"
+              className="row-span-1 h-[60%] md:max-w-[100%]"
             />
             <div>
               <h1 className="text-xl font-semibold px-5 py-2">
                 <b>Role:</b> {projModalContent.role}
               </h1>
               <MotionP
-                className={`text-white hover:bg-slate-950 transition rounded-xl duration-500 border p-5 m-3 mt-0`}
+                className={` hover:bg-slate-950 transition rounded-xl duration-500 border p-5 m-3 mt-0`}
               >
                 {projModalContent.description}
               </MotionP>
@@ -343,7 +410,7 @@ export const ProjectDisplay = ({ contentData }) => {
 
           {/* MOBILE MODAL */}
           {projModalVisible ? (
-            <div className=" fixed top-0 left-0  h-full z-50 rounded-xl size-[100%] backdrop-blur-3xl ">
+            <div className="fixed lg:hidden top-0 left-0 h-full z-50 rounded-xl size-[100%] backdrop-blur-3xl ">
               <button
                 id="iconbutton"
                 className="m-5 border-white text-2xl"

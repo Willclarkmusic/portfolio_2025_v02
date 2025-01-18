@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Resume from "/Resume_SoftwareDev_WillClark_2024.pdf";
+import Resume from "/Resume_SoftwareDeveloper_WillClark_2025.pdf";
 import { twMerge } from "tailwind-merge";
 import MediaQuery from "react-responsive";
 
@@ -9,9 +9,12 @@ import { GrTechnology } from "react-icons/gr";
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaPaperPlane } from "react-icons/fa6";
 import { FaChevronDown, FaWindowClose } from "react-icons/fa";
-import ContactForm from "./ContactForm";
+import { IoSettingsSharp } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
+import ContactForm from "./ContactForm";
 import { MobileParams } from "../components/ScrollManager";
+import { SocialIcons } from "./ElementTemps";
 
 const { isTablet, isMobile } = MobileParams();
 
@@ -29,9 +32,7 @@ const Menu = (props) => {
 
   const scrollToSection = (index) => {
     setSection(index);
-    console.log(index);
     const element = refArray[index];
-    console.log(refArray);
     window.scrollTo({
       top: element.current.offsetTop - 45,
       behavior: "smooth",
@@ -173,65 +174,90 @@ const MainMenu = ({
         </div>
       </div>
 
-      <div className="">
-        {/* Contact Button */}
-        <div className="flex justify-center items-center pt-2 h-full">
-          <button
-            onClick={() => setContactOpened(!contactOpened)}
-            className="inline w-40 items-center h-[100%] hover:bg-zinc-900  transition-all duration-500 ease-in-out border-x-2"
-          >
-            <span className="text-white text-xl hover:text-blue-500">
-              Contact{"   "}
-              <FaPaperPlane className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
-            </span>
-          </button>
+      <SocialIcons
+        className="fixed right-[13%] lg:right-[10%] "
+        hover={true}
+        iconClass={""}
+      />
 
-          {/* Contact Area */}
-          <div
-            className={`fixed border-2 bg-black top-[100%] h-96 w-96 transition-all justify-start space-y-5 p-2 duration-500 
+      {/* Contact Button */}
+      <div className="flex justify-center items-center h-full">
+        <button
+          onClick={() => setContactOpened(!contactOpened)}
+          className={`inline w-40 items-center h-[100%] hover:bg-zinc-900  transition-all duration-500 ease-in-out border-x-2`}
+        >
+          <span className="text-white text-xl hover:text-blue-500">
+            Contact{"   "}
+            <FaPaperPlane
+              className={`inline text-3xl  hover:text-blue-500 cursor-pointer ${
+                contactOpened ? "text-blue-500" : "text-white"
+              }`}
+            />
+          </span>
+        </button>
+
+        {/* Contact Area */}
+        <div
+          className={`fixed border-2 bg-black top-[100%] h-96 w-96 transition-all justify-start space-y-5 p-2 duration-500 
               ${
                 contactOpened
                   ? "opacity-100 pointer-events-auto"
                   : "opacity-0 pointer-events-none"
               }`}
-          >
-            <ContactForm />
-            <h1 className="bg-black border-2 p-4 text-2xl">
-              My Email: WillClarkmusic@gmail.com
-            </h1>
-          </div>
-
-          {/* Resume Button */}
+        >
           <button
-            onClick={resumeOpen}
-            className="inline top-0 w-40 items-center h-[95%] hover:bg-zinc-900 transition-all duration-500 ease-in-out border-r-2"
+            onClick={() => setContactOpened(false)}
+            className="absolute right-5 top-5 text-2xl"
           >
-            <span className="text-white text-xl hover:text-blue-500">
-              <RxOpenInNewWindow className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
-              {"   "}Resume
-            </span>
+            <IoClose />
           </button>
+          <ContactForm />
+          <h1 className="bg-black border-2 p-4 text-2xl">
+            My Email: WillClarkmusic@gmail.com
+          </h1>
         </div>
 
-        {/*Settings Button*/}
-        <div>
-          {/* <button
-            onClick={() => setSettingsOpened(!settingsOpened)}
-            className="z-20 fixed left-12 top-[10%] p-2 w-10 h-10 border-white border-[1px] rounded-xl "
-          >
-            <IoSettingsSharp className=" rounded-md w-full text-2xl" />
-          </button> */}
-          {/* Settins Area */}
-          {/* <div
-            className={`fixed border-2 bg-black rounded-lg top-[4em] left-12 h-20 w-60 transition-all duration-500 
+        {/* Resume Button */}
+        <button
+          onClick={resumeOpen}
+          className="inline top-0 w-40 items-center h-[95%] hover:bg-zinc-900 transition-all duration-500 ease-in-out border-r-2"
+        >
+          <span className="text-white text-xl hover:text-blue-500">
+            <RxOpenInNewWindow className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
+            {"   "}Resume
+          </span>
+        </button>
+      </div>
+
+      {/*Settings Button*/}
+      <div>
+        <button
+          onClick={() => setSettingsOpened(!settingsOpened)}
+          className="z-20 fixed right-12 top-0 px-3 h-full border-white border-x-[1px]"
+        >
+          <IoSettingsSharp
+            className={`${
+              settingsOpened ? "text-blue-500" : ""
+            } rounded-md w-full text-2xl`}
+          />
+        </button>
+        {/* Settins Area */}
+        <div
+          className={`fixed border-[1px] bg-black top-[100%] right-12 h-40 w-60 transition-all duration-500 
           ${
             settingsOpened
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           }`}
+        >
+          {" "}
+          <button
+            onClick={() => setSettingsOpened(false)}
+            className="absolute right-5 top-5 text-2xl"
           >
-            <h1 className="text-xl p-5">Coming Soon...</h1>
-          </div> */}
+            <IoClose />
+          </button>
+          <h1 className="text-xl px-5 py-16">Coming Soon...</h1>
         </div>
       </div>
 
@@ -241,15 +267,15 @@ const MainMenu = ({
             onClick={() => setSection(section + 1)}
             className={`absolute border p-2 transition-all duration-500 ease-in-out bg-black`}
           >
-            <FaChevronDown className="text-white text-4xl cursor-pointer group-hover:text-blue-400" />
+            <FaChevronDown className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
           </button>
         )}
         {section !== 0 && (
           <button
             onClick={() => setSection(section - 1)}
-            className={`relative left-14 border p-2 transition-all duration-500 ease-in-out bg-black`}
+            className={`relative left-12 border p-2 transition-all duration-500 ease-in-out bg-black`}
           >
-            <FaChevronDown className="text-white text-4xl cursor-pointer group-hover:text-blue-400 rotate-180" />
+            <FaChevronDown className="text-white text-3xl cursor-pointer group-hover:text-blue-400 rotate-180" />
           </button>
         )}
       </div>
@@ -273,7 +299,7 @@ const MobileMenu = ({
     return (
       <button
         onClick={onClick}
-        className="w-40 rounded-xl items-center py-1 bg-gray-900 transition-all duration-500 ease-in-out border-1"
+        className="w-60 rounded-xl items-center py-3 bg-gray-900 transition-all duration-500 ease-in-out border-1"
       >
         <span className="text-white text-xl hover:text-blue-500">
           {title}
@@ -297,13 +323,13 @@ const MobileMenu = ({
       )}
     >
       {/*Menu Close/Open Button*/}
-      <div>
+      <div className="">
         <button
           onClick={() => {
             setSettingsOpened(false);
             setMenuOpened(!menuOpened);
           }}
-          className="z-30  fixed right-12 top-[10%] p-2 w-10 h-10 border-white border-[1px]  "
+          className="z-30 fixed right-12 top-[10%] p-2 w-10 h-10 border-white border-[1px]  "
         >
           <div
             className={`bg-white h-0.5 rounded-md w-full transition-all z-30 ${
@@ -324,7 +350,7 @@ const MobileMenu = ({
 
         {/* Container */}
         <div
-          className={`z-20 fixed border-2 w-full bg-black top-0 right-0 h-screen transition-all flex flex-col items-end space-y-8 p-10 py-20 duration-500 
+          className={`z-20 absolute border-2 w-full bg-black h-screen transition-all flex flex-col items-center space-y-8 p-10 py-28 duration-500 
           ${
             menuOpened
               ? "opacity-100 pointer-events-auto"
@@ -353,6 +379,12 @@ const MobileMenu = ({
             <RxOpenInNewWindow className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
           </MobileButton>
 
+          <SocialIcons
+            className="flex items-center justify-center "
+            iconClass="text-6xl"
+            hover={false}
+          />
+
           {/*Settings Button*/}
           {/* <button
             onClick={() => setSettingsOpened(!settingsOpened)}
@@ -366,7 +398,7 @@ const MobileMenu = ({
       {/* Settings Area */}
       <div>
         <div
-          className={`fixed border-2 bg-black rounded-lg top-36 left-12 h-80 w-40 transition-all flex flex-col items-end justify-center space-y-5 p-2 duration-500 
+          className={`fixed border-2 bg-black top-36 left-12 h-80 w-40 transition-all flex flex-col items-end justify-center space-y-5 p-2 duration-500 
         ${
           settingsOpened
             ? "opacity-100 pointer-events-auto"
@@ -406,20 +438,13 @@ const MobileMenu = ({
               }`}
       >
         <button
-          id="iconbutton"
-          className="static mx-5 my-2 border-white "
-          onClick={() => {
-            setContactOpened(false);
-          }}
+          onClick={() => setContactOpened(false)}
+          className="absolute right-5 top-5 text-4xl"
         >
-          <FaWindowClose />
+          <IoClose />
         </button>
         <ContactForm />
       </div>
     </div>
   );
-};
-
-const Socials = () => {
-  return <></>;
 };

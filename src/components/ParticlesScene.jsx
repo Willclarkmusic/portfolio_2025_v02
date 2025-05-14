@@ -3,25 +3,20 @@ import { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import { useFrame } from "@react-three/fiber";
-import { useInView } from "react-intersection-observer";
 
 import { BallCollider, Physics, RigidBody } from "@react-three/rapier";
 import { MeshTransmissionMaterial } from "@react-three/drei";
 import { ParticleLighting, RenderFX } from "../components/RenderManager";
-import { MobileParams } from "../components/ScrollManager";
+import { MobileParams } from "./ScrollManager";
 
 const { isTablet, isMobile } = MobileParams();
 
-const DisableRender = () => useFrame(() => null, 1000);
-
-// const connectors = useMemo(() => shuffle(accent), [accent]);
 function ParticleSystem(props) {
-  const { viewRef, inView } = useInView();
   return (
-    <div ref={viewRef} className="size-full">
+    <div className="size-full canvasContainer">
       <Canvas
         className="overflow-hidden"
-        flat
+        flat={false}
         shadows
         dpr={[1, 1.5]}
         gl={{ antialias: false }}
@@ -31,7 +26,6 @@ function ParticleSystem(props) {
             : { position: [0, -20, 50], fov: 20, near: 10, far: 100 }
         }
       >
-        {!inView && <DisableRender />}
         <Physics /*debug*/ timeStep="vary" gravity={[0, 0, 0]}>
           <Pointer />
 
@@ -40,7 +34,12 @@ function ParticleSystem(props) {
           ))}
 
           {baubles2.map((props, i) => (
-            <BallLights key={i} {...props} mat={baubleMaterial2} />
+            <BallLights
+              key={i}
+              {...props}
+              mat={baubleMaterial2}
+              geo={cubeGeometry}
+            />
           ))}
 
           {baubles3.map((props, i) => (
@@ -67,7 +66,10 @@ function Pointer({ vec = new THREE.Vector3() }) {
       },
       0.2
     );
-    ref.current?.setNextKinematicTranslation(vec);
+
+    if (ref.current) {
+      ref.current.setNextKinematicTranslation(vec);
+    }
   });
   return (
     <RigidBody
@@ -107,6 +109,7 @@ function BallLights({
   const api = useRef();
   useFrame((state, delta) => {
     delta = Math.min(0.1, delta);
+
     api.current.applyImpulse(
       vec
         .copy(api.current.translation())
@@ -121,7 +124,7 @@ function BallLights({
   return (
     <RigidBody
       linearDamping={1}
-      angularDamping={0.15}
+      angularDamping={0.25}
       friction={0.1}
       position={[r(20), r(20) - offset, r(20) - 10]}
       ref={api}
@@ -133,7 +136,7 @@ function BallLights({
         castShadow
         receiveShadow
         scale={scale}
-        geometry={sphereGeometry}
+        geometry={geo}
         material={mat}
       />
     </RigidBody>
@@ -143,11 +146,12 @@ function BallLights({
 // Assets //
 THREE.ColorManagement.legacyMode = false;
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+const cubeGeometry = new THREE.BoxGeometry(1.2, 1.2, 1.2);
 
-const baubles = [...Array(80)].map(() => ({
+const baubles = [...Array(50)].map(() => ({
   scale: [0.75, 0.85, 1, 1.15, 1.5][Math.floor(Math.random() * 5)],
 }));
-const baubles2 = [...Array(80)].map(() => ({
+const baubles2 = [...Array(50)].map(() => ({
   scale: [0.75, 0.85, 1, 1.15, 1.7][Math.floor(Math.random() * 5)],
 }));
 const baubles3 = [...Array(10)].map(() => ({
@@ -169,8 +173,8 @@ const baubleMaterial2 = new THREE.MeshStandardMaterial({
 });
 const baubleMaterial3 = new THREE.MeshStandardMaterial({
   color: "#4D5D8C",
-  emissive: "#4D5D8C",
-  emissiveIntensity: 50,
+  emissive: "#7b89d5",
+  emissiveIntensity: 5,
   metalness: 0.5,
   roughness: 0.5,
 });

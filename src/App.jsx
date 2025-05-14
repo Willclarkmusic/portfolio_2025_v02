@@ -1,14 +1,18 @@
 import "./App.css";
 import HomePage from "./pages/HomePage.jsx";
 import ParticleSystem from "./components/ParticlesScene";
-import { MobileParams } from "./components/ScrollManager";
-const { isTablet, isMobile } = MobileParams();
+import { useInView } from "react-intersection-observer";
+
 
 function App() {
+  const { ref, inView } = useInView({
+    threshold: 0.1, // customize when to trigger
+  });
+
   return (
     <div className="h-screen max-w-screen]">
-      <div className="absolute w-full h-[110%] ">
-        <ParticleSystem />
+      <div ref={ref} className="absolute w-full h-[110%]">
+        {inView && <ParticleSystem />}
       </div>
       <HomePage />
     </div>

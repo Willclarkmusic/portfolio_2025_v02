@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Resume from "/Resume_SoftwareDeveloper_WillClark_2025.pdf";
+import Resume from "/Resume_SoftwareEngineer_WillClark_2025.pdf";
 import { twMerge } from "tailwind-merge";
 import MediaQuery from "react-responsive";
 
@@ -11,6 +11,7 @@ import { FaPaperPlane } from "react-icons/fa6";
 import { FaChevronDown, FaWindowClose } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
+import { MdEmojiEvents } from "react-icons/md";
 
 import ContactForm from "./ContactForm";
 import { MobileParams } from "../components/ScrollManager";
@@ -143,7 +144,7 @@ const MainMenu = ({
           >
             <BsPersonWalking className="text-white text-4xl cursor-pointer group-hover:text-blue-400" />
 
-            <span className="p-1 ml-[-3em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
+            <span className="p-1 ml-[-6em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
               About
             </span>
           </button>
@@ -155,7 +156,7 @@ const MainMenu = ({
             id={section === 3 ? "menuactive" : ""}
           >
             <PiPlanetFill className="text-white text-4xl cursor-pointer group-hover:text-blue-400" />
-            <span className="p-1 ml-[-4em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
+            <span className="p-1 ml-[-6em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
               Projects
             </span>
           </button>
@@ -167,8 +168,20 @@ const MainMenu = ({
             id={section === 5 ? "menuactive" : ""}
           >
             <GrTechnology className="text-white text-4xl cursor-pointer group-hover:text-blue-400" />
-            <span className="p-1 ml-[-4.2em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
-              Tech Art
+            <span className="p-1 ml-[-5.2em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
+              Game Dev
+            </span>
+          </button>
+
+          {/* Menu Item 4 */}
+          <button
+            onClick={() => setSection(4)}
+            className="group flex items-center p-2 rounded-xl transition-all duration-500 ease-in-out"
+            id={section === 5 ? "menuactive" : ""}
+          >
+            <MdEmojiEvents className="text-white text-4xl cursor-pointer group-hover:text-blue-400" />
+            <span className="p-1 ml-[-4em] text-white text-xl opacity-0 group-hover:opacity-100 group-hover:ml-4 transition-all duration-300 ease-in-out">
+              Event Tech
             </span>
           </button>
         </div>
@@ -213,7 +226,7 @@ const MainMenu = ({
           </button>
           <ContactForm />
           <h1 className="bg-black border-2 p-4 text-2xl">
-            My Email: WillClarkmusic@gmail.com
+            My Email: WillSJClark@gmail.com
           </h1>
         </div>
 
@@ -250,7 +263,6 @@ const MainMenu = ({
               : "opacity-0 pointer-events-none"
           }`}
         >
-          {" "}
           <button
             onClick={() => setSettingsOpened(false)}
             className="absolute right-5 top-5 text-2xl"
@@ -262,7 +274,7 @@ const MainMenu = ({
       </div>
 
       <div className={`absolute left-14 top-[1800%] justify-center `}>
-        {section !== 3 && (
+        {section !== 4 && (
           <button
             onClick={() => setSection(section + 1)}
             className={`absolute border p-2 transition-all duration-500 ease-in-out bg-black`}
@@ -367,6 +379,9 @@ const MobileMenu = ({
           <MobileButton title="Tech Art" onClick={() => scrollTo(3)}>
             <GrTechnology className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
           </MobileButton>
+          <MobileButton title="Event Tech" onClick={() => scrollTo(4)}>
+            <MdEmojiEvents className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
+          </MobileButton>
 
           {/* Contact */}
           <MobileButton
@@ -378,13 +393,11 @@ const MobileMenu = ({
           <MobileButton title="Resume" onClick={resumeOpen}>
             <RxOpenInNewWindow className="inline text-3xl text-white hover:text-blue-500 cursor-pointer" />
           </MobileButton>
-
           <SocialIcons
             className="flex items-center justify-center "
             iconClass="text-6xl"
             hover={false}
           />
-
           {/*Settings Button*/}
           {/* <button
             onClick={() => setSettingsOpened(!settingsOpened)}
@@ -411,7 +424,7 @@ const MobileMenu = ({
 
       {/* Arrows */}
       <div className={`absolute right-24 top-[1800%] justify-center `}>
-        {section !== 3 && (
+        {section !== 4 && (
           <button
             onClick={() => setSection(section + 1)}
             className={`absolute border p-2  transition-all duration-500 ease-in-out bg-black`}

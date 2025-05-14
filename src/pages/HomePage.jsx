@@ -3,18 +3,19 @@ import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
 import {
-  ArtTechData,
+  moreGamesData,
+  GamesData,
   ProjectsData,
   FrontEndIcons,
   BackEndIcons,
   OtherTechIcons,
   OtherOtherIcons,
   MobileSkillIcons,
+  EventsData,
 } from "../components/Content";
 import {
   IconBox1,
-  ProjectDisplay,
-  MotionP,
+  ProjectDisplay2,
   MotionH1,
   TitleBar,
   Accordian1,
@@ -24,18 +25,14 @@ import { AiOutlineCopyright } from "react-icons/ai";
 import { FaLocationDot, FaCircleDot } from "react-icons/fa6";
 
 import Menu from "../components/Menu.jsx";
-import { MobileParams } from "../components/ScrollManager";
-
-const { isTablet, isMobile } = MobileParams();
-
-// const [isMobile, setIsMobile] = useState(MobileParams.isMobile);
 
 function HomePage() {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
-  const artRef = useRef(null);
-  const refArray = [homeRef, aboutRef, projectsRef, artRef];
+  const gamesRef = useRef(null);
+  const eventsRef = useRef(null);
+  const refArray = [homeRef, aboutRef, projectsRef, gamesRef, eventsRef];
 
   return (
     <div
@@ -54,8 +51,11 @@ function HomePage() {
       <div ref={projectsRef}>
         <ProjectsSection />
       </div>
-      <div ref={artRef}>
-        <ArtSection />
+      <div ref={gamesRef}>
+        <RTGameSection />
+      </div>
+      <div ref={eventsRef}>
+        <EventSection />
       </div>
       <Footer />
     </div>
@@ -80,20 +80,33 @@ const Section = (props) => {
 };
 
 const HomeSection = () => {
+  const container = useRef();
   return (
-    <div>
+    <div className="w-screen h-screen">
       <Section className="">
-        <div className="absolute top-40 left-10 md:top-[35%] md:left-[20%]">
-          <h1 className="backdrop-blur-xl text-6xl font-extrabold leading-snug">
+        <div
+          className="absolute top-40 left-10 md:top-[35%] md:left-[20%]"
+          ref={container}
+        >
+          <motion.h1
+            drag
+            dragConstraints={container}
+            className="backdrop-blur-xl text-6xl font-extrabold leading-snug"
+          >
             Hi, I'm
             <br />
-          </h1>
-          <h1 className="bg-white text-6xl md:text-6xl font-extrabold py-5 lg:text-7xl text-black accent-black italic">
+          </motion.h1>
+          <motion.h1
+            drag
+            dragConstraints={container}
+            className="bg-white text-6xl md:text-6xl font-extrabold py-5 lg:text-7xl text-black accent-black italic"
+          >
             Will Clark
-          </h1>
+          </motion.h1>
           <motion.div drag>
             <motion.p
               drag
+              dragConstraints={container}
               className="backdrop-blur-xl text-md lg:text-xl text-gray-200 mt-4"
               initial={{
                 opacity: 0,
@@ -108,7 +121,7 @@ const HomeSection = () => {
                 delay: 1.5,
               }}
             >
-              Welcome to my Software Developer Portfolio
+              Welcome to my Software Engineering Portfolio
             </motion.p>
           </motion.div>
         </div>
@@ -123,25 +136,22 @@ const AboutSection = () => {
   return (
     <div className="z-10">
       <Section className="">
-        <TitleBar title="About Me">
+        <TitleBar title="About Me" blur={true}>
           <span className="flex justify-center items-center p-2">
             <FaLocationDot /> <h2>San Francisco, CA</h2>
           </span>
         </TitleBar>
         <div
           ref={containerRef}
-          className={`w-[100%] min-h-[80%] bg-gray-600 bg-opacity-25 rounded-b-xl max-w-[1200px] bg-stone- z-10 lg:grid lg:grid-cols-2`}
+          className={`w-[100%] min-h-[80%] bg-opacity-25 rounded-b-xl max-w-[1200px] z-10 lg:grid lg:grid-cols-2`}
         >
           <div ref={containerRef} className="w-full lg:col-span-1  p-4">
             <MotionH1 container={containerRef}>I am...</MotionH1>
 
-            <Accordian1
-              title={"...a Full-Stack Software Developer"}
-              open={true}
-            >
+            <Accordian1 title={"...a Full-Stack Software Engineer"} open={true}>
               with a specialty in signal processing and data science. I am
-              rapidly advancing my skills with multi-tiered web applications and
-              am hungry for more oportunities to flex these skills.
+              rapidly advancing my knowledge with multi-tiered web applications
+              and am hungry for more oportunities to flex these skills.
             </Accordian1>
 
             <Accordian1 title={"...a Digital Media Artist"}>
@@ -151,10 +161,18 @@ const AboutSection = () => {
               probably performed along-side your favorite artist!
             </Accordian1>
 
-            {/* <Accordian1 title={"...interested in"}>
+            <Accordian1 title={"...a Video Game Developer"}>
+              with strong foundation in Unity, Unreal and many other real-time
+              3d engines. I am a frequent participant in game jams as a
+              programmer and as a technical sound designer. I love making a
+              playing games. Real Time Strategy is my favorite genre. Lets play
+              some StarCraft!
+            </Accordian1>
+
+            <Accordian1 title={"...Learning About"}>
               dev ops, machine learning and networking infrastructure. I am
               always excited about new technologies and learning constantly.
-            </Accordian1> */}
+            </Accordian1>
 
             {/* <Accordian1 title={"...a Student"}>
               Currently earning an additional Bachelor's of Engineering degree
@@ -180,15 +198,15 @@ const AboutSection = () => {
             <div className="grid grid-rows-4 grid-flow-col mb-5">
               <IconBox1
                 className={"row-span-1 hover:bg-black lg:h-[90%]"}
-                classIcons={""}
-                title={"FRONT-END"}
-                data={FrontEndIcons}
+                title={"BACK-END"}
+                data={BackEndIcons}
                 drag={false}
               />
               <IconBox1
                 className={"row-span-1 hover:bg-black lg:h-[90%]"}
-                title={"BACK-END"}
-                data={BackEndIcons}
+                classIcons={""}
+                title={"FRONT-END"}
+                data={FrontEndIcons}
                 drag={false}
               />
               <IconBox1
@@ -205,9 +223,9 @@ const AboutSection = () => {
               />
             </div>
           </div>
-          <div className="block lg:hidden mb-20">
+          <div className="block lg:hidden mb-20 ml-5">
             <IconBox1
-              className={"h-[40vh] w-full gap-y-10 "}
+              className={"h-[45vh] w-full gap-y-10 "}
               classIcons="pt-24"
               title={"Skills"}
               data={MobileSkillIcons}
@@ -224,24 +242,30 @@ const ProjectsSection = () => {
   return (
     <>
       <Section className="justify-start">
-        <TitleBar title="Programming Projects">
-          <span className="flex justify-center items-center p-2 ">
-            <FaCircleDot className="text-green-500 text-xl" />{" "}
-            <h2>Open to work</h2>
-          </span>
-        </TitleBar>
-        <ProjectDisplay contentData={ProjectsData} />
+        <TitleBar title="Programming Projects"></TitleBar>
+        <ProjectDisplay2 contentData={ProjectsData} />
       </Section>
     </>
   );
 };
 
-const ArtSection = () => {
+const RTGameSection = () => {
   return (
     <>
       <Section className="justify-start">
-        <TitleBar title="&#40;ART&#41; =&gt; &#123;TECH&#125;" />
-        <ProjectDisplay contentData={ArtTechData} />
+        <TitleBar title="Real-Time & Game Dev" />
+        <ProjectDisplay2 contentData={GamesData} />
+      </Section>
+    </>
+  );
+};
+
+const EventSection = () => {
+  return (
+    <>
+      <Section className="justify-start">
+        <TitleBar title="Event Tech" />
+        <ProjectDisplay2 contentData={EventsData} />
       </Section>
     </>
   );
@@ -249,13 +273,11 @@ const ArtSection = () => {
 
 const Footer = () => {
   return (
-    <div className="flex flex-row px-5 md:justify-center items-end bg-zinc-900 border-t-2 w-screen h-[11em] z-10">
+    <div className="flex flex-row px-5 md:justify-center items-end bg-black border-t-2 w-screen h-[11em] z-10">
       <SocialIcons className="" />
       <span className="absolute justify-center items-end mb-8 ">
-        <h2 className="inline font-extralight">
-          WIll Clark Web Design | 2025{" "}
-        </h2>
-        <AiOutlineCopyright className="inline justify-center items-center text-xl" />
+        <h2 className="inline font-extralight">Will Clark Web Design | 2025</h2>
+        <AiOutlineCopyright className="inline justify-start items-start text-xl" />
       </span>
     </div>
   );

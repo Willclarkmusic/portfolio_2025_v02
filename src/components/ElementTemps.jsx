@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaWindowClose } from "react-icons/fa";
+import { FaChevronDown, FaWindowClose } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { MobileParams } from "../components/ScrollManager";
@@ -12,10 +12,17 @@ export const TitleBar = ({
   children = null,
   leftWidgets = null,
   rightWidgets = null,
+  className,
+  blur = false,
 }) => {
   return (
     <div
-      className={`flex flex-row backdrop-blur-3xl items-center justify-center w-screen border-y overflow-x-hidden`}
+      className={twMerge(
+        `flex flex-row ${
+          blur ? "backdrop-blur-xl bg-opacity-50" : "bg-opacity-50"
+        }  bg-black items-center justify-center w-screen border-y overflow-x-hidden`,
+        className
+      )}
     >
       <h1 className="flex justify-center items-center text-4xl p-4">{title}</h1>
       <div className="relative ">{children}</div>
@@ -143,7 +150,7 @@ export const Accordian1 = ({ children, title, open = false }) => {
     <motion.div
       ref={containerRef}
       className={
-        "p-2 bg-slate-950 hover:bg-zinc-900 transition-all duration-300 rounded-lg m-3"
+        "p-2 bg-slate-950 hover:bg-zinc-800 transition-all duration-300 rounded-lg m-3"
       }
       initial={{
         opacity: 0,
@@ -206,16 +213,19 @@ export const Accordian1 = ({ children, title, open = false }) => {
 };
 
 export const Card1 = ({
+  index,
   data,
   containerRef,
   setModalContent,
+  setModalKey,
   setModalVisible,
   className,
+  drag = false,
 }) => {
   return (
     <motion.div
-      // drag={isMobile ? false : true}
-      // dragConstraints={containerRef}
+      drag={!drag ? false : true}
+      dragConstraints={containerRef}
       className={twMerge(`${isMobile ? "p-3" : "p-0"}`, className)}
       initial={{
         opacity: 0,
@@ -228,13 +238,13 @@ export const Card1 = ({
       }}
     >
       <div className="w-full h-full rounded-2xl backdrop-blur-lg bg-slate-950 hover:bg-black transition duration-500 ">
-        <div className={`rounded-xl h-[60%]`}>
+        <div className={`rounded-xl h-[65%]`}>
           <img
             src={data.img}
             className={`rounded-xl h-full w-full object-cover`}
           />
         </div>
-        <div className="p-2 flex flex-col ">
+        <div className="p-2 flex-col ">
           <p
             className={`p-1 md:text-xl sm:text-md font-semibold  text-gray-200`}
           >
@@ -243,13 +253,14 @@ export const Card1 = ({
           <p className="ml-3 md:text-md sm:text-sm text-gray-200">
             {data.role}
           </p>
-          <div className="pt-4 items-center justify-center text-xs">
+          <div className="flex justify-center mt-4 text-xs">
             <button
               id="standbutton"
-              className="text-white w-full p-2 text-xl cursor-pointer group-hover:text-blue-400"
+              className="text-white min-w-[90%] p-3 text-xl cursor-pointer group-hover:text-blue-400"
               onClick={() => {
                 setModalContent(data);
-                isMobile ? setModalVisible(true) : <></>;
+                setModalKey(index);
+                setModalVisible(true);
               }}
             >
               Details...
@@ -289,7 +300,7 @@ export const IconBox1 = ({
       }}
     >
       <h1
-        className={`text-[250%] text-xl md:text-3xl absolute md:inline md:bottom-0 md:right-0 md:text-[200%]  font-extrabold p-5 opacity-30`}
+        className={`text-[250%] text-xl lg:text-3xl absolute lg:inline lg:bottom-0 lg:right-0 md:text-[200%]  font-extrabold p-5 opacity-30`}
       >
         {textBG.toUpperCase()}
       </h1>
@@ -345,13 +356,159 @@ export const Iconic = ({
   );
 };
 
+export const ProjectDisplay2 = ({ contentData, moreData }) => {
+  const [fullData, setFullData] = useState(() => [
+    ...(contentData || []),
+    ...(moreData || []),
+  ]);
+  const [projModalContent, setProjModalContent] = useState(contentData[0]);
+  const [projModalKey, setProjModalKey] = useState(0);
+  const [projModalVisible, setProjModalVisible] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const containerRef = useRef();
+
+  useEffect(() => {
+    if (projModalVisible && isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setShowMore(isMobile);
+    };
+
+    handleResize(); // call once on mount
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.body.style.overflow = "auto";
+    };
+  }, [projModalVisible]);
+
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1.5,
+      }}
+    >
+      <div className="flex w-[100%] max-w-[1400px] max-h-[60%] z-10 mb-[10%]">
+        <div
+          className={`flex w-[100%] h-[90%] m-[1%] lg:grid lg:grid-cols-1 lg:grid-rows-1 grid-rows-1 grid-cols-1
+          `}
+        >
+          {/* DESKTOP MODAL */}
+          {projModalVisible ? (
+            <DesktopModal
+              projModalKey={projModalKey}
+              setProjModalVisible={setProjModalVisible}
+              projModalContent={projModalContent}
+              setProjModalContent={setProjModalContent}
+              contentData={fullData.length == 4 ? contentData : fullData}
+              setProjModalKey={setProjModalKey}
+            />
+          ) : (
+            <>
+              <div
+                ref={containerRef}
+                className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 lg:grid-cols-4 lg:grid-rows-1 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-4 grid-rows-1 "
+          `}
+              >
+                {contentData.map((data, key) => (
+                  <Card1
+                    key={key}
+                    index={key}
+                    data={data}
+                    containerRef={containerRef}
+                    setModalContent={setProjModalContent}
+                    setModalKey={setProjModalKey}
+                    setModalVisible={setProjModalVisible}
+                    className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%] `}
+                  />
+                ))}
+              </div>
+              {moreData ? (
+                <div className="w-full justify-center ">
+                  {showMore ? (
+                    <div>
+                      <div
+                        ref={containerRef}
+                        className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 lg:grid-cols-4 lg:grid-rows-1 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-4 grid-rows-1 `}
+                      >
+                        {moreData.map((data, key) => (
+                          <Card1
+                            key={key}
+                            index={key + 4}
+                            data={data}
+                            containerRef={containerRef}
+                            setModalContent={setProjModalContent}
+                            setModalKey={setProjModalKey}
+                            setModalVisible={setProjModalVisible}
+                            className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%]`}
+                          />
+                        ))}
+                      </div>
+                      <div className="w-full hidden md:flex  justify-center ">
+                        <button
+                          onClick={() => {
+                            setShowMore(false);
+                          }}
+                          className="p-4 bg-gray-600 rounded-md "
+                        >
+                          Show Less...
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-full hidden md:flex  justify-center">
+                      <button
+                        onClick={() => {
+                          setShowMore(true);
+                        }}
+                        className="p-4 bg-gray-600 rounded-md m-5"
+                      >
+                        More Projects...
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : null}
+            </>
+          )}
+
+          {/* MOBILE MODAL */}
+          {projModalVisible ? (
+            <MobileModal
+              setProjModalVisible={setProjModalVisible}
+              projModalContent={projModalContent}
+              contentData={contentData}
+              setProjModalKey={setProjModalKey}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export const ProjectDisplay = ({ contentData }) => {
   const [projModalContent, setProjModalContent] = useState(contentData[0]);
   const [projModalVisible, setProjModalVisible] = useState(false);
   const containerRef = useRef();
 
   useEffect(() => {
-    if (projModalVisible) {
+    if (projModalVisible && isMobile) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -364,14 +521,14 @@ export const ProjectDisplay = ({ contentData }) => {
 
   return (
     <motion.div>
-      <div className="flex w-[100%] max-w-[1200px] bg-gray-600 bg-opacity-25 rounded-b-xl z-10 mb-[10%]">
+      <div className="flex w-[100%] max-w-[1100px] max-h-[60%] bg-gray-600 bg-opacity-25 rounded-b-xl z-10 mb-[10%]">
         <div
-          className={`w-[100%] h-[90%] m-[1%] flex lg:grid lg:grid-cols-2 lg:grid-rows-2 sm:grid-rows-1 sm:grid-cols-1
+          className={`w-[100%] h-[90%] m-[1%] flex lg:grid lg:grid-cols-2 lg:grid-rows-2 grid-rows-1 grid-cols-1
           `}
         >
           <div
             ref={containerRef}
-            className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 md:grid md:grid-cols-2 md:grid-rows-2 sm:col-span-2 sm:grid-cols-1 sm:grid-rows-2 "
+            className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-1 grid-rows-2 "
             `}
           >
             {contentData.map((data, key) => (
@@ -387,21 +544,22 @@ export const ProjectDisplay = ({ contentData }) => {
           </div>
 
           {/* DESKTOP MODAL */}
-          <div className="hidden col-span-1 row-span-2 lg:grid grid-rows-4 rounded-xl w-full ">
-            <div className="row-span-2 items-center p-2   max-w-90%">
+          <div className="hidden col-span-1 row-span-2 lg:grid grid-rows-2 w-full">
+            <div className="row-span-1 items-center p-2   max-w-90%">
               {projModalContent.element}
             </div>
-            <IconBox1
-              data={projModalContent.icons}
-              title="Stack"
-              className="row-span-1 h-[60%] md:max-w-[100%]"
-            />
-            <div>
-              <h1 className="text-xl font-semibold px-5 py-2">
+
+            <div className="">
+              <IconBox1
+                data={projModalContent.icons}
+                title="Stack"
+                className="row-span-1 h-[30%] md:max-w-[100%]"
+              />
+              <h1 className=" text-xl font-semibold px-5 py-2">
                 <b>Role:</b> {projModalContent.role}
               </h1>
               <MotionP
-                className={` hover:bg-slate-950 transition rounded-xl duration-500 border p-5 m-3 mt-0`}
+                className={`row-span-2 transition rounded-xl duration-500 border p-5 m-3 mt-0`}
               >
                 {projModalContent.description}
               </MotionP>
@@ -410,7 +568,7 @@ export const ProjectDisplay = ({ contentData }) => {
 
           {/* MOBILE MODAL */}
           {projModalVisible ? (
-            <div className="fixed lg:hidden top-0 left-0 h-full z-50 rounded-xl size-[100%] backdrop-blur-3xl ">
+            <div className="fixed lg:hidden  top-0 left-0 z-50 rounded-xl size-[100%] bg-transparent backdrop-blur-3xl ">
               <button
                 id="iconbutton"
                 className="m-5 border-white text-2xl"
@@ -420,8 +578,8 @@ export const ProjectDisplay = ({ contentData }) => {
               >
                 <FaWindowClose />
               </button>
-              <div className="">{projModalContent.element}</div>
-              <div>
+              <div className="max-w-[600px]">{projModalContent.element}</div>
+              <div className="max-w-[600px]">
                 <p
                   className={`bg-slate-950 text-white text-sm hover:bg-black transition rounded-xl duration-500 border p-5 `}
                 >
@@ -429,12 +587,14 @@ export const ProjectDisplay = ({ contentData }) => {
                 </p>
                 <h1 className="p-5 text-xl">Role: {projModalContent.role}</h1>
               </div>
-              <IconBox1
-                data={projModalContent.icons}
-                title="Tech Stack"
-                className="row-span-1 h-[20%] "
-                classIcons="pt-14"
-              />
+              <div className="max-w-[600px]">
+                <IconBox1
+                  data={projModalContent.icons}
+                  title="Tech Stack"
+                  className="row-span-1 h-[20%] "
+                  classIcons="pt-14"
+                />
+              </div>
             </div>
           ) : (
             <></>
@@ -442,5 +602,149 @@ export const ProjectDisplay = ({ contentData }) => {
         </div>
       </div>
     </motion.div>
+  );
+};
+
+export const MobileModal = ({
+  setProjModalVisible,
+  projModalContent,
+  setProjModalKey,
+  contentData,
+}) => {
+  return (
+    <div className="fixed lg:hidden top-0 justify-items-center left-0 z-50 rounded-xl size-[100%] bg-transparent backdrop-blur-3xl  ">
+      <button
+        id="iconbutton"
+        className="m-5 border-white text-2xl"
+        onClick={() => {
+          setProjModalVisible(false);
+        }}
+      >
+        <FaWindowClose />
+      </button>
+      <div className="grid grid-rows-7  md:align-center size-full md:justify-center">
+        <div className="row-span-3 justify-center max-w-[600px] w-full">
+          {projModalContent.element}
+        </div>
+        <div className="row-span-2 max-w-[600px]">
+          <div className="row-span-1 justify-center max-w-[600px]">
+            {projModalContent.element2}
+          </div>
+
+          <h1 className="flex justify-center pt-10 text-xl">
+            Role: {projModalContent.role}
+          </h1>
+          <p
+            className={`flex row-span-1 bg-slate-950 text-white text-sm hover:bg-black transition rounded-xl duration-500 hover:border m-3 p-5 `}
+          >
+            {projModalContent.description}
+          </p>
+        </div>
+        <div className="row-span-1 max-w-[600px]">
+          <IconBox1
+            data={projModalContent.icons}
+            title="Tech Stack"
+            className="row-span-1 h-[100%] "
+            classIcons="pt-14"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const DesktopModal = ({
+  setProjModalVisible,
+  projModalContent,
+  setProjModalContent,
+  projModalKey,
+  setProjModalKey,
+  contentData,
+}) => {
+  const handleBack = () => {
+    if (projModalKey > 0) {
+      setProjModalKey(projModalKey - 1);
+    }
+    setProjModalContent(contentData[projModalKey]);
+  };
+
+  const handleForward = () => {
+    if (projModalKey < contentData.length - 1) {
+      setProjModalKey(projModalKey + 1);
+    }
+    setProjModalContent(contentData[projModalKey]);
+  };
+
+  return (
+    <div className=" max-w-[1400px]">
+      <motion.div
+        className="place-content-end w-[99%] m-3 mt-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, scale: 0 }}
+        transition={{ duration: 0.8 }}
+        key="box"
+      >
+        <div className="flex bg-zinc-600  rounded-xl my-2 ">
+          <button
+            id="navbutton"
+            className=" border-white text-xl m-2"
+            onClick={() => {
+              setProjModalVisible(false);
+            }}
+          >
+            <FaWindowClose />
+          </button>
+          <div className="flex justify-center w-[100%]">
+            <h1
+              className={` md:text-3xl sm:text-md font-semibold m-2  rounded-md bg-zinc-900 text-gray-200`}
+            >
+              {projModalContent.title}
+            </h1>
+          </div>
+
+          <div className="flex justify-end ">
+            <button
+              onClick={handleBack}
+              id="navbutton"
+              className=" border-white text-2xl m-2"
+            >
+              <FaChevronDown className="text-white text-xl cursor-pointer group-hover:text-blue-400 rotate-90" />
+            </button>
+
+            <button
+              onClick={handleForward}
+              id="navbutton"
+              className=" border-white text-2xl m-2"
+            >
+              <FaChevronDown className="text-white text-xl cursor-pointer group-hover:text-blue-400 rotate-[-90deg]" />
+            </button>
+          </div>
+        </div>
+
+        <motion.div className="hidden col-span-2 row-span-2 lg:grid grid-cols-3 w-full p-2 bg-zinc-600  rounded-xl ">
+          <div className="row-span-1 col-span-2 items-center p-4 max-w-95%">
+            {projModalContent.element}
+          </div>
+
+          <div className="flex-col col-span-1 w-full items-center justify-items-start ">
+            <h1 className=" text-xl font-semibold  p-4">
+              <b>Role:</b> {projModalContent.role}
+            </h1>
+            <MotionP
+              className={`row-span-2 transition rounded-xl duration-500 border p-5 m-3 mt-0`}
+            >
+              {projModalContent.description}
+            </MotionP>
+            <div className="px-1"> {projModalContent.element2}</div>
+            <IconBox1
+              data={projModalContent.icons}
+              title="Stack"
+              className="row-span-1 h-[30%] md:max-w-[100%] w-[95%] max-h-40"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 };

@@ -16,10 +16,10 @@ export const RenderFX = () => {
     <EffectComposer multisampling={0}>
       <Bloom
         mipmapBlur
-        levels={7}
-        intensity={0.05}
+        levels={2}
+        intensity={0.02}
         luminanceThreshold={0}
-        luminanceSmoothing={0.9}
+        luminanceSmoothing={0.2}
         height={300}
       />
       <Noise opacity={0.01} />
@@ -59,7 +59,7 @@ export const ParticleLighting = () => {
         />
         <Lightformer
           form="circle"
-          intensity={5}
+          intensity={3}
           rotation-y={-Math.PI / 2}
           position={[0, 10, 10]}
           scale={8}
@@ -67,7 +67,7 @@ export const ParticleLighting = () => {
         <Lightformer
           form="circle"
           color="#4060ff"
-          intensity={10}
+          intensity={5}
           onUpdate={(self) => self.lookAt(0, 0, 0)}
           position={[10, 10, 0]}
           scale={10}

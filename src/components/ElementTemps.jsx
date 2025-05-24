@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { MobileParams } from "../components/ScrollManager";
 import { FaGithub, FaSoundcloud, FaLinkedin } from "react-icons/fa";
+import { IoTerminalSharp } from "react-icons/io5";
 
 const { isTablet, isMobile } = MobileParams();
 
@@ -57,7 +58,7 @@ export const MotionP = (props) => {
 };
 
 export const MotionH1 = (props) => {
-  const { children, container } = props;
+  const { children, container, size = "md:text-3xl" } = props;
   return (
     <motion.div
       drag={!isMobile}
@@ -65,7 +66,7 @@ export const MotionH1 = (props) => {
       className="flex justify-center items-center max-w-60 m-[2%] backdrop-blur-2xl"
     >
       <motion.h1
-        className={`p-[1em] md:p-[1.5em] lg:p-[0.5em] md:text-3xl backdrop-blur-3xl text-white-200 hover:bg-black transition duration-500 border-b `}
+        className={`p-[1em] md:p-[1.5em] lg:p-[0.5em] ${size} backdrop-blur-3xl text-white-200 hover:bg-black transition duration-500 border-b `}
         initial={{
           opacity: 0,
         }}
@@ -212,6 +213,168 @@ export const Accordian1 = ({ children, title, open = false }) => {
   );
 };
 
+export const Accordian2 = ({ data, open = false }) => {
+  const [accordionOpen, setAccordionOpen] = useState(open);
+  const containerRef = useRef();
+
+  const title = data.title;
+  const experiences = data.experiences;
+  return (
+    <motion.div
+      ref={containerRef}
+      className={
+        "p-2 bg-slate-950 hover:bg-zinc-800 transition-all duration-300 rounded-lg m-3 "
+      }
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1.5,
+      }}
+    >
+      <button
+        onClick={() => setAccordionOpen(!accordionOpen)}
+        className="flex justify-between w-[90%] p-2"
+      >
+        <span>
+          <h1 className="text-md md:text-lg font-semibold">{title}</h1>
+        </span>
+        <svg
+          className="fill-white shrink-0 ml-8"
+          width="16"
+          height="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            y="7"
+            width="16"
+            height="2"
+            rx="1"
+            className={`transform origin-center transition duration-200 ease-out ${
+              accordionOpen && "!rotate-180"
+            }`}
+          />
+          <rect
+            y="7"
+            width="16"
+            height="2"
+            rx="1"
+            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
+              accordionOpen && "!rotate-180"
+            }`}
+          />
+        </svg>
+      </button>
+      <div
+        className={`grid overflow-hidden transition-all duration-300 ease-in-out 
+          ${
+            accordionOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+      >
+        <div className="overflow-hidden">
+          {experiences.map((item, key) => (
+            <Accordian2Nested
+              container={containerRef}
+              title={item.title}
+              meta={item.meta}
+              company={item.company}
+              key={key}
+            >
+              {item.description}
+              {item.elements ? item.elements : <></>}
+            </Accordian2Nested>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const Accordian2Nested = ({ children, title, company, meta, open = false }) => {
+  const [accordionOpen, setAccordionOpen] = useState(open);
+  const containerRef = useRef();
+  return (
+    <motion.div
+      ref={containerRef}
+      className={
+        "p-2 bg-slate-800 hover:bg-slate-900 border-transparent hover:border-slate-400 b-1 transition-all duration-300 rounded-lg m-3 border-[1px] "
+      }
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1.5,
+      }}
+    >
+      <button
+        onClick={() => setAccordionOpen(!accordionOpen)}
+        className="flex justify-between w-[90%] p-2"
+      >
+        <span className="text-start">
+          <h1 className="text-md md:text-lg font-semibold">{title}</h1>
+          <div className="flex">
+            <h1 className="font-semibold px-1">
+              {company}
+              {" | "}
+            </h1>
+            <h1 className="flex">{meta}</h1>
+          </div>
+        </span>
+        <svg
+          className="fill-white shrink-0 ml-8"
+          width="16"
+          height="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            y="7"
+            width="16"
+            height="2"
+            rx="1"
+            className={`transform origin-center transition duration-200 ease-out ${
+              accordionOpen && "!rotate-180"
+            }`}
+          />
+          <rect
+            y="7"
+            width="16"
+            height="2"
+            rx="1"
+            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
+              accordionOpen && "!rotate-180"
+            }`}
+          />
+        </svg>
+      </button>
+      <div
+        className={`grid overflow-hidden transition-all duration-300 ease-in-out 
+          ${
+            accordionOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+      >
+        <div className="overflow-hidden">
+          <MotionP
+            className={`justify-start p-2 text-sm md:p-[1.5em] lg:p-5 md:text-md text-[90%] text-white-200 hover:bg-black bg-slate-950 transition duration-500 rounded-xl`}
+            container={containerRef}
+          >
+            {children}
+          </MotionP>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export const Card1 = ({
   index,
   data,
@@ -304,7 +467,7 @@ export const IconBox1 = ({
       >
         {textBG.toUpperCase()}
       </h1>
-      <div className={twMerge(`relative`, classIcons)}>
+      <div className={twMerge(`relative p-1`, classIcons)}>
         {data.map((d, index) => {
           return (
             <Iconic
@@ -347,7 +510,7 @@ export const Iconic = ({
       drag={drag}
       dragConstraints={containerRef}
       onClick={ButtonClick}
-      className={`md:text-[180%] text-2xl m-[1%] z-50 ${
+      className={`md:text-[180%] text-2xl m-[2%] z-50 ${
         name === textBG ? "border-blue-600 text-blue-500 shadow" : ""
       }`}
     >
@@ -401,7 +564,7 @@ export const ProjectDisplay2 = ({ contentData, moreData }) => {
         duration: 1.5,
       }}
     >
-      <div className="flex w-[100%] max-w-[1400px] max-h-[60%] z-10 mb-[10%]">
+      <div className="flex w-[100%] max-w-[1400px] max-h-[60%] z-10 ">
         <div
           className={`flex w-[100%] h-[90%] m-[1%] lg:grid lg:grid-cols-1 lg:grid-rows-1 grid-rows-1 grid-cols-1
           `}
@@ -437,7 +600,7 @@ export const ProjectDisplay2 = ({ contentData, moreData }) => {
                 ))}
               </div>
               {moreData ? (
-                <div className="w-full justify-center ">
+                <div className="w-full justify-center hidden lg:flex">
                   {showMore ? (
                     <div>
                       <div
@@ -469,7 +632,7 @@ export const ProjectDisplay2 = ({ contentData, moreData }) => {
                       </div>
                     </div>
                   ) : (
-                    <div className="w-full hidden md:flex  justify-center">
+                    <div className="w-full hidden md:flex justify-center">
                       <button
                         onClick={() => {
                           setShowMore(true);

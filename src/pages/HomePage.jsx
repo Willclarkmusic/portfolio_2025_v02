@@ -12,6 +12,8 @@ import {
   OtherOtherIcons,
   MobileSkillIcons,
   EventsData,
+  moreProjectsData,
+  WorkExperiences,
 } from "../components/Content";
 import {
   IconBox1,
@@ -19,6 +21,7 @@ import {
   MotionH1,
   TitleBar,
   Accordian1,
+  Accordian2,
   SocialIcons,
 } from "../components/ElementTemps";
 import { AiOutlineCopyright } from "react-icons/ai";
@@ -37,14 +40,14 @@ function HomePage() {
   return (
     <div
       id="scrollSnapContainer"
-      className="flex flex-col items-center overflow-hidden bg-zinc-900 bg-opacity-90 "
+      className="flex flex-col items-center overflow-hidden bg-zinc-800 bg-opacity-90 "
     >
       <Menu refArray={refArray} />
 
       <div ref={homeRef}>
         <HomeSection />
       </div>
-      <div ref={aboutRef} className="mt-10">
+      <div ref={aboutRef} className="">
         <AboutSection />
       </div>
 
@@ -66,7 +69,7 @@ export default HomePage;
 const Section = (props) => {
   const { children, className } = props;
   return (
-    <div className={`min-h-screen shrink-0 min-w-screen`}>
+    <div className={`mb-[10em] min-w-screen`}>
       <motion.section
         className={twMerge(
           `px-[2%] flex flex-col justify-center items-center z-10 h-[100%] w-[100%] lg:h-[90%] lg:w-full`,
@@ -132,103 +135,108 @@ const HomeSection = () => {
 
 const AboutSection = () => {
   const containerRef = useRef();
+  const aboutContainer = useRef();
+  const skillsContainer = useRef();
+  const workContainer = useRef();
 
   return (
     <div className="z-10">
-      <Section className="">
+      <Section className="pt-6">
         <TitleBar title="About Me" blur={true}>
           <span className="flex justify-center items-center p-2">
             <FaLocationDot /> <h2>San Francisco, CA</h2>
           </span>
         </TitleBar>
         <div
-          ref={containerRef}
           className={`w-[100%] min-h-[80%] bg-opacity-25 rounded-b-xl max-w-[1200px] z-10 lg:grid lg:grid-cols-2`}
         >
-          <div ref={containerRef} className="w-full lg:col-span-1  p-4">
-            <MotionH1 container={containerRef}>I am...</MotionH1>
+          <div className="w-full col-span-1 py-4">
+            <div ref={aboutContainer} className="justify-items-center">
+              <MotionH1 container={aboutContainer}>I am...</MotionH1>
 
-            <Accordian1 title={"...a Full-Stack Software Engineer"} open={true}>
-              with a specialty in signal processing and data science. I am
-              rapidly advancing my knowledge with multi-tiered web applications
-              and am hungry for more oportunities to flex these skills.
-            </Accordian1>
+              <Accordian1
+                title={"...a Full-Stack Software Engineer"}
+                open={true}
+              >
+                with a specialty in signal processing and data science. I am
+                rapidly advancing my knowledge with multi-tiered web
+                applications and am hungry for more oportunities to flex these
+                skills.
+              </Accordian1>
 
-            <Accordian1 title={"...a Digital Media Artist"}>
-              I spent the past 15 years as an accomplished Video and Lighting
-              designer for Live-Music performances and as a technician in the
-              Digital-Art-Gallery space. Having done over 1000 shows, I have
-              probably performed along-side your favorite artist!
-            </Accordian1>
+              <Accordian1 title={"...a Digital Media Artist"}>
+                I spent the past 15 years as an accomplished Video and Lighting
+                designer for Live-Music performances and as a technician in the
+                Digital-Art-Gallery space. Having done over 1000 shows, I have
+                probably performed along-side your favorite artist!
+              </Accordian1>
 
-            <Accordian1 title={"...a Video Game Developer"}>
-              with strong foundation in Unity, Unreal and many other real-time
-              3d engines. I am a frequent participant in game jams as a
-              programmer and as a technical sound designer. I love making a
-              playing games. Real Time Strategy is my favorite genre. Lets play
-              some StarCraft!
-            </Accordian1>
+              <Accordian1 title={"...a Video Game Developer"}>
+                with strong foundation in Unity, Unreal and many other real-time
+                3d engines. I am a frequent participant in game jams as a
+                programmer and as a technical sound designer. I love making a
+                playing games. Real Time Strategy is my favorite genre. Lets
+                play some StarCraft!
+              </Accordian1>
 
-            <Accordian1 title={"...Learning About"}>
-              dev ops, machine learning and networking infrastructure. I am
-              always excited about new technologies and learning constantly.
-            </Accordian1>
-
-            {/* <Accordian1 title={"...a Student"}>
-              Currently earning an additional Bachelor's of Engineering degree
-              in Computer Science from Oregon State University ((Go Beavers!))
-              This is in addition to my Bachelor in Music from the San Francisco
-              Conservatory of Music, and my Master in Music Technology from
-              Berklee College of Music. I love to learn new things!
-            </Accordian1> */}
-
-            {/* <Accordian1 title={"NOT like the other candidates..."}>
-              I am unmatched in my abilities to troubleshoot complex
-              technological issues and bring together nearly impossible visions.
-              My unique background as a<b> Classical Musician</b> gives me
-              extreme discipline, my background as a <b> Digital Artist</b>{" "}
-              allows me to problem solve creativly, my experiences as an{" "}
-              <b>Event technician</b> gives me a cool head under pressure. Now
-              that I am upgrading my career path to developer, I am an extremely
-              valuable person to have on your team.
-            </Accordian1> */}
-          </div>
-          <div className={`hidden lg:block col-span-1 p-2 w-[100%]`}>
-            <MotionH1 container={containerRef}>Skills</MotionH1>
-            <div className="grid grid-rows-4 grid-flow-col mb-5">
-              <IconBox1
-                className={"row-span-1 hover:bg-black lg:h-[90%]"}
-                title={"BACK-END"}
-                data={BackEndIcons}
-                drag={false}
-              />
-              <IconBox1
-                className={"row-span-1 hover:bg-black lg:h-[90%]"}
-                classIcons={""}
-                title={"FRONT-END"}
-                data={FrontEndIcons}
-                drag={false}
-              />
-              <IconBox1
-                className={" row-span-1 hover:bg-black lg:h-[90%]"}
-                title={"OTHER TECH"}
-                data={OtherTechIcons}
-                drag={false}
-              />
-              <IconBox1
-                className={"row-span-1 hover:bg-black h-full"}
-                title={""}
-                data={OtherOtherIcons}
-                drag={false}
-              />
+              <Accordian1 title={"...Learning About"}>
+                dev ops, machine learning and networking infrastructure. I am
+                always excited about new technologies and learning constantly.
+              </Accordian1>
             </div>
           </div>
-          <div className="block lg:hidden mb-20 ml-5">
+          <div
+            ref={workContainer}
+            className="w-full col-span-1 py-4 justify-items-center"
+          >
+            <MotionH1 container={workContainer}>Experience</MotionH1>
+            <Accordian2 data={WorkExperiences[0]} open={true} />
+            <Accordian2 data={WorkExperiences[1]} />
+            <Accordian2 data={WorkExperiences[2]} />
+            <Accordian2 data={WorkExperiences[3]} />
+          </div>
+        </div>
+        <div className="block lg:hidden mb-10 ml-5">
+          <IconBox1
+            className={"h-[45vh] w-full gap-y-10 "}
+            classIcons="pt-24"
+            title={"Skills"}
+            data={MobileSkillIcons}
+            drag={false}
+          />
+        </div>
+
+        <div
+          ref={skillsContainer}
+          className={`justify-items-center lg:block col-span-2 p-2 pt-[2em]  max-w-[900px] hidden`}
+        >
+          <MotionH1 container={skillsContainer} className={"items-center"}>
+            Skills
+          </MotionH1>
+          <div className="grid grid-rows-2 grid-cols2 grid-flow-col mb-5">
             <IconBox1
-              className={"h-[45vh] w-full gap-y-10 "}
-              classIcons="pt-24"
-              title={"Skills"}
-              data={MobileSkillIcons}
+              className={"row-span-1 hover:bg-black min-h-[200px]"}
+              title={"BACK-END"}
+              data={BackEndIcons}
+              drag={false}
+            />
+            <IconBox1
+              className={" row-span-1 hover:bg-black"}
+              title={"OTHER TECH"}
+              data={OtherTechIcons}
+              drag={false}
+            />
+            <IconBox1
+              className={"row-span-1 hover:bg-black"}
+              classIcons={""}
+              title={"FRONT-END"}
+              data={FrontEndIcons}
+              drag={false}
+            />
+            <IconBox1
+              className={"row-span-1 hover:bg-black"}
+              title={""}
+              data={OtherOtherIcons}
               drag={false}
             />
           </div>
@@ -243,7 +251,10 @@ const ProjectsSection = () => {
     <>
       <Section className="justify-start">
         <TitleBar title="Programming Projects"></TitleBar>
-        <ProjectDisplay2 contentData={ProjectsData} />
+        <ProjectDisplay2
+          contentData={ProjectsData}
+          moreData={moreProjectsData}
+        />
       </Section>
     </>
   );
@@ -254,7 +265,7 @@ const RTGameSection = () => {
     <>
       <Section className="justify-start">
         <TitleBar title="Real-Time & Game Dev" />
-        <ProjectDisplay2 contentData={GamesData} />
+        <ProjectDisplay2 contentData={GamesData} moreData={moreGamesData} />
       </Section>
     </>
   );

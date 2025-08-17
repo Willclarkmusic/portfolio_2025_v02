@@ -13,6 +13,7 @@ import {
   FaAws,
   FaNode,
   FaFigma,
+  FaCloudflare,
 } from "react-icons/fa";
 import { FaMeta } from "react-icons/fa6";
 import {
@@ -36,18 +37,72 @@ import {
 } from "react-icons/si";
 import { DiVisualstudio, DiMongodb } from "react-icons/di";
 import { BsNintendoSwitch } from "react-icons/bs";
-import { GiGuitar, GiMountainClimbing } from "react-icons/gi";
+import { GiGuitar, GiMountainClimbing, GiTorch } from "react-icons/gi";
 import { MdTouchApp } from "react-icons/md";
-import { MdOutlineFestival } from "react-icons/md";
 import { HiAdjustmentsVertical } from "react-icons/hi2";
 import { FaSquareYoutube, FaInstagram } from "react-icons/fa6";
 import { GrUserManager } from "react-icons/gr";
 import { FaComputer } from "react-icons/fa6";
-import { BsBoxFill } from "react-icons/bs";
 
 export const ProjectsData = [
   {
-    title: "Chromatic Music Database",
+    title: "Gen Beats - Gen AI",
+    img: "images/GenBeats2.png",
+    role: "AI/ML Developer",
+    description:
+      "GenBeats is a SaaS app that provides AI generated listening and visual experiences. I have build boutique music generation models in Torch Audio and implemented CUDA GPU excelleration for real-time inference. Using R2 for object storage, MongoDB for noSQL metadata, FastAPI on EC2 for scalability. This app is in the early stages of development but I am excited to see it unfold.",
+    element: (
+      <div className="w-[93%] justify-center">
+        <img
+          src="images/GenBeats1.png"
+          className="rounded-3xl object-contain"
+        />
+      </div>
+    ),
+    element2: (
+      <div className="flex">
+        <button
+          id="standbutton"
+          onClick={() =>
+            window.open(
+              "https://github.com/Willclarkmusic/GenBeats-FrontEnd",
+              "_blank"
+            )
+          }
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View on GitHub
+          </span>
+          <FaGithub className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
+        <button
+          id="standbutton"
+          onClick={() => window.open("https://genbeats.com/", "_blank")}
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View Live
+          </span>
+          <FaAws className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
+      </div>
+    ),
+    icons: [
+      { name: "Pytorch", icon: <GiTorch /> },
+      { name: "React", icon: <FaReact /> },
+      { name: "Express JS", icon: <SiExpress /> },
+      { name: "FastAPI", icon: <SiFastapi /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Python", icon: <FaPython /> },
+      { name: "Node.js", icon: <FaNode /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "CloudFlare", icon: <FaCloudflare /> },
+      { name: "Nvidia CUDA", icon: <SiNvidia /> },
+    ],
+  },
+  {
+    title: "Chromatic Music - Database",
     img: "images/ChromaMusic.jpg",
     role: "Full-stack Developer / SQL",
     description:
@@ -98,9 +153,8 @@ export const ProjectsData = [
       { name: "AWS", icon: <FaAws /> },
     ],
   },
-
   {
-    title: "Synthesizer Plugin",
+    title: "Bass Bot - Synthesizer Plugin",
     img: "./images/BassBotLogo1.png",
     role: "Audio DSP Programmer",
     description:
@@ -139,6 +193,112 @@ export const ProjectsData = [
     ],
   },
   {
+    title: "React Three Fiber",
+    img: "images/CF_Site.png",
+    role: "Front-end Develeoper",
+    description:
+      "This Website was built with React Three Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
+    element: (
+      <div className="justify-center w-full">
+        <div className="">
+          <img src="images/CF_Site2.png" className="rounded-3xl object-cover" />
+        </div>
+      </div>
+    ),
+    element2: (
+      <div className="flex">
+        <button
+          id="standbutton"
+          onClick={() =>
+            window.open(
+              "https://github.com/Willclarkmusic/colourfeeders-site-v1",
+              "_blank"
+            )
+          }
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View on GitHub
+          </span>
+          <FaGithub className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
+        <button
+          id="standbutton"
+          onClick={() => window.open("https://colourfeeders.com/", "_blank")}
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View Live
+          </span>
+          <FaCloud className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
+      </div>
+    ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Three.js", icon: <SiThreedotjs /> },
+      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
+      { name: "AWS", icon: <FaAws /> },
+    ],
+  },
+];
+
+export const moreProjectsData = [
+  {
+    title: "Sue Chef: Recipe Social",
+    img: "images/SueChef.png",
+    role: "Front-end Engineer | UX Researcher",
+    description:
+      "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
+    element: (
+      <div className="overflow-hidden justify-center p-2">
+        <div className="aspect-w-16 aspect-h-9 h-full overflow-hidden justify-center rounded-xl">
+          <iframe
+            src="https://embed.figma.com/proto/3q80IKS5vI9E7cUj7otYWq/AI-cooking-app---Final-Proto?node-id=1-3&starting-point-node-id=1%3A3&embed-host=share"
+            allowFullScreen
+          />
+        </div>
+      </div>
+    ),
+    element2: (
+      <div className="flex">
+        <button
+          id="standbutton"
+          onClick={() =>
+            window.open("/Generative Research Report Will Clark.pdf", "_blank")
+          }
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View Research
+          </span>
+          <IoDocumentText className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
+        <button
+          id="standbutton"
+          onClick={() =>
+            window.open(
+              "https://www.figma.com/proto/3q80IKS5vI9E7cUj7otYWq/AI-cooking-app---Final-Proto?node-id=1-3&starting-point-node-id=1%3A3&t=LzCAzhcdayUnp7jW-1",
+              "_blank"
+            )
+          }
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View Prototype
+          </span>
+          <FaFigma className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
+      </div>
+    ),
+    icons: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Figma", icon: <FaFigma /> },
+      { name: "Project Management", icon: <GrUserManager /> },
+    ],
+  },
+  {
     title: "Atomic Chess",
     img: "./images/Chess1.png",
     role: "Python Developer",
@@ -170,133 +330,6 @@ export const ProjectsData = [
       { name: "Unity", icon: <FaUnity /> },
       { name: "Wwise", icon: <SiWwise /> },
       { name: "C#", icon: <PiFileCSharp /> },
-    ],
-  },
-  {
-    title: "Sue Chef: Recipe Social",
-    img: "images/SueChef.png",
-    role: "Front-end Engineer | UX Researcher",
-    description:
-      "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
-    element: (
-      <div className="overflow-hidden justify-center p-2">
-        <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
-          <iframe
-            src="https://embed.figma.com/proto/3q80IKS5vI9E7cUj7otYWq/AI-cooking-app---Final-Proto?node-id=1-3&starting-point-node-id=1%3A3&embed-host=share"
-            allowFullScreen
-          />
-        </div>
-      </div>
-    ),
-    element2: (
-      <div className="flex">
-        <button
-          id="standbutton"
-          onClick={() =>
-            window.open("/Generative Research Report Will Clark.pdf", "_blank")
-          }
-          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-        >
-          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-            View Research
-          </span>
-          <IoDocumentText className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-        </button>
-        <button
-          id="standbutton"
-          onClick={() =>
-            window.open("/Generative Research Report Will Clark.pdf", "_blank")
-          }
-          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-        >
-          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-            View Prototype
-          </span>
-          <FaFigma className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-        </button>
-      </div>
-    ),
-    icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Figma", icon: <FaFigma /> },
-      { name: "Project Management", icon: <GrUserManager /> },
-    ],
-  },
-];
-
-export const moreProjectsData = [
-  {
-    title: "React Three Fiber",
-    img: "images/This1.png",
-    role: "Front-end Develeoper",
-    description:
-      "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
-    element: (
-      <div className="justify-center w-full">
-        <div className="">
-          <img src="images/This1.png" className="rounded-3xl object-cover" />
-        </div>
-      </div>
-    ),
-    element2: (
-      <button
-        id="standbutton"
-        onClick={() =>
-          window.open(
-            "https://github.com/Willclarkmusic/portfolio_2025_v02",
-            "_blank"
-          )
-        }
-        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-      >
-        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-          View on GitHub
-        </span>
-        <FaGithub className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-      </button>
-    ),
-    icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Three.js", icon: <SiThreedotjs /> },
-      { name: "Framer Motion", icon: <TbBrandFramerMotion /> },
-      { name: "Tailwind", icon: <RiTailwindCssFill /> },
-      { name: "AWS", icon: <FaAws /> },
-    ],
-  },
-  {
-    title: "REST-ful API",
-    img: "images/rest-project.png",
-    role: "Full-stack Developer",
-    description:
-      "This is a full-stack MERN app that demonstrates my skills with a RESTful Api, a React UI and a data-base on MongoDB. The purpose of this site is to track exercises done by the user.",
-    element: (
-      <div className="justify-center">
-        <img
-          src="images/rest-project.png"
-          className="rounded-3xl w-[93%] object-cover"
-        />
-      </div>
-    ),
-    element2: (
-      <button
-        id="standbutton"
-        onClick={() => window.open("http://18.144.55.121:3000/", "_blank")}
-        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-      >
-        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-          View Live
-        </span>
-        <FaAws className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-      </button>
-    ),
-    icons: [
-      { name: "React", icon: <FaReact /> },
-      { name: "Express JS", icon: <SiExpress /> },
-      { name: "REST Api", icon: <FaCloud /> },
-      { name: "HTML/CSS", icon: <FaHtml5 /> },
-      { name: "JavaScript", icon: <IoLogoJavascript /> },
-      { name: "Node.js", icon: <FaNode /> },
-      { name: "AWS", icon: <FaAws /> },
     ],
   },
 ];
@@ -353,6 +386,49 @@ export const GamesData = [
     ],
   },
   {
+    title: "Artechouse",
+    img: "./images/ATH1.jpg",
+    role: "Render Farm Architect",
+    description:
+      "Artechouse is one of the premiere digital-art spaces in the world with locations on the east coast and pop-ups internationally. I constructed dozens of the highest level, enterprise-server computer nodes to power real-time art installations and single-node art projects for their efforts.",
+    element: (
+      <div>
+        <div className="grid grid-rows-2  h-full max-w-[400px] lg:max-w-full">
+          <img
+            src="images/ATH3.jpg"
+            className="lg:row-span-1 flex rounded-3xl object-cover"
+          />
+          <img
+            src="images/ATHCompy2-scaled.jpg"
+            className="lg:row-span-1 flex rounded-3xl object-cover"
+          />
+        </div>
+      </div>
+    ),
+    element2: (
+      <button
+        id="standbutton"
+        onClick={() =>
+          window.open(
+            "https://www.instagram.com/artechouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            "_blank"
+          )
+        }
+        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+      >
+        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+          Visit ArTecHouse
+        </span>
+        <FaInstagram className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+      </button>
+    ),
+    icons: [
+      { name: "Touch Designer", icon: <MdTouchApp /> },
+      { name: "Server Tech", icon: <FaComputer /> },
+      { name: "Nvidia G-Sync", icon: <SiNvidia /> },
+    ],
+  },
+  {
     title: "Interactive Art",
     img: "./images/Goo1.png",
     role: "Digital Media Artist",
@@ -362,7 +438,7 @@ export const GamesData = [
       <div>
         <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl ">
           <iframe
-            src="https://www.youtube.com/embed/mpQK2xXC6Vc?si=Q0GDQvECqMXJNZc5"
+            src="https://www.youtube.com/embed/videoseries?si=q714doldBXJqCVRi&amp;list=PLDQiSM9VNZvGwR1fpKYjFClOSRJz-bmm4"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="Embedded youtube"
@@ -396,47 +472,31 @@ export const GamesData = [
     ],
   },
   {
-    title: "Jelly Jam: 1st place",
-    img: "./images/JellyJam.webp",
-    role: "Game Developer | Sound Design",
+    title: "SynthLand",
+    img: "./images/MetaSounds1.png",
+    role: "Game Developer | Audio Programmer",
     description:
-      "Took first place in multiple categories in the 2023 Jelly Jam as part of the P1-Open Metaverse community. My team of four created a 3d racing game in Unity using custom modeling, sound effects and environmental assets all within 3 days. I contributed programming and custom sound effects.",
+      "This game level is part of a prototype I built for a game called Synthland that uses interactive gameplay with procedural audio programmed in Unreal Engine 5's, MetaSounds. The audio is generated in real-time based on interactions that the user has with the game's environment.",
     element: (
       <div className="overflow-hidden justify-center p-2">
         <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
           <iframe
-            src="https://www.youtube.com/embed/sNWzZMGAus8?si=wwnEkcQAySZ4Wf4E"
+            src="https://www.youtube.com/embed/oPhbU3bMjUo?si=EJJK1vOrzD0EDdJv"
             allowFullScreen
           />
         </div>
       </div>
     ),
-    element2: (
-      <div className="flex">
-        <button
-          id="standbutton"
-          onClick={() =>
-            window.open(
-              "https://github.com/Willclarkmusic/ChromaticMusic_DBFinal",
-              "_blank"
-            )
-          }
-          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-        >
-          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-            View on GitHub
-          </span>
-          <FaGithub className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-        </button>
-      </div>
-    ),
+    element2: <></>,
     icons: [
-      { name: "Unity", icon: <FaUnity /> },
-      { name: "C#", icon: <PiFileCSharp /> },
-      { name: "Wwise", icon: <SiWwise /> },
-      { name: "Project Management", icon: <GrUserManager /> },
+      { name: "Unreal Engine 5", icon: <SiUnrealengine /> },
+      { name: "MetaSounds", icon: <SiUnrealengine /> },
+      { name: "C++", icon: <SiCplusplus /> },
     ],
   },
+];
+
+export const moreGamesData = [
   {
     title: "Ninja Frog",
     img: "./images/ChickenGame.png",
@@ -472,9 +532,6 @@ export const GamesData = [
       { name: "Project Management", icon: <GrUserManager /> },
     ],
   },
-];
-
-export const moreGamesData = [
   {
     title: "The Marble Game",
     img: "./images/MarblesMagnets.png",
@@ -544,67 +601,39 @@ export const moreGamesData = [
     ],
   },
   {
-    title: "SynthLand",
-    img: "./images/MetaSounds1.png",
-    role: "Game Developer | Audio Programmer",
+    title: "Jelly Jam: 1st place",
+    img: "./images/JellyJam.webp",
+    role: "Game Developer | Sound Design",
     description:
-      "This game level is part of a prototype I built for a game called Synthland that uses interactive gameplay with procedural audio programmed in Unreal Engine 5's, MetaSounds. The audio is generated in real-time based on interactions that the user has with the game's environment.",
+      "Took first place in multiple categories in the 2023 Jelly Jam as part of the P1-Open Metaverse community. My team of four created a 3d racing game in Unity using custom modeling, sound effects and environmental assets all within 3 days. I contributed programming and custom sound effects.",
     element: (
       <div className="overflow-hidden justify-center p-2">
         <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
           <iframe
-            src="https://www.youtube.com/embed/oPhbU3bMjUo?si=EJJK1vOrzD0EDdJv"
+            src="https://www.youtube.com/embed/sNWzZMGAus8?si=wwnEkcQAySZ4Wf4E"
             allowFullScreen
           />
         </div>
       </div>
     ),
     element2: (
-      <button
-        id="standbutton"
-        onClick={() => window.open("https://www.marpi.studio/", "_blank")}
-        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-      >
-        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-          Visit Marpi Studios
-        </span>
-        <FaComputer className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-      </button>
-    ),
-    icons: [
-      { name: "Unity", icon: <FaUnity /> },
-      { name: "C#", icon: <PiFileCSharp /> },
-      { name: "Wwise", icon: <SiWwise /> },
-      { name: "Project Management", icon: <GrUserManager /> },
-    ],
-  },
-  {
-    title: "Game Audio Re-Designs",
-    img: "./images/SoundDesign.png",
-    role: "Sound Design | Audio Programmer",
-    description:
-      "This youtube playlist shows off my skills in sound design and composition for vide game audio.",
-    element: (
-      <div className="overflow-hidden justify-center p-2">
-        <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?si=HiZCIbRhljAsNUdb&amp;list=PLDQiSM9VNZvET1OmajoNikPFdCuKhLwog"
-            allowFullScreen
-          />
-        </div>
+      <div className="flex">
+        <button
+          id="standbutton"
+          onClick={() =>
+            window.open(
+              "https://github.com/Willclarkmusic/ChromaticMusic_DBFinal",
+              "_blank"
+            )
+          }
+          className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+        >
+          <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+            View on GitHub
+          </span>
+          <FaGithub className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+        </button>
       </div>
-    ),
-    element2: (
-      <button
-        id="standbutton"
-        onClick={() => window.open("https://www.marpi.studio/", "_blank")}
-        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-      >
-        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-          Visit Marpi Studios
-        </span>
-        <FaComputer className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-      </button>
     ),
     icons: [
       { name: "Unity", icon: <FaUnity /> },
@@ -616,6 +645,100 @@ export const moreGamesData = [
 ];
 
 export const EventsData = [
+  {
+    title: "Colour Feeders",
+    img: "./images/Logo1.png",
+    role: "Digital Media Artist | AV Engineer",
+    description:
+      "Colour Feeders is a technology arts community of multi-disiplinary artists based in San Francisco. Specializing in hardware solutions and real-time, audio-visual experiences. Colour Feeders has worked in some of most cutting edge art spaces. Founded and led by Will Clark.",
+    element: (
+      <div className="overflow-hidden justify-center p-2">
+        <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
+          <img src="./images/CF_full.png" />
+        </div>
+      </div>
+    ),
+    element2: (
+      <button
+        id="standbutton"
+        onClick={() => window.open("https://colourfeeders.com/", "_blank")}
+        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+      >
+        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+          Visit Website
+        </span>
+        <FaComputer className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+      </button>
+    ),
+    icons: [
+      { name: "VectorWorks", icon: <SiVectorworks /> },
+      { name: "Project Management", icon: <GrUserManager /> },
+      { name: "Unity 3D", icon: <FaUnity /> },
+    ],
+  },
+  {
+    title: "Maya Jane Coles: Menagerie",
+    img: "./images/Menag22.png",
+    role: "Stage Designer | Visual Artist",
+    description:
+      "This is a stage I designed was for the music festival 'Menagerie 2022'.  I also created and performed the real-time, visual content on the screens and lighting. There are more examples of my visual art in the link below!.",
+    element: (
+      <div className="p-2 ">
+        <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl ">
+          <iframe
+            src="https://www.youtube.com/embed/2E0jmG7o_yg?si=A-eXKaVJL56agyOM"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Embedded youtube"
+          />
+        </div>
+        <div
+          class="sketchfab-embed-wrapper"
+          className="aspect-w-16 aspect-h-9 "
+        >
+          <iframe
+            className=" size-full rounded-xl"
+            title="Kaskade_stage2"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            xr-spatial-tracking
+            execution-while-out-of-viewport
+            execution-while-not-rendered
+            web-share
+            src="https://sketchfab.com/models/93c9d8a40ec34aa69819a01e8c16b7a5/embed"
+          ></iframe>
+        </div>
+      </div>
+    ),
+    element2: (
+      <button
+        id="standbutton"
+        onClick={() =>
+          window.open(
+            "https://youtube.com/playlist?list=PLDQiSM9VNZvGwR1fpKYjFClOSRJz-bmm4&si=-jOXLFFlG2QFD3we",
+            "_blank"
+          )
+        }
+        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
+      >
+        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
+          View More AV Art
+        </span>
+        <FaSquareYoutube className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
+      </button>
+    ),
+    icons: [
+      { name: "VectorWorks", icon: <SiVectorworks /> },
+      { name: "Project Management", icon: <GrUserManager /> },
+      { name: "Resolume VJ", icon: <HiAdjustmentsVertical /> },
+      { name: "Touch Designer", icon: <MdTouchApp /> },
+      { name: "Unity 3D", icon: <FaUnity /> },
+      { name: "Adobe CC", icon: <SiAdobe /> },
+    ],
+  },
   {
     title: "Kaskade: Menagerie",
     img: "./images/Menag2022.jpg",
@@ -687,8 +810,13 @@ export const EventsData = [
       "This is a stage I designed was for the music festival 'Menagerie 2021' with headlining artist Diplo.  I also was the project manager for this stage and I created and performed the real-time, visual content on the screens. There are more examples of my visual art in the link below!.",
     element: (
       <div className="p-2 ">
-        <div className="overflow-hidden justify-center rounded-xl ">
-          <img src="./images/Diplo2.png" className="flex"></img>
+        <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl ">
+          <iframe
+            src="https://www.youtube.com/embed/N0Y-nVKVPE8?si=AsW5J3ubXZyA_Oui"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Embedded youtube"
+          />
         </div>
         <div
           class="sketchfab-embed-wrapper"
@@ -735,80 +863,6 @@ export const EventsData = [
       { name: "Touch Designer", icon: <MdTouchApp /> },
       { name: "Unity 3D", icon: <FaUnity /> },
       { name: "Adobe CC", icon: <SiAdobe /> },
-    ],
-  },
-  {
-    title: "Colour Feeders",
-    img: "./images/Logo1.png",
-    role: "Digital Media Artist | AV Technician",
-    description:
-      "Colour Feeders is a technology arts community of multi-disiplinary artists based in San Francisco. Specializing in hardware solutions and real-time, audio-visual experiences. Colour Feeders has worked in some of most cutting edge art spaces. Founded and led by Will Clark.",
-    element: (
-      <div className="overflow-hidden justify-center p-2">
-        <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
-          <img src="./images/CF_full.png" />
-        </div>
-      </div>
-    ),
-    element2: (
-      <button
-        id="standbutton"
-        onClick={() => window.open("https://colourfeeders.com/", "_blank")}
-        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-      >
-        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-          Visit Website
-        </span>
-        <FaComputer className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-      </button>
-    ),
-    icons: [
-      { name: "VectorWorks", icon: <SiVectorworks /> },
-      { name: "Project Management", icon: <GrUserManager /> },
-      { name: "Unity 3D", icon: <FaUnity /> },
-    ],
-  },
-  {
-    title: "Artechouse",
-    img: "./images/ATH1.jpg",
-    role: "Render Farm Architect",
-    description:
-      "Artechouse is one of the premiere digital-art spaces in the world with locations on the east coast and pop-ups internationally. I constructed dozens of the highest level, enterprise-server computer nodes to power real-time art installations and single-node art projects for their efforts.",
-    element: (
-      <div>
-        <div className="grid grid-rows-2  h-full max-w-[400px] lg:max-w-full">
-          <img
-            src="images/ATH3.jpg"
-            className="lg:row-span-1 flex rounded-3xl object-cover"
-          />
-          <img
-            src="images/ATHCompy2-scaled.jpg"
-            className="lg:row-span-1 flex rounded-3xl object-cover"
-          />
-        </div>
-      </div>
-    ),
-    element2: (
-      <button
-        id="standbutton"
-        onClick={() =>
-          window.open(
-            "https://www.instagram.com/artechouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-            "_blank"
-          )
-        }
-        className="group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out"
-      >
-        <span className="p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out">
-          Visit ArTecHouse
-        </span>
-        <FaInstagram className="text-white text-3xl cursor-pointer group-hover:text-blue-400" />
-      </button>
-    ),
-    icons: [
-      { name: "Touch Designer", icon: <MdTouchApp /> },
-      { name: "Server Tech", icon: <FaComputer /> },
-      { name: "Nvidia G-Sync", icon: <SiNvidia /> },
     ],
   },
 ];

@@ -10,7 +10,7 @@ function App() {
   });
 
   return (
-    <div className="h-screen max-w-screen]">
+    <div className="h-screen max-w-screen">
       <div ref={ref} className="absolute w-full h-[110%]">
         {inView && <ParticleSystem />}
       </div>

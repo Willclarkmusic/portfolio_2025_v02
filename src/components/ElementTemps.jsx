@@ -379,9 +379,7 @@ export const Card1 = ({
   index,
   data,
   containerRef,
-  setModalContent,
-  setModalKey,
-  setModalVisible,
+  openModal,
   className,
   drag = false,
 }) => {
@@ -420,11 +418,7 @@ export const Card1 = ({
             <button
               id="standbutton"
               className="text-white min-w-[90%] p-3 text-xl cursor-pointer group-hover:text-blue-400"
-              onClick={() => {
-                setModalContent(data);
-                setModalKey(index);
-                setModalVisible(true);
-              }}
+              onClick={() => openModal(data)}
             >
               Details...
             </button>
@@ -439,6 +433,7 @@ export const IconBox1 = ({
   data,
   title,
   className,
+  classText = "",
   classIcons = "",
   drag = true,
 }) => {
@@ -463,7 +458,10 @@ export const IconBox1 = ({
       }}
     >
       <h1
-        className={`text-[250%] text-xl lg:text-3xl absolute lg:inline lg:bottom-0 lg:right-0 md:text-[200%]  font-extrabold p-5 opacity-30`}
+        className={twMerge(
+          `text-[250%] text-xl lg:text-3xl absolute lg:inline lg:bottom-0 lg:right-0 md:text-[200%]  font-extrabold p-5 opacity-30`,
+          classText
+        )}
       >
         {textBG.toUpperCase()}
       </h1>
@@ -519,38 +517,24 @@ export const Iconic = ({
   );
 };
 
-export const ProjectDisplay2 = ({ contentData, moreData }) => {
+export const ProjectDisplay2 = ({
+  contentData,
+  moreData,
+  moreState,
+  setMoreState,
+  openModal,
+}) => {
   const [fullData, setFullData] = useState(() => [
     ...(contentData || []),
     ...(moreData || []),
   ]);
-  const [projModalContent, setProjModalContent] = useState(contentData[0]);
-  const [projModalKey, setProjModalKey] = useState(0);
-  const [projModalVisible, setProjModalVisible] = useState(false);
-  const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(moreState);
   const containerRef = useRef();
 
-  useEffect(() => {
-    if (projModalVisible && isMobile) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
-      setShowMore(isMobile);
-    };
-
-    handleResize(); // call once on mount
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      document.body.style.overflow = "auto";
-    };
-  }, [projModalVisible]);
+  const handleShowMore = (moreBool) => {
+    setShowMore(moreBool);
+    setMoreState(moreBool);
+  };
 
   return (
     <motion.div
@@ -569,202 +553,90 @@ export const ProjectDisplay2 = ({ contentData, moreData }) => {
           className={`flex w-[100%] h-[90%] m-[1%] lg:grid lg:grid-cols-1 lg:grid-rows-1 grid-rows-1 grid-cols-1
           `}
         >
-          {/* DESKTOP MODAL */}
-          {projModalVisible ? (
-            <DesktopModal
-              projModalKey={projModalKey}
-              setProjModalVisible={setProjModalVisible}
-              projModalContent={projModalContent}
-              setProjModalContent={setProjModalContent}
-              contentData={fullData.length == 4 ? contentData : fullData}
-              setProjModalKey={setProjModalKey}
+          <div className="block">
+            <MainCards
+              data={contentData}
+              moreData={moreData}
+              showMore={showMore}
+              setShowMore={handleShowMore}
+              containerRef={containerRef}
+              openModal={openModal}
             />
-          ) : (
-            <>
-              <div
-                ref={containerRef}
-                className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 lg:grid-cols-4 lg:grid-rows-1 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-4 grid-rows-1 "
-          `}
-              >
-                {contentData.map((data, key) => (
-                  <Card1
-                    key={key}
-                    index={key}
-                    data={data}
-                    containerRef={containerRef}
-                    setModalContent={setProjModalContent}
-                    setModalKey={setProjModalKey}
-                    setModalVisible={setProjModalVisible}
-                    className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%] `}
-                  />
-                ))}
-              </div>
-              {moreData ? (
-                <div className="w-full justify-center hidden lg:flex">
-                  {showMore ? (
-                    <div>
-                      <div
-                        ref={containerRef}
-                        className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 lg:grid-cols-4 lg:grid-rows-1 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-4 grid-rows-1 `}
-                      >
-                        {moreData.map((data, key) => (
-                          <Card1
-                            key={key}
-                            index={key + 4}
-                            data={data}
-                            containerRef={containerRef}
-                            setModalContent={setProjModalContent}
-                            setModalKey={setProjModalKey}
-                            setModalVisible={setProjModalVisible}
-                            className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%]`}
-                          />
-                        ))}
-                      </div>
-                      <div className="w-full hidden md:flex  justify-center ">
-                        <button
-                          onClick={() => {
-                            setShowMore(false);
-                          }}
-                          className="p-4 bg-gray-600 rounded-md "
-                        >
-                          Show Less...
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="w-full hidden md:flex justify-center">
-                      <button
-                        onClick={() => {
-                          setShowMore(true);
-                        }}
-                        className="p-4 bg-gray-600 rounded-md m-5"
-                      >
-                        More Projects...
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ) : null}
-            </>
-          )}
-
-          {/* MOBILE MODAL */}
-          {projModalVisible ? (
-            <MobileModal
-              setProjModalVisible={setProjModalVisible}
-              projModalContent={projModalContent}
-              contentData={contentData}
-              setProjModalKey={setProjModalKey}
-            />
-          ) : (
-            <></>
-          )}
+          </div>
         </div>
       </div>
     </motion.div>
   );
 };
 
-export const ProjectDisplay = ({ contentData }) => {
-  const [projModalContent, setProjModalContent] = useState(contentData[0]);
-  const [projModalVisible, setProjModalVisible] = useState(false);
-  const containerRef = useRef();
-
-  useEffect(() => {
-    if (projModalVisible && isMobile) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [projModalVisible]);
+export const MainCards = (props) => {
+  const { data, moreData, showMore, setShowMore, containerRef, openModal } =
+    props;
 
   return (
-    <motion.div>
-      <div className="flex w-[100%] max-w-[1100px] max-h-[60%] bg-gray-600 bg-opacity-25 rounded-b-xl z-10 mb-[10%]">
-        <div
-          className={`w-[100%] h-[90%] m-[1%] flex lg:grid lg:grid-cols-2 lg:grid-rows-2 grid-rows-1 grid-cols-1
+    <>
+      <div
+        ref={containerRef}
+        className={`m-1 lg:col-span-1 lg:row-span-2 lg:grid-cols-4 lg:grid-rows-1 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-4 grid-rows-1 "
           `}
-        >
-          <div
-            ref={containerRef}
-            className={`m-1 w-full h-full lg:col-span-1 lg:row-span-2 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-1 grid-rows-2 "
-            `}
-          >
-            {contentData.map((data, key) => (
-              <Card1
-                key={key}
-                data={data}
-                containerRef={containerRef}
-                setModalContent={setProjModalContent}
-                setModalVisible={setProjModalVisible}
-                className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%]`}
-              />
-            ))}
-          </div>
-
-          {/* DESKTOP MODAL */}
-          <div className="hidden col-span-1 row-span-2 lg:grid grid-rows-2 w-full">
-            <div className="row-span-1 items-center p-2   max-w-90%">
-              {projModalContent.element}
-            </div>
-
-            <div className="">
-              <IconBox1
-                data={projModalContent.icons}
-                title="Stack"
-                className="row-span-1 h-[30%] md:max-w-[100%]"
-              />
-              <h1 className=" text-xl font-semibold px-5 py-2">
-                <b>Role:</b> {projModalContent.role}
-              </h1>
-              <MotionP
-                className={`row-span-2 transition rounded-xl duration-500 border p-5 m-3 mt-0`}
+      >
+        {data.map((data, key) => (
+          <Card1
+            key={key}
+            index={key}
+            data={data}
+            containerRef={containerRef}
+            openModal={openModal}
+            className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%] `}
+          />
+        ))}
+      </div>
+      {/* MAIN CARDS */}
+      {moreData ? (
+        <div className="w-full justify-center hidden lg:flex">
+          {showMore ? (
+            <div>
+              <div
+                ref={containerRef}
+                className={`m-1 lg:col-span-1 lg:row-span-2 lg:grid-cols-4 lg:grid-rows-1 md:grid md:grid-cols-2 md:grid-rows-2 col-span-2 grid-cols-4 grid-rows-1 `}
               >
-                {projModalContent.description}
-              </MotionP>
-            </div>
-          </div>
-
-          {/* MOBILE MODAL */}
-          {projModalVisible ? (
-            <div className="fixed lg:hidden  top-0 left-0 z-50 rounded-xl size-[100%] bg-transparent backdrop-blur-3xl ">
-              <button
-                id="iconbutton"
-                className="m-5 border-white text-2xl"
-                onClick={() => {
-                  setProjModalVisible(false);
-                }}
-              >
-                <FaWindowClose />
-              </button>
-              <div className="max-w-[600px]">{projModalContent.element}</div>
-              <div className="max-w-[600px]">
-                <p
-                  className={`bg-slate-950 text-white text-sm hover:bg-black transition rounded-xl duration-500 border p-5 `}
-                >
-                  {projModalContent.description}
-                </p>
-                <h1 className="p-5 text-xl">Role: {projModalContent.role}</h1>
+                {moreData.map((data, key) => (
+                  <Card1
+                    key={key}
+                    index={key + 4}
+                    data={data}
+                    containerRef={containerRef}
+                    openModal={openModal}
+                    className={`col-span-1 row-span-1 p-2 w-[100%] h-[100%]`}
+                  />
+                ))}
               </div>
-              <div className="max-w-[600px]">
-                <IconBox1
-                  data={projModalContent.icons}
-                  title="Tech Stack"
-                  className="row-span-1 h-[20%] "
-                  classIcons="pt-14"
-                />
+              <div className="w-full hidden md:flex  justify-center ">
+                <button
+                  onClick={() => {
+                    setShowMore(false);
+                  }}
+                  className="p-4 bg-gray-600 rounded-md "
+                >
+                  Show Less...
+                </button>
               </div>
             </div>
           ) : (
-            <></>
+            <div className="w-full hidden md:flex justify-center">
+              <button
+                onClick={() => {
+                  setShowMore(true);
+                }}
+                className="p-4 bg-gray-600 rounded-md m-5"
+              >
+                More Projects...
+              </button>
+            </div>
           )}
         </div>
-      </div>
-    </motion.div>
+      ) : null}
+    </>
   );
 };
 
@@ -775,40 +647,32 @@ export const MobileModal = ({
   contentData,
 }) => {
   return (
-    <div className="fixed lg:hidden top-0 justify-items-center left-0 z-50 rounded-xl size-[100%] bg-transparent backdrop-blur-3xl  ">
+    <div className="fixed md:hidden overflow-hidden top-0 justify-items-center left-0 z-50 rounded-xl size-[100%] bg-transparent backdrop-blur-3xl p-2">
       <button
-        id="iconbutton"
-        className="m-5 border-white text-2xl"
+        className=" border-white border-[1px] gb-black text-2xl m-2 p-2"
         onClick={() => {
           setProjModalVisible(false);
         }}
       >
         <FaWindowClose />
       </button>
-      <div className="grid grid-rows-7  md:align-center size-full md:justify-center">
-        <div className="row-span-3 justify-center max-w-[600px] w-full">
-          {projModalContent.element}
-        </div>
-        <div className="row-span-2 max-w-[600px]">
-          <div className="row-span-1 justify-center max-w-[600px]">
-            {projModalContent.element2}
-          </div>
+      <div className="flex flex-col size-full p-1">
+        <div className="flex flex-col px-2">{projModalContent.element}</div>
+        <div className="flex flex-col items-center">
+          <div className="">{projModalContent.element2}</div>
 
-          <h1 className="flex justify-center pt-10 text-xl">
-            Role: {projModalContent.role}
-          </h1>
+          <h1 className="text-xl">Role: {projModalContent.role}</h1>
           <p
-            className={`flex row-span-1 bg-slate-950 text-white text-sm hover:bg-black transition rounded-xl duration-500 hover:border m-3 p-5 `}
+            className={`bg-slate-950 text-white text-xs hover:bg-black transition rounded-xl duration-500 hover:border m-2 p-5 `}
           >
             {projModalContent.description}
           </p>
-        </div>
-        <div className="row-span-1 max-w-[600px]">
           <IconBox1
             data={projModalContent.icons}
             title="Tech Stack"
-            className="row-span-1 h-[100%] "
-            classIcons="pt-14"
+            className="w-full relative"
+            classText="absolute right-0"
+            classIcons="static left-0 m-2 p-1"
           />
         </div>
       </div>
@@ -885,7 +749,7 @@ export const DesktopModal = ({
           </div>
         </div>
 
-        <motion.div className="hidden col-span-2 row-span-2 lg:grid grid-cols-3 w-full p-2 bg-zinc-600  rounded-xl ">
+        <motion.div className="hidden col-span-2 row-span-2 md:grid grid-cols-3 w-full p-2 bg-zinc-600  rounded-xl ">
           <div className="row-span-1 col-span-2 items-center p-4 max-w-95%">
             {projModalContent.element}
           </div>

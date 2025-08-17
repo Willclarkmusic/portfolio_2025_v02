@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
@@ -28,6 +28,7 @@ import { AiOutlineCopyright } from "react-icons/ai";
 import { FaLocationDot, FaCircleDot } from "react-icons/fa6";
 
 import Menu from "../components/Menu.jsx";
+import UniversalModal from "../components/UniversalModal.jsx";
 
 function HomePage() {
   const homeRef = useRef(null);
@@ -37,13 +38,32 @@ function HomePage() {
   const eventsRef = useRef(null);
   const refArray = [homeRef, aboutRef, projectsRef, gamesRef, eventsRef];
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+
+  const openModal = (content) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
+
   return (
     <div
       id="scrollSnapContainer"
-      className="flex flex-col items-center overflow-hidden bg-zinc-800 bg-opacity-90 "
+      className={`flex flex-col items-center overflow-hidden bg-zinc-800 bg-opacity-90 ${
+        isModalOpen ? " " : ""
+      } `}
     >
       <Menu refArray={refArray} />
-
+      <UniversalModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        initialContent={modalContent}
+      />
       <div ref={homeRef}>
         <HomeSection />
       </div>
@@ -52,13 +72,13 @@ function HomePage() {
       </div>
 
       <div ref={projectsRef}>
-        <ProjectsSection />
+        <ProjectsSection openModal={openModal} />
       </div>
       <div ref={gamesRef}>
-        <RTGameSection />
+        <RTGameSection openModal={openModal} />
       </div>
       <div ref={eventsRef}>
-        <EventSection />
+        <EventSection openModal={openModal} />
       </div>
       <Footer />
     </div>
@@ -196,13 +216,13 @@ const AboutSection = () => {
             <Accordian2 data={WorkExperiences[3]} />
           </div>
         </div>
-        <div className="block lg:hidden mb-10 ml-5">
+        <div className="block lg:hidden mb-10 ">
           <IconBox1
-            className={"h-[45vh] w-full gap-y-10 "}
+            className={"h-[50vh] w-full gap-y-10 "}
             classIcons="pt-24"
             title={"Skills"}
             data={MobileSkillIcons}
-            drag={false}
+            drag={true}
           />
         </div>
 
@@ -213,7 +233,7 @@ const AboutSection = () => {
           <MotionH1 container={skillsContainer} className={"items-center"}>
             Skills
           </MotionH1>
-          <div className="grid grid-rows-2 grid-cols2 grid-flow-col mb-5">
+          <div className="grid grid-rows-2 grid-cols-2  mb-5">
             <IconBox1
               className={"row-span-1 hover:bg-black min-h-[200px]"}
               title={"BACK-END"}
@@ -221,7 +241,7 @@ const AboutSection = () => {
               drag={false}
             />
             <IconBox1
-              className={" row-span-1 hover:bg-black"}
+              className={"row-span-1 hover:bg-black"}
               title={"OTHER TECH"}
               data={OtherTechIcons}
               drag={false}
@@ -246,7 +266,8 @@ const AboutSection = () => {
   );
 };
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ openModal }) => {
+  const [moreState, setMoreState] = useState(false);
   return (
     <>
       <Section className="justify-start">
@@ -254,29 +275,45 @@ const ProjectsSection = () => {
         <ProjectDisplay2
           contentData={ProjectsData}
           moreData={moreProjectsData}
+          moreState={moreState}
+          setMoreState={setMoreState}
+          openModal={openModal}
         />
       </Section>
     </>
   );
 };
 
-const RTGameSection = () => {
+const RTGameSection = ({ openModal }) => {
+  const [moreState, setMoreState] = useState(false);
   return (
     <>
       <Section className="justify-start">
-        <TitleBar title="Real-Time & Game Dev" />
-        <ProjectDisplay2 contentData={GamesData} moreData={moreGamesData} />
+        <TitleBar title="Real-Time" />
+        <ProjectDisplay2
+          contentData={GamesData}
+          moreData={moreGamesData}
+          moreState={moreState}
+          setMoreState={setMoreState}
+          openModal={openModal}
+        />
       </Section>
     </>
   );
 };
 
-const EventSection = () => {
+const EventSection = ({ openModal }) => {
+  const [moreState, setMoreState] = useState(false);
   return (
     <>
       <Section className="justify-start">
         <TitleBar title="Event Tech" />
-        <ProjectDisplay2 contentData={EventsData} />
+        <ProjectDisplay2
+          contentData={EventsData}
+          moreState={moreState}
+          setMoreState={setMoreState}
+          openModal={openModal}
+        />
       </Section>
     </>
   );

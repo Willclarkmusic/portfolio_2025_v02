@@ -401,8 +401,11 @@ export const Card1 = ({
       <div className="w-full h-full rounded-2xl backdrop-blur-lg bg-slate-950 hover:bg-black transition duration-500 ">
         <div className={`rounded-xl h-[65%]`}>
           <img
-            src={data.img}
+            src={data.thumbnail || data.img || (data.images && data.images[0])}
             className={`rounded-xl h-full w-full object-cover`}
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
           />
         </div>
         <div className="p-2 flex-col ">

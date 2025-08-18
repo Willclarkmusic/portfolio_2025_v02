@@ -16,7 +16,7 @@ function ParticleSystem(props) {
     <div className="size-full canvasContainer">
       <Canvas
         className="overflow-hidden"
-        alpha={true}
+        alpha
         flat={false}
         shadows
         dpr={[1, 1.5]}

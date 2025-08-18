@@ -1,20 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
 import {
-  moreGamesData,
-  GamesData,
-  ProjectsData,
   FrontEndIcons,
   BackEndIcons,
   OtherTechIcons,
   OtherOtherIcons,
   MobileSkillIcons,
-  EventsData,
-  moreProjectsData,
   WorkExperiences,
 } from "../components/Content";
+import { useProjectData } from "../hooks/useProjectData";
 import {
   IconBox1,
   ProjectDisplay2,
@@ -31,15 +27,29 @@ import Menu from "../components/Menu.jsx";
 import UniversalModal from "../components/UniversalModal.jsx";
 
 function HomePage() {
+  const { data, loading } = useProjectData();
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
-  const projectsRef = useRef(null);
-  const gamesRef = useRef(null);
-  const eventsRef = useRef(null);
-  const refArray = [homeRef, aboutRef, projectsRef, gamesRef, eventsRef];
-
+  const categoryRefsContainer = useRef([]);
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+
+  // Create refs array dynamically based on categories
+  useEffect(() => {
+    if (data?.categories) {
+      // Create refs without using hooks in a loop
+      const newRefs = data.categories.map(
+        (_, index) => categoryRefsContainer.current[index] || React.createRef()
+      );
+      categoryRefsContainer.current = newRefs;
+    }
+  }, [data?.categories]);
+
+  // Create refArray safely
+  const refArray = React.useMemo(() => {
+    return [homeRef, aboutRef, ...(categoryRefsContainer.current || [])];
+  }, [homeRef, aboutRef]);
 
   const openModal = (content) => {
     setModalContent(content);
@@ -50,6 +60,14 @@ function HomePage() {
     setIsModalOpen(false);
     setModalContent(null);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-800 flex items-center justify-center">
+        <div className="text-white text-xl">Loading portfolio...</div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -71,15 +89,17 @@ function HomePage() {
         <AboutSection />
       </div>
 
-      <div ref={projectsRef}>
-        <ProjectsSection openModal={openModal} />
-      </div>
-      <div ref={gamesRef}>
-        <RTGameSection openModal={openModal} />
-      </div>
-      <div ref={eventsRef}>
-        <EventSection openModal={openModal} />
-      </div>
+      {/* Dynamic Project Categories */}
+      {data?.categories
+        ?.sort((a, b) => a.order - b.order)
+        .map((category, index) => (
+          <div key={category.id} ref={categoryRefsContainer.current[index]}>
+            <DynamicProjectSection 
+              category={category} 
+              openModal={openModal} 
+            />
+          </div>
+        ))}
       <Footer />
     </div>
   );
@@ -266,56 +286,24 @@ const AboutSection = () => {
   );
 };
 
-const ProjectsSection = ({ openModal }) => {
+const DynamicProjectSection = ({ category, openModal }) => {
   const [moreState, setMoreState] = useState(false);
+  
+  // Split projects into main display and "more" based on maxDisplayCount
+  const mainProjects = category.projects.slice(0, category.maxDisplayCount);
+  const moreProjects = category.projects.slice(category.maxDisplayCount);
+  
   return (
-    <>
-      <Section className="justify-start">
-        <TitleBar title="Programming Projects"></TitleBar>
-        <ProjectDisplay2
-          contentData={ProjectsData}
-          moreData={moreProjectsData}
-          moreState={moreState}
-          setMoreState={setMoreState}
-          openModal={openModal}
-        />
-      </Section>
-    </>
-  );
-};
-
-const RTGameSection = ({ openModal }) => {
-  const [moreState, setMoreState] = useState(false);
-  return (
-    <>
-      <Section className="justify-start">
-        <TitleBar title="Real-Time" />
-        <ProjectDisplay2
-          contentData={GamesData}
-          moreData={moreGamesData}
-          moreState={moreState}
-          setMoreState={setMoreState}
-          openModal={openModal}
-        />
-      </Section>
-    </>
-  );
-};
-
-const EventSection = ({ openModal }) => {
-  const [moreState, setMoreState] = useState(false);
-  return (
-    <>
-      <Section className="justify-start">
-        <TitleBar title="Event Tech" />
-        <ProjectDisplay2
-          contentData={EventsData}
-          moreState={moreState}
-          setMoreState={setMoreState}
-          openModal={openModal}
-        />
-      </Section>
-    </>
+    <Section className="justify-start">
+      <TitleBar title={category.title} />
+      <ProjectDisplay2
+        contentData={mainProjects}
+        moreData={moreProjects.length > 0 ? moreProjects : null}
+        moreState={moreState}
+        setMoreState={setMoreState}
+        openModal={openModal}
+      />
+    </Section>
   );
 };
 

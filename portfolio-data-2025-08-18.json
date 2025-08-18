@@ -1,0 +1,1193 @@
+{
+  "version": "1.3",
+  "categories": [
+    {
+      "id": "programming-projects",
+      "title": "Programming Projects",
+      "maxDisplayCount": 4,
+      "order": 0,
+      "projects": [
+        {
+          "id": "project-1755499916423",
+          "title": "The End Point",
+          "role": "Full-stack Developer",
+          "description": "The EndPoint is a full-stack, real-time messaging and social platform built with React, Vite, and Tailwind. It features a microservices architecture leveraging Firebase's suite of services—including Firestore for a schemaless database and Cloud Functions for back-end logic. The core innovation lies in its AI integration, where a Python microservice on Google Cloud Run uses LangGraph and external APIs to power user-definable AI agents and collaborative generative content creation, showcasing advanced AI development.",
+          "img": "/images/theEndPoint1.png",
+          "thumbnail": "",
+          "images": [],
+          "icons": [
+            {
+              "name": "TypeScript"
+            },
+            {
+              "name": "React"
+            }
+          ],
+          "buttons": []
+        },
+        {
+          "title": "Gen Beats - Gen AI",
+          "role": "AI/ML Developer",
+          "description": "GenBeats is a SaaS app that provides AI generated listening and visual experiences. I have build boutique music generation models in Torch Audio and implemented CUDA GPU excelleration for real-time inference. Using R2 for object storage, MongoDB for noSQL metadata, FastAPI on EC2 for scalability. This app is in the early stages of development but I am excited to see it unfold.",
+          "img": "images/GenBeats2.png",
+          "icons": [
+            {
+              "name": "Pytorch"
+            },
+            {
+              "name": "React"
+            },
+            {
+              "name": "Express JS"
+            },
+            {
+              "name": "FastAPI"
+            },
+            {
+              "name": "TypeScript"
+            },
+            {
+              "name": "Python"
+            },
+            {
+              "name": "Node.js"
+            },
+            {
+              "name": "Framer Motion"
+            },
+            {
+              "name": "CloudFlare"
+            },
+            {
+              "name": "Nvidia CUDA"
+            }
+          ],
+          "id": "project-1755496750722-0"
+        },
+        {
+          "title": "Chromatic Music - Database",
+          "role": "Full-stack Developer / SQL",
+          "description": "This app is a demonstration with creating a REST api connected to an SQL database as an internal tool for inventory managment.  The React front end makes calls to the Express backend which is connected to a database that I created from scratch.  The SQL implements Join and Cascade functionality as well as having 1:M and M:N relationships. All hosted on AWS: EC2, Aurora",
+          "img": "images/ChromaMusic.jpg",
+          "icons": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "Express JS"
+            },
+            {
+              "name": "REST Api"
+            },
+            {
+              "name": "TypeScript"
+            },
+            {
+              "name": "Node.js"
+            },
+            {
+              "name": "AWS"
+            }
+          ],
+          "id": "project-1755496750722-1"
+        },
+        {
+          "title": "Bass Bot - Synthesizer Plugin",
+          "role": "Audio DSP Programmer",
+          "description": "This monophonic synthesizer that I created is a power-house of unique audio DSP. I created it in C++ using the JUCE audio framework. One of my goals as a Software Developer is to create audio tools for other creatives to use.  Visit the github to download the code and the Vst plugins for your favorite DAW.",
+          "img": "./images/BassBotLogo1.png",
+          "icons": [
+            {
+              "name": "C++"
+            },
+            {
+              "name": "Juce Audio DSP"
+            },
+            {
+              "name": "Pro Tools"
+            }
+          ],
+          "id": "project-1755496750722-2"
+        },
+        {
+          "title": "React Three Fiber",
+          "role": "Front-end Develeoper",
+          "description": "This Website was built with React Three Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
+          "img": "images/CF_Site.png",
+          "icons": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "Three.js"
+            },
+            {
+              "name": "Framer Motion"
+            },
+            {
+              "name": "Tailwind"
+            },
+            {
+              "name": "AWS"
+            }
+          ],
+          "id": "project-1755496750722-3"
+        },
+        {
+          "title": "Sue Chef: Recipe Social",
+          "role": "Front-end Engineer | UX Researcher",
+          "description": "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
+          "img": "images/SueChef.png",
+          "icons": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "Figma"
+            },
+            {
+              "name": "Project Management"
+            }
+          ],
+          "id": "project-1755496750722-4"
+        },
+        {
+          "title": "Atomic Chess",
+          "role": "Python Developer",
+          "description": "Atomic Chess is a variant of chess where when a piece is captured, and explosion happens, killing all pieces adjacent to the capture. I created this program as a portfolio piece in my intro to Python class at OSU.",
+          "img": "./images/Chess1.png",
+          "icons": [
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "Wwise"
+            },
+            {
+              "name": "C#"
+            }
+          ],
+          "id": "project-1755496750722-5"
+        }
+      ]
+    },
+    {
+      "id": "real-time",
+      "title": "Real-Time",
+      "maxDisplayCount": 4,
+      "order": 1,
+      "projects": [
+        {
+          "title": "Paleo Alto",
+          "role": "CAD Designer | Project Manager",
+          "description": "PaleoAlto was a collaboration between Colour Feeders and the digital-art studio, Marpi Studio, for the art festival 'CODE: Art' in the downtown public spaces of Palo Alto, CA. I led the construction and CAD design for this piece while my company Colour Feeders handled the technology and computing power.",
+          "img": "./images/PaleoAlto2.webp",
+          "icons": [
+            {
+              "name": "VectorWorks"
+            },
+            {
+              "name": "Project Management"
+            },
+            {
+              "name": "Unity 3D"
+            }
+          ],
+          "id": "project-1755496750722-0"
+        },
+        {
+          "title": "Artechouse",
+          "role": "Render Farm Architect",
+          "description": "Artechouse is one of the premiere digital-art spaces in the world with locations on the east coast and pop-ups internationally. I constructed dozens of the highest level, enterprise-server computer nodes to power real-time art installations and single-node art projects for their efforts.",
+          "img": "./images/ATH1.jpg",
+          "icons": [
+            {
+              "name": "Touch Designer"
+            },
+            {
+              "name": "Server Tech"
+            },
+            {
+              "name": "Nvidia G-Sync"
+            }
+          ],
+          "id": "project-1755496750722-1"
+        },
+        {
+          "title": "Interactive Art",
+          "role": "Digital Media Artist",
+          "description": "I have made a lot of interactive art over the years using a variety of software platforms and programming languages.  Touchdesigner, Unity and Unreal are my main tool sets.  These pieces have been exhibited at different music festivals, tech-art shows and more. This piece was featured on a large LED wall at Mutek 2020 in San Francisco.  See more of my art in the Youtube playlist below.",
+          "img": "./images/Goo1.png",
+          "icons": [
+            {
+              "name": "Touch Designer"
+            },
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "C#"
+            },
+            {
+              "name": "Server Tech"
+            },
+            {
+              "name": "Nvidia G-Sync"
+            }
+          ],
+          "id": "project-1755496750722-2"
+        },
+        {
+          "title": "SynthLand",
+          "role": "Game Developer | Audio Programmer",
+          "description": "This game level is part of a prototype I built for a game called Synthland that uses interactive gameplay with procedural audio programmed in Unreal Engine 5's, MetaSounds. The audio is generated in real-time based on interactions that the user has with the game's environment.",
+          "img": "./images/MetaSounds1.png",
+          "icons": [
+            {
+              "name": "Unreal Engine 5"
+            },
+            {
+              "name": "MetaSounds"
+            },
+            {
+              "name": "C++"
+            }
+          ],
+          "id": "project-1755496750722-3"
+        },
+        {
+          "title": "Ninja Frog",
+          "role": "Game Developer | Instructor",
+          "description": "Ninja Frog is a 2D platformer game that I developed as part of the ciriculum for my game audio course taught at Pyramind Institute.  I created this game in Unity using free assets so that students could easily implement their sound design using Wwise and C#.",
+          "img": "./images/ChickenGame.png",
+          "icons": [
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "C#"
+            },
+            {
+              "name": "Wwise"
+            },
+            {
+              "name": "Project Management"
+            }
+          ],
+          "id": "project-1755496750722-4"
+        },
+        {
+          "title": "The Marble Game",
+          "role": "Game Developer",
+          "description": "The Marble Game was built for a game jam where the theme was to rapid prototype: make as many levels based around one mechanic as you can.  ",
+          "img": "./images/MarblesMagnets.png",
+          "icons": [
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "Wwise"
+            },
+            {
+              "name": "C#"
+            }
+          ],
+          "id": "project-1755496750722-5"
+        },
+        {
+          "title": "Monsters in Trucks",
+          "role": "Game Developer",
+          "description": "The Marble Game was built for a game jam where the theme was to rapid prototype: make as many levels based around one mechanic as you can.  ",
+          "img": "./images/MonsterTrucks1.png",
+          "icons": [
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "Wwise"
+            },
+            {
+              "name": "C#"
+            }
+          ],
+          "id": "project-1755496750722-6"
+        },
+        {
+          "title": "Jelly Jam: 1st place",
+          "role": "Game Developer | Sound Design",
+          "description": "Took first place in multiple categories in the 2023 Jelly Jam as part of the P1-Open Metaverse community. My team of four created a 3d racing game in Unity using custom modeling, sound effects and environmental assets all within 3 days. I contributed programming and custom sound effects.",
+          "img": "./images/JellyJam.webp",
+          "icons": [
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "C#"
+            },
+            {
+              "name": "Wwise"
+            },
+            {
+              "name": "Project Management"
+            }
+          ],
+          "id": "project-1755496750722-7"
+        }
+      ]
+    },
+    {
+      "id": "event-tech",
+      "title": "Event Tech",
+      "maxDisplayCount": 4,
+      "order": 2,
+      "projects": [
+        {
+          "title": "Colour Feeders",
+          "role": "Digital Media Artist | AV Engineer",
+          "description": "Colour Feeders is a technology arts community of multi-disiplinary artists based in San Francisco. Specializing in hardware solutions and real-time, audio-visual experiences. Colour Feeders has worked in some of most cutting edge art spaces. Founded and led by Will Clark.",
+          "img": "./images/Logo1.png",
+          "icons": [
+            {
+              "name": "VectorWorks"
+            },
+            {
+              "name": "Project Management"
+            },
+            {
+              "name": "Unity 3D"
+            }
+          ],
+          "id": "project-1755496750722-0"
+        },
+        {
+          "title": "Maya Jane Coles: Menagerie",
+          "role": "Stage Designer | Visual Artist",
+          "description": "This is a stage I designed was for the music festival 'Menagerie 2022'.  I also created and performed the real-time, visual content on the screens and lighting. There are more examples of my visual art in the link below!.",
+          "img": "./images/Menag22.png",
+          "icons": [
+            {
+              "name": "VectorWorks"
+            },
+            {
+              "name": "Project Management"
+            },
+            {
+              "name": "Resolume VJ"
+            },
+            {
+              "name": "Touch Designer"
+            },
+            {
+              "name": "Unity 3D"
+            },
+            {
+              "name": "Adobe CC"
+            }
+          ],
+          "id": "project-1755496750722-1"
+        },
+        {
+          "title": "Kaskade: Menagerie",
+          "role": "Stage Designer | Visual Artist",
+          "description": "This is a stage I designed was for the festival 'Menagerie 2023' with headlining artist Kaskade.  I also was the project manager for this stage and also created and performed the real-time, visual content on the screens. There are more examples of my visual art in the link below!.",
+          "img": "./images/Menag2022.jpg",
+          "icons": [
+            {
+              "name": "VectorWorks"
+            },
+            {
+              "name": "Project Management"
+            },
+            {
+              "name": "Resolume VJ"
+            },
+            {
+              "name": "Touch Designer"
+            },
+            {
+              "name": "Unity 3D"
+            },
+            {
+              "name": "Adobe CC"
+            }
+          ],
+          "id": "project-1755496750722-2"
+        },
+        {
+          "title": "Diplo: Menagerie",
+          "role": "Stage Designer | Visual Artist",
+          "description": "This is a stage I designed was for the music festival 'Menagerie 2021' with headlining artist Diplo.  I also was the project manager for this stage and I created and performed the real-time, visual content on the screens. There are more examples of my visual art in the link below!.",
+          "img": "./images/Diplo1.png",
+          "icons": [
+            {
+              "name": "VectorWorks"
+            },
+            {
+              "name": "Project Management"
+            },
+            {
+              "name": "Resolume VJ"
+            },
+            {
+              "name": "Touch Designer"
+            },
+            {
+              "name": "Unity 3D"
+            },
+            {
+              "name": "Adobe CC"
+            }
+          ],
+          "id": "project-1755496750722-3"
+        }
+      ]
+    }
+  ],
+  "masterSkills": [
+    {
+      "name": "JavaScript",
+      "id": "frontend-0",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "TypeScript",
+      "id": "frontend-1",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "HTML/CSS",
+      "id": "frontend-2",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "React",
+      "id": "frontend-3",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Three.js",
+      "id": "frontend-4",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "OpenGL",
+      "id": "frontend-5",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Framer Motion",
+      "id": "frontend-6",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Tailwind",
+      "id": "frontend-7",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "ToneJS",
+      "id": "frontend-8",
+      "category": "Frontend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Python",
+      "id": "backend-0",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "C++",
+      "id": "backend-1",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "C#",
+      "id": "backend-2",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "FastAPI",
+      "id": "backend-3",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "NodeJS",
+      "id": "backend-4",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "PyTorch",
+      "id": "backend-5",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Hugging Face",
+      "id": "backend-6",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Express JS",
+      "id": "backend-7",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "AWS",
+      "id": "backend-8",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Meta XR",
+      "id": "backend-9",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "OpenGl",
+      "id": "backend-10",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Mongo DB",
+      "id": "backend-11",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Juce Audio DSP",
+      "id": "backend-12",
+      "category": "Backend",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Visual Studio",
+      "id": "other-0",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Unity 3D",
+      "id": "other-1",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Unreal Engine",
+      "id": "other-2",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Wwise",
+      "id": "other-3",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Adobe CC",
+      "id": "other-4",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Touch Designer",
+      "id": "other-5",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Resolume VJ",
+      "id": "other-6",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Pro Tools",
+      "id": "other-7",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "VectorWorks",
+      "id": "other-8",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Computer Build",
+      "id": "other-9",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Nvidia",
+      "id": "other-10",
+      "category": "Other Tech",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Bass Guitar",
+      "id": "personal-0",
+      "category": "Personal",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Rock Climbing",
+      "id": "personal-1",
+      "category": "Personal",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    {
+      "name": "Mario Kart",
+      "id": "personal-2",
+      "category": "Personal",
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    }
+  ],
+  "aboutData": {
+    "workExperiences": [
+      {
+        "title": "Software Engineer",
+        "experiences": [
+          {
+            "company": "Stealth Startup",
+            "title": "Backend Software Engineer Intern",
+            "meta": "Remote | Mar 2025 - Present",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Partnering weekly with a founding engineer to explore web app infrastructure including React, Fast API, and Figma. ",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Gaining hands-on experience with real-world development workflows, information security, and deployment strategies ",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Participating with design and technical discussions to deepen understanding of modern web frameworks and tools."
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          },
+          {
+            "company": "Oregon State University",
+            "title": "Bachelor of Science | Computer Science",
+            "meta": "Expected grad Mar 2026",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Dean's list: Honor roll | All terms | GPA 3.9",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  " ▪ Coursework: Algorithms, Data Structures, Databases, Web Dev, Discrete Math, Linear Algebra, Assembly x86, Operating Systems"
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          }
+        ]
+      },
+      {
+        "title": "Audio Visual Engineer",
+        "experiences": [
+          {
+            "company": "Colour Feeders",
+            "title": "AV Engineer / Media Artist",
+            "meta": "2016 - Present",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": "▪ Built Python and C++ / C# tools for real-time multimedia processing and infrastructure management and troubleshooting. ▪ Constructed high-performance computing clusters with Super Micro, Intel CPUs and enterprise Nvidia GPUs, for use in real-time audio-visual systems and 3D video rendering in digital media-based art galleries and interactive installations. ▪ Led full-stack development of interactive installations, leveraging Unity, Node.js, React, and OpenGL frameworks."
+              },
+              "_owner": null,
+              "_store": {}
+            },
+            "elements": {
+              "type": "button",
+              "key": null,
+              "ref": null,
+              "props": {
+                "id": "standbutton",
+                "className": "group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out",
+                "children": [
+                  {
+                    "type": "span",
+                    "key": null,
+                    "ref": null,
+                    "props": {
+                      "className": "p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out",
+                      "children": "Visit Website"
+                    },
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  {
+                    "key": null,
+                    "ref": null,
+                    "props": {
+                      "className": "text-white text-3xl cursor-pointer group-hover:text-blue-400"
+                    },
+                    "_owner": null,
+                    "_store": {}
+                  }
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          },
+          {
+            "company": "The Midway SF",
+            "title": "AV Technology Lead Engineer",
+            "meta": "2017 - 2024",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Established and led technology systems, engineering teams, and AV operations for a large-scale event venue and creative complex.",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Built complex, interconnected systems for lighting, audio, video and computer networking. Estimated total budget of over $3 million. ",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Designed and implemented multi-node, server-based computing environments for digital multimedia installations."
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            },
+            "elements": {
+              "type": "button",
+              "key": null,
+              "ref": null,
+              "props": {
+                "id": "standbutton",
+                "className": "group flex m-2 items-center border p-2 rounded-xl transition-all duration-500 ease-in-out",
+                "children": [
+                  {
+                    "type": "span",
+                    "key": null,
+                    "ref": null,
+                    "props": {
+                      "className": "p-2 text-white text-sm  opacity-100  transition-all duration-300 ease-in-out",
+                      "children": "Visit Website"
+                    },
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  {
+                    "key": null,
+                    "ref": null,
+                    "props": {
+                      "className": "text-white text-3xl cursor-pointer group-hover:text-blue-400"
+                    },
+                    "_owner": null,
+                    "_store": {}
+                  }
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          },
+          {
+            "company": "Berklee College of Music",
+            "title": "Master's of Arts | Music Technology Innovation",
+            "meta": "grad 2014",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Dean's list: Honor roll | All terms | GPA 3.9",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  " ▪ Coursework: Large format studio recording, Music Production, Programming in MaxMSP, Event production, Live performance, DJing"
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          }
+        ]
+      },
+      {
+        "title": "Game Developer",
+        "experiences": [
+          {
+            "company": "P1-OM",
+            "title": "Technical Sound Designer",
+            "meta": "Jan 2022 - Jun 2023",
+            "description": "\n          ▪\tContributed to an open-source company, developing games by early career game developers for a wide audience."
+          },
+          {
+            "company": "Manicat Studios",
+            "title": "Game Developer / Sound Designer",
+            "meta": "2023",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Game Jam studio created by members of P1-OM",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Won over $10k in prizes as a team"
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          }
+        ]
+      },
+      {
+        "title": "Instructor in Audio Technology",
+        "experiences": [
+          {
+            "company": "SAE Institute: Expressions",
+            "title": "Collegiate level instructor",
+            "meta": "2014 - 2016",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Partnering weekly with a founding engineer to explore web app infrastructure including React, Fast API, and Figma. ",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  " ▪ Gaining hands-on experience with real-world development workflows, information security, and deployment strategies ",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Participating with design and technical discussions to deepen understanding of modern web frameworks and tools."
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          },
+          {
+            "company": "Pyramind",
+            "title": "Ableton Live instructor",
+            "meta": "2015 - 2024",
+            "description": {
+              "key": null,
+              "ref": null,
+              "props": {
+                "children": [
+                  "▪ Led a course in Ableton live with up to 20 students in a class",
+                  " ",
+                  {
+                    "type": "br",
+                    "key": null,
+                    "ref": null,
+                    "props": {},
+                    "_owner": null,
+                    "_store": {}
+                  },
+                  "▪ Explored topics in advanced sound design, music production and more"
+                ]
+              },
+              "_owner": null,
+              "_store": {}
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -404,7 +404,7 @@ export const Card1 = ({
             src={data.thumbnail || data.img || (data.images && data.images[0])}
             className={`rounded-xl h-full w-full object-cover`}
             onError={(e) => {
-              e.target.style.display = 'none';
+              e.target.style.display = "none";
             }}
           />
         </div>
@@ -420,7 +420,7 @@ export const Card1 = ({
           <div className="flex justify-center mt-4 text-xs">
             <button
               id="standbutton"
-              className="text-white min-w-[90%] p-3 text-xl cursor-pointer group-hover:text-blue-400"
+              className="text-white min-w-[96%] p-2 text-xl cursor-pointer group-hover:text-blue-400"
               onClick={() => openModal(data)}
             >
               Details...

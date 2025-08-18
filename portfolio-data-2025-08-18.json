@@ -23,7 +23,13 @@
               "name": "React"
             }
           ],
-          "buttons": []
+          "buttons": [
+            {
+              "title": "Join The EndPoint",
+              "url": "https://theendpoint.xyz/",
+              "icon": "globe"
+            }
+          ]
         },
         {
           "title": "Gen Beats - Gen AI",
@@ -62,13 +68,128 @@
               "name": "Nvidia CUDA"
             }
           ],
-          "id": "project-1755496750722-0"
+          "id": "project-1755496750722-0",
+          "thumbnail": "",
+          "images": [],
+          "buttons": [
+            {
+              "title": "Listen",
+              "url": "http://genbeats.com/",
+              "icon": "music"
+            }
+          ]
         },
         {
-          "title": "Chromatic Music - Database",
+          "title": "Bass Bot Synthesizer",
+          "role": "Audio DSP Programmer",
+          "description": "This monophonic synthesizer that I created is a power-house of unique audio DSP. I created it in C++ using the JUCE audio framework. One of my goals as a Software Developer is to create audio tools for other creatives to use.  Visit the github to download the code and the Vst plugins for your favorite DAW.",
+          "img": "",
+          "icons": [
+            {
+              "name": "C++"
+            },
+            {
+              "name": "Juce Audio DSP"
+            },
+            {
+              "name": "Pro Tools"
+            }
+          ],
+          "id": "project-1755496750722-2",
+          "thumbnail": "images/BassBot.png",
+          "images": [],
+          "buttons": [
+            {
+              "title": "Github",
+              "url": "https://github.com/Willclarkmusic/BassBot",
+              "icon": "github"
+            }
+          ],
+          "youtubeUrl": "https://www.youtube.com/watch?v=BDI37ZLwD9U"
+        },
+        {
+          "title": "Sue Chef: Recipe Social",
+          "role": "Front-end Engineer | UX Researcher",
+          "description": "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
+          "img": "images/SueChef.png",
+          "icons": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "Figma"
+            },
+            {
+              "name": "Project Management"
+            }
+          ],
+          "id": "project-1755496750722-4",
+          "thumbnail": "",
+          "images": [],
+          "buttons": [
+            {
+              "title": "Figma",
+              "url": "https://www.figma.com/proto/3q80IKS5vI9E7cUj7otYWq/AI-cooking-app---Final-Proto?node-id=1-3&starting-point-node-id=1%3A3&t=LzCAzhcdayUnp7jW-1",
+              "icon": "globe"
+            }
+          ]
+        },
+        {
+          "title": "React Three Fiber",
+          "role": "Front-end Develeoper",
+          "description": "This Website was built with React Three Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
+          "img": "images/CF_Site2.png",
+          "icons": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "Three.js"
+            },
+            {
+              "name": "Framer Motion"
+            },
+            {
+              "name": "Tailwind"
+            },
+            {
+              "name": "AWS"
+            }
+          ],
+          "id": "project-1755496750722-3",
+          "thumbnail": "images/CF_Site.png",
+          "images": [],
+          "youtubeUrl": "",
+          "buttons": []
+        },
+        {
+          "title": "Atomic Chess",
+          "role": "Python Developer",
+          "description": "Atomic Chess is a variant of chess where when a piece is captured, and explosion happens, killing all pieces adjacent to the capture. I created this program as a portfolio piece in my intro to Python class at OSU.",
+          "img": "",
+          "icons": [
+            {
+              "name": "Unity"
+            },
+            {
+              "name": "Wwise"
+            },
+            {
+              "name": "C#"
+            }
+          ],
+          "id": "project-1755496750722-5",
+          "thumbnail": "./images/Chess1.png",
+          "images": [],
+          "youtubeUrl": "",
+          "customHtml": "      <div className=\"overflow-hidden justify-center p-2\">\n        <div className=\"size-full aspect-w-16 aspect-h-9 min-h-40 overflow-hidden justify-center rounded-xl\">\n          <iframe\n            src=\"https://trinket.io/embed/python3/f6225c469bb9?outputOnly=true&runOption=run&start=result\"\n            allowFullScreen\n          />\n        </div>\n      </div>",
+          "buttons": []
+        },
+        {
+          "title": "Chromatic Music",
           "role": "Full-stack Developer / SQL",
           "description": "This app is a demonstration with creating a REST api connected to an SQL database as an internal tool for inventory managment.  The React front end makes calls to the Express backend which is connected to a database that I created from scratch.  The SQL implements Join and Cascade functionality as well as having 1:M and M:N relationships. All hosted on AWS: EC2, Aurora",
-          "img": "images/ChromaMusic.jpg",
+          "img": "",
           "icons": [
             {
               "name": "React"
@@ -89,85 +210,19 @@
               "name": "AWS"
             }
           ],
-          "id": "project-1755496750722-1"
-        },
-        {
-          "title": "Bass Bot - Synthesizer Plugin",
-          "role": "Audio DSP Programmer",
-          "description": "This monophonic synthesizer that I created is a power-house of unique audio DSP. I created it in C++ using the JUCE audio framework. One of my goals as a Software Developer is to create audio tools for other creatives to use.  Visit the github to download the code and the Vst plugins for your favorite DAW.",
-          "img": "./images/BassBotLogo1.png",
-          "icons": [
+          "id": "project-1755496750722-1",
+          "thumbnail": "./images/ChromaMusic.jpg",
+          "images": [
+            "./images/ChromaMusic_site.jpg"
+          ],
+          "buttons": [
             {
-              "name": "C++"
-            },
-            {
-              "name": "Juce Audio DSP"
-            },
-            {
-              "name": "Pro Tools"
+              "title": "Github",
+              "url": "https://github.com/Willclarkmusic/ChromaticMusic_DBFinal",
+              "icon": "github"
             }
           ],
-          "id": "project-1755496750722-2"
-        },
-        {
-          "title": "React Three Fiber",
-          "role": "Front-end Develeoper",
-          "description": "This Website was built with React Three Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
-          "img": "images/CF_Site.png",
-          "icons": [
-            {
-              "name": "React"
-            },
-            {
-              "name": "Three.js"
-            },
-            {
-              "name": "Framer Motion"
-            },
-            {
-              "name": "Tailwind"
-            },
-            {
-              "name": "AWS"
-            }
-          ],
-          "id": "project-1755496750722-3"
-        },
-        {
-          "title": "Sue Chef: Recipe Social",
-          "role": "Front-end Engineer | UX Researcher",
-          "description": "This Website was built with a lot of front-end tools. React Fiber, Three.js, Tailwind, Framer Motion and more! I love to explore the amazing world of React. Code that writes other code... Simply Amazing! ",
-          "img": "images/SueChef.png",
-          "icons": [
-            {
-              "name": "React"
-            },
-            {
-              "name": "Figma"
-            },
-            {
-              "name": "Project Management"
-            }
-          ],
-          "id": "project-1755496750722-4"
-        },
-        {
-          "title": "Atomic Chess",
-          "role": "Python Developer",
-          "description": "Atomic Chess is a variant of chess where when a piece is captured, and explosion happens, killing all pieces adjacent to the capture. I created this program as a portfolio piece in my intro to Python class at OSU.",
-          "img": "./images/Chess1.png",
-          "icons": [
-            {
-              "name": "Unity"
-            },
-            {
-              "name": "Wwise"
-            },
-            {
-              "name": "C#"
-            }
-          ],
-          "id": "project-1755496750722-5"
+          "youtubeUrl": ""
         }
       ]
     },
@@ -181,7 +236,7 @@
           "title": "Paleo Alto",
           "role": "CAD Designer | Project Manager",
           "description": "PaleoAlto was a collaboration between Colour Feeders and the digital-art studio, Marpi Studio, for the art festival 'CODE: Art' in the downtown public spaces of Palo Alto, CA. I led the construction and CAD design for this piece while my company Colour Feeders handled the technology and computing power.",
-          "img": "./images/PaleoAlto2.webp",
+          "img": "",
           "icons": [
             {
               "name": "VectorWorks"
@@ -193,13 +248,24 @@
               "name": "Unity 3D"
             }
           ],
-          "id": "project-1755496750722-0"
+          "id": "project-1755496750722-0",
+          "thumbnail": "./images/PaleoAlto2.webp",
+          "images": [],
+          "youtubeUrl": "https://www.youtube.com/watch?v=ItJb8IFTutE",
+          "buttons": [
+            {
+              "title": "Marpi Studio",
+              "url": "https://www.marpi.studio/",
+              "icon": "globe"
+            }
+          ],
+          "customHtml": ""
         },
         {
           "title": "Artechouse",
           "role": "Render Farm Architect",
           "description": "Artechouse is one of the premiere digital-art spaces in the world with locations on the east coast and pop-ups internationally. I constructed dozens of the highest level, enterprise-server computer nodes to power real-time art installations and single-node art projects for their efforts.",
-          "img": "./images/ATH1.jpg",
+          "img": "",
           "icons": [
             {
               "name": "Touch Designer"
@@ -211,13 +277,26 @@
               "name": "Nvidia G-Sync"
             }
           ],
-          "id": "project-1755496750722-1"
+          "id": "project-1755496750722-1",
+          "thumbnail": "./images/ATH1.jpg",
+          "images": [
+            "./images/ATH3.jpg",
+            "./images/ATHCompy2-scaled.jpg"
+          ],
+          "youtubeUrl": "",
+          "buttons": [
+            {
+              "title": "Insta",
+              "url": "https://www.instagram.com/artechouse?utm_source=ig_web_button_share_sheet",
+              "icon": "instagram"
+            }
+          ]
         },
         {
           "title": "Interactive Art",
           "role": "Digital Media Artist",
           "description": "I have made a lot of interactive art over the years using a variety of software platforms and programming languages.  Touchdesigner, Unity and Unreal are my main tool sets.  These pieces have been exhibited at different music festivals, tech-art shows and more. This piece was featured on a large LED wall at Mutek 2020 in San Francisco.  See more of my art in the Youtube playlist below.",
-          "img": "./images/Goo1.png",
+          "img": "",
           "icons": [
             {
               "name": "Touch Designer"
@@ -235,13 +314,23 @@
               "name": "Nvidia G-Sync"
             }
           ],
-          "id": "project-1755496750722-2"
+          "id": "project-1755496750722-2",
+          "thumbnail": "./images/Goo1.png",
+          "images": [],
+          "youtubeUrl": "https://www.youtube.com/watch?v=mpQK2xXC6Vc&list=PLDQiSM9VNZvGwR1fpKYjFClOSRJz-bmm4",
+          "buttons": [
+            {
+              "title": "More Art",
+              "url": "https://www.youtube.com/playlist?list=PLDQiSM9VNZvGwR1fpKYjFClOSRJz-bmm4",
+              "icon": "globe"
+            }
+          ]
         },
         {
           "title": "SynthLand",
           "role": "Game Developer | Audio Programmer",
           "description": "This game level is part of a prototype I built for a game called Synthland that uses interactive gameplay with procedural audio programmed in Unreal Engine 5's, MetaSounds. The audio is generated in real-time based on interactions that the user has with the game's environment.",
-          "img": "./images/MetaSounds1.png",
+          "img": "",
           "icons": [
             {
               "name": "Unreal Engine 5"
@@ -253,7 +342,11 @@
               "name": "C++"
             }
           ],
-          "id": "project-1755496750722-3"
+          "id": "project-1755496750722-3",
+          "thumbnail": "./images/MetaSounds1.png",
+          "images": [],
+          "youtubeUrl": "https://www.youtube.com/watch?v=oPhbU3bMjUo",
+          "buttons": []
         },
         {
           "title": "Ninja Frog",
@@ -345,7 +438,7 @@
           "title": "Colour Feeders",
           "role": "Digital Media Artist | AV Engineer",
           "description": "Colour Feeders is a technology arts community of multi-disiplinary artists based in San Francisco. Specializing in hardware solutions and real-time, audio-visual experiences. Colour Feeders has worked in some of most cutting edge art spaces. Founded and led by Will Clark.",
-          "img": "./images/Logo1.png",
+          "img": "./images/CF_full.png",
           "icons": [
             {
               "name": "VectorWorks"
@@ -357,40 +450,17 @@
               "name": "Unity 3D"
             }
           ],
-          "id": "project-1755496750722-0"
-        },
-        {
-          "title": "Maya Jane Coles: Menagerie",
-          "role": "Stage Designer | Visual Artist",
-          "description": "This is a stage I designed was for the music festival 'Menagerie 2022'.  I also created and performed the real-time, visual content on the screens and lighting. There are more examples of my visual art in the link below!.",
-          "img": "./images/Menag22.png",
-          "icons": [
-            {
-              "name": "VectorWorks"
-            },
-            {
-              "name": "Project Management"
-            },
-            {
-              "name": "Resolume VJ"
-            },
-            {
-              "name": "Touch Designer"
-            },
-            {
-              "name": "Unity 3D"
-            },
-            {
-              "name": "Adobe CC"
-            }
-          ],
-          "id": "project-1755496750722-1"
+          "id": "project-1755496750722-0",
+          "thumbnail": "./images/Logo1.png",
+          "images": [],
+          "youtubeUrl": "",
+          "buttons": []
         },
         {
           "title": "Kaskade: Menagerie",
           "role": "Stage Designer | Visual Artist",
           "description": "This is a stage I designed was for the festival 'Menagerie 2023' with headlining artist Kaskade.  I also was the project manager for this stage and also created and performed the real-time, visual content on the screens. There are more examples of my visual art in the link below!.",
-          "img": "./images/Menag2022.jpg",
+          "img": "",
           "icons": [
             {
               "name": "VectorWorks"
@@ -411,13 +481,48 @@
               "name": "Adobe CC"
             }
           ],
-          "id": "project-1755496750722-2"
+          "id": "project-1755496750722-2",
+          "thumbnail": "./images/Menag2022.jpg",
+          "images": [],
+          "youtubeUrl": "https://www.youtube.com/watch?v=o_2ffI3xDDM",
+          "buttons": []
+        },
+        {
+          "title": "Menagerie: 2022",
+          "role": "Stage Designer | Visual Artist",
+          "description": "This is a stage I designed was for the music festival 'Menagerie 2022'.  I also created and performed the real-time, visual content on the screens and lighting. There are more examples of my visual art in the link below!.",
+          "img": "",
+          "icons": [
+            {
+              "name": "VectorWorks"
+            },
+            {
+              "name": "Project Management"
+            },
+            {
+              "name": "Resolume VJ"
+            },
+            {
+              "name": "Touch Designer"
+            },
+            {
+              "name": "Unity 3D"
+            },
+            {
+              "name": "Adobe CC"
+            }
+          ],
+          "id": "project-1755496750722-1",
+          "thumbnail": "./images/Menag22.png",
+          "images": [],
+          "youtubeUrl": "https://www.youtube.com/watch?v=2E0jmG7o_yg",
+          "buttons": []
         },
         {
           "title": "Diplo: Menagerie",
           "role": "Stage Designer | Visual Artist",
           "description": "This is a stage I designed was for the music festival 'Menagerie 2021' with headlining artist Diplo.  I also was the project manager for this stage and I created and performed the real-time, visual content on the screens. There are more examples of my visual art in the link below!.",
-          "img": "./images/Diplo1.png",
+          "img": "",
           "icons": [
             {
               "name": "VectorWorks"
@@ -438,7 +543,11 @@
               "name": "Adobe CC"
             }
           ],
-          "id": "project-1755496750722-3"
+          "id": "project-1755496750722-3",
+          "thumbnail": "./images/Diplo1.png",
+          "images": [],
+          "youtubeUrl": "https://www.youtube.com/watch?v=N0Y-nVKVPE8",
+          "buttons": []
         }
       ]
     }

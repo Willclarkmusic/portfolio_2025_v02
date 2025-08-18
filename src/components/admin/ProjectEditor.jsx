@@ -55,6 +55,8 @@ const ProjectEditor = ({
       img: "", // Keep for backward compatibility
       thumbnail: "", // New thumbnail field
       images: [], // New multiple images array
+      youtubeUrl: "", // YouTube video URL
+      customHtml: "", // Custom HTML/embed code
       element: null,
       element2: null,
       icons: [],
@@ -71,7 +73,8 @@ const ProjectEditor = ({
         img: project.img || "",
         thumbnail: project.thumbnail || "",
         images: project.images || [],
-        youtubeUrl: extractYouTubeUrl(project.element),
+        youtubeUrl: project.youtubeUrl || extractYouTubeUrl(project.element) || "",
+        customHtml: project.customHtml || "",
         buttons: project.buttons || [],
         icons: project.icons || [],
       });
@@ -106,6 +109,8 @@ const ProjectEditor = ({
       img: formData.img,
       thumbnail: formData.thumbnail,
       images: formData.images,
+      youtubeUrl: formData.youtubeUrl,
+      customHtml: formData.customHtml,
       element: createElementFromData(formData),
       element2: createElement2FromData(formData),
       icons: formData.icons,
@@ -565,6 +570,29 @@ const ProjectForm = ({
             className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
             placeholder="https://www.youtube.com/watch?v=..."
           />
+        </div>
+      )}
+
+      {/* Custom HTML/Embed Code */}
+      {!compact && (
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Custom HTML/Embed Code
+          </label>
+          <textarea
+            value={formData.customHtml || ""}
+            onChange={(e) => updateField("customHtml", e.target.value)}
+            rows={6}
+            className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 font-mono text-sm"
+            placeholder='<div className="overflow-hidden justify-center p-2">
+  <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
+    <iframe src="https://example.com/embed" allowFullScreen />
+  </div>
+</div>'
+          />
+          <p className="text-xs text-gray-400 mt-1">
+            Custom HTML/JSX code that will display between YouTube video and images. Use for iframes, embeds, etc.
+          </p>
         </div>
       )}
 

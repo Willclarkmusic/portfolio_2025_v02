@@ -294,7 +294,7 @@ const DynamicProjectSection = ({ category, openModal }) => {
   const moreProjects = category.projects.slice(category.maxDisplayCount);
   
   return (
-    <Section className="justify-start">
+    <Section className="justify-start max-w-[1200px]">
       <TitleBar title={category.title} />
       <ProjectDisplay2
         contentData={mainProjects}

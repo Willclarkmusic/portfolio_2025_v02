@@ -394,6 +394,13 @@ const ProjectPreviewModal = ({ project, onClose }) => {
     return null;
   };
 
+  // Helper function to extract YouTube video ID
+  const extractYouTubeVideoId = (url) => {
+    if (!url) return null;
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+    return match ? match[1] : null;
+  };
+
   const renderSkills = (icons) => {
     if (!Array.isArray(icons)) return null;
     return icons
@@ -466,6 +473,34 @@ const ProjectPreviewModal = ({ project, onClose }) => {
                   {renderSafeContent(project.description) || "No description available"}
                 </p>
 
+                {/* YouTube Video Embed */}
+                {project.youtubeUrl && extractYouTubeVideoId(project.youtubeUrl) && (
+                  <div className="mb-6">
+                    <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-xl">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${extractYouTubeVideoId(project.youtubeUrl)}`}
+                        title={`${project.title} - Video`}
+                        allowFullScreen
+                        className="w-full h-full rounded-xl"
+                        style={{ minHeight: '315px' }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Custom HTML/Embed Content */}
+                {project.customHtml && (
+                  <div className="mb-6">
+                    <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-xl">
+                      <div 
+                        className="custom-html-content w-full h-full"
+                        style={{ minHeight: "315px" }}
+                        dangerouslySetInnerHTML={{ __html: project.customHtml }}
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {/* Display multiple images or fallback to single img */}
                 {project.images && project.images.length > 0 ? (
                   <div className="mb-4 space-y-4">
@@ -533,6 +568,13 @@ const BUTTON_ICONS = [
 
 // Project Edit Modal with form and preview
 const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterSkills }) => {
+  // Helper function to extract YouTube video ID
+  const extractYouTubeVideoId = (url) => {
+    if (!url) return null;
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+    return match ? match[1] : null;
+  };
+
   const [formData, setFormData] = React.useState({
     title: project?.title || "",
     role: project?.role || "",
@@ -540,7 +582,8 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
     img: project?.img || "",
     thumbnail: project?.thumbnail || "",
     images: project?.images || [],
-    youtubeUrl: "",
+    youtubeUrl: project?.youtubeUrl || "",
+    customHtml: project?.customHtml || "",
     buttons: project?.buttons || [],
     icons: project?.icons || [],
   });
@@ -554,7 +597,8 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
         img: project.img || "",
         thumbnail: project.thumbnail || "",
         images: project.images || [],
-        youtubeUrl: "",
+        youtubeUrl: project.youtubeUrl || "",
+        customHtml: project.customHtml || "",
         buttons: project.buttons || [],
         icons: project.icons || [],
       });
@@ -569,6 +613,8 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
       img: formData.img,
       thumbnail: formData.thumbnail,
       images: formData.images,
+      youtubeUrl: formData.youtubeUrl,
+      customHtml: formData.customHtml,
       element: null, // We'll keep this simple for now
       element2: null,
       icons: formData.icons,
@@ -607,6 +653,29 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
 
   const updateField = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const addImage = () => {
+    setFormData(prev => ({
+      ...prev,
+      images: [...prev.images, ""]
+    }));
+  };
+
+  const updateImage = (index, value) => {
+    setFormData(prev => ({
+      ...prev,
+      images: prev.images.map((img, i) => 
+        i === index ? value : img
+      )
+    }));
+  };
+
+  const removeImage = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index)
+    }));
   };
 
   return (
@@ -674,7 +743,23 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Main Image URL
+                  Thumbnail Image URL (for project card)
+                </label>
+                <input
+                  type="url"
+                  value={formData.thumbnail}
+                  onChange={(e) => updateField("thumbnail", e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                  placeholder="https://example.com/thumbnail.jpg"
+                />
+                <p className="text-xs text-gray-400 mt-1">
+                  If empty, will use first image from gallery below
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Main Image URL (Legacy)
                 </label>
                 <input
                   type="url"
@@ -683,6 +768,74 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
                   className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
                   placeholder="https://example.com/image.jpg"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Project Images Gallery
+                </label>
+                <div className="space-y-2">
+                  {formData.images && formData.images.map((image, index) => (
+                    <div key={index} className="flex gap-2">
+                      <input
+                        type="url"
+                        value={image}
+                        onChange={(e) => updateImage(index, e.target.value)}
+                        placeholder="https://example.com/image.jpg"
+                        className="flex-1 px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                      />
+                      <button
+                        onClick={() => removeImage(index)}
+                        className="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition-colors"
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    onClick={addImage}
+                    className="flex items-center space-x-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
+                  >
+                    <FaPlus />
+                    <span>Add Image</span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  YouTube Video URL
+                </label>
+                <input
+                  type="url"
+                  value={formData.youtubeUrl}
+                  onChange={(e) => updateField("youtubeUrl", e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                  placeholder="https://www.youtube.com/watch?v=..."
+                />
+                <p className="text-xs text-gray-400 mt-1">
+                  Will display as embedded video above images in project modal
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Custom HTML/Embed Code
+                </label>
+                <textarea
+                  value={formData.customHtml}
+                  onChange={(e) => updateField("customHtml", e.target.value)}
+                  rows={6}
+                  className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 font-mono text-sm"
+                  placeholder='<div className="overflow-hidden justify-center p-2">
+  <div className="aspect-w-16 aspect-h-9 overflow-hidden justify-center rounded-xl">
+    <iframe src="https://example.com/embed" allowFullScreen />
+  </div>
+</div>'
+                />
+                <p className="text-xs text-gray-400 mt-1">
+                  Custom HTML/JSX code that will display between YouTube video and images. Use for iframes, embeds, etc.
+                </p>
               </div>
 
               {/* Project Buttons */}
@@ -807,6 +960,37 @@ const ProjectEditModal = ({ project, categoryId, onClose, updateProject, masterS
                 <p className="text-gray-300 mb-4">
                   {formData.description || "No description available"}
                 </p>
+
+                {/* YouTube Video Embed Preview */}
+                {formData.youtubeUrl && extractYouTubeVideoId(formData.youtubeUrl) && (
+                  <div className="mb-4">
+                    <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${extractYouTubeVideoId(formData.youtubeUrl)}`}
+                        title="Video Preview"
+                        allowFullScreen
+                        className="w-full h-full rounded-lg"
+                        style={{ minHeight: '200px' }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Custom HTML/Embed Content Preview */}
+                {formData.customHtml && (
+                  <div className="mb-4">
+                    <div className="border border-yellow-500 border-dashed rounded-lg p-2 mb-2">
+                      <p className="text-yellow-500 text-xs mb-2">Custom HTML Preview (Live preview may not show all interactive content):</p>
+                      <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg">
+                        <div 
+                          className="custom-html-content w-full h-full"
+                          style={{ minHeight: "200px" }}
+                          dangerouslySetInnerHTML={{ __html: formData.customHtml }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Display multiple images or fallback to single img */}
                 {formData.images && formData.images.length > 0 ? (

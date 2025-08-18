@@ -47,16 +47,16 @@
 
 #standbutton {
   border-radius: 10px;
-  border: 1px solid #b8b8b8;
   font-weight: 200;
   font-family: inherit;
   background-color: #1a1a1a;
+  border: 1px solid #b8b8b800;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 #standbutton:hover {
-  border-color: #646cff;
-
+  border-color: #414bff;
+  border: 1px solid #b8b8b8;
   filter: drop-shadow(0 0 2em #0400ffaa);
 }
 #standbutton:active,

@@ -70,7 +70,7 @@ const UniversalModal = ({ isOpen, onClose, children, initialContent }) => {
 
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center z-50 ">
-      <div className="flex items-center justify-center z-50 max-w-[90%]">
+      <div className="flex items-center justify-center z-50 max-w-[100%] md:max-w-[90%]">
         <ModalSidebar
           sidebarVisible={true}
           contentArray={contentArray}
@@ -105,6 +105,15 @@ const ModalContentArea = ({ selectedContent, onClose }) => {
     return null;
   };
 
+  // Helper function to extract YouTube video ID
+  const extractYouTubeVideoId = (url) => {
+    if (!url) return null;
+    const match = url.match(
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/
+    );
+    return match ? match[1] : null;
+  };
+
   // Safe function to render skills without JSX icons
   const renderSkills = (icons) => {
     if (!Array.isArray(icons)) return null;
@@ -122,17 +131,17 @@ const ModalContentArea = ({ selectedContent, onClose }) => {
   };
 
   return (
-    <div className="modal-content relative bg-gray-700 p-8 rounded shadow-lg max-w-6xl min-h-[100vh] md:min-h-[40vh] max-h-[100vh] md:max-h-[80vh] overflow-y-auto">
-      <button
-        className="static p-4 md:fixed right-20 top-20 text-white"
-        onClick={onClose}
-      >
-        <FaWindowClose className="text-4xl" />
-        <span className="sr-only">Close Modal</span>
-      </button>
+    <div className="modal-content relative bg-gray-700 p-8 rounded max-w-6xl max-h-[100vh] md:min-h-[80vh] md:max-h-[80vh] overflow-y-auto">
       {selectedContent ? (
         <div>
           <div className="flex items-start justify-between mb-6 pr-16">
+            <button
+              className="static p-4 md:fixed right-24 top-24 text-white z-50"
+              onClick={onClose}
+            >
+              <FaWindowClose className="text-4xl" />
+              <span className="sr-only">Close Modal</span>
+            </button>
             <div className="flex-1">
               <h2 className="text-3xl font-bold mb-2">
                 {renderSafeContent(selectedContent.title) || "Untitled Project"}
@@ -150,7 +159,7 @@ const ModalContentArea = ({ selectedContent, onClose }) => {
                     href={button.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors border-[1px]"
                   >
                     {BUTTON_ICONS[button.icon]}
                     <span>{button.title}</span>
@@ -165,33 +174,71 @@ const ModalContentArea = ({ selectedContent, onClose }) => {
               "No description available"}
           </p>
 
+          {/* YouTube Video Embed */}
+          {selectedContent.youtubeUrl &&
+            extractYouTubeVideoId(selectedContent.youtubeUrl) && (
+              <div className="mb-6">
+                <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-xl">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${extractYouTubeVideoId(
+                      selectedContent.youtubeUrl
+                    )}`}
+                    title={`${selectedContent.title} - Video`}
+                    allowFullScreen
+                    className="w-full h-full rounded-xl"
+                    style={{ minHeight: "315px" }}
+                  />
+                </div>
+              </div>
+            )}
+
+          {/* Custom HTML/Embed Content */}
+          {selectedContent.customHtml && (
+            <div className="mb-6">
+              <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-xl">
+                <div 
+                  className="custom-html-content w-full h-full"
+                  style={{ minHeight: "315px" }}
+                  dangerouslySetInnerHTML={{ __html: selectedContent.customHtml }}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Display multiple images or fallback to single img */}
           {selectedContent.images && selectedContent.images.length > 0 ? (
             <div className="mb-4 space-y-4">
-              {selectedContent.images.filter(img => img && img.trim()).map((image, index) => (
-                <div key={index} className="mb-4">
-                  <img
-                    src={image}
-                    alt={`${selectedContent.title || "Project"} - Image ${index + 1}`}
-                    className="rounded-lg max-w-full h-auto max-h-96 object-contain mx-auto"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
-                  />
-                </div>
-              ))}
+              {selectedContent.images
+                .filter((img) => img && img.trim())
+                .map((image, index) => (
+                  <div key={index} className="mb-4">
+                    <img
+                      src={image}
+                      alt={`${selectedContent.title || "Project"} - Image ${
+                        index + 1
+                      }`}
+                      className="rounded-lg max-w-full h-auto max-h-96 object-contain mx-auto"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
+                    />
+                  </div>
+                ))}
             </div>
-          ) : selectedContent.img && typeof selectedContent.img === "string" && (
-            <div className="mb-4">
-              <img
-                src={selectedContent.img}
-                alt={selectedContent.title || "Project image"}
-                className="rounded-lg max-w-full h-auto max-h-96 object-contain mx-auto"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
+          ) : (
+            selectedContent.img &&
+            typeof selectedContent.img === "string" && (
+              <div className="mb-4">
+                <img
+                  src={selectedContent.img}
+                  alt={selectedContent.title || "Project image"}
+                  className="rounded-lg max-w-full h-auto max-h-96 object-contain mx-auto"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                  }}
+                />
+              </div>
+            )
           )}
 
           {selectedContent.icons && (
